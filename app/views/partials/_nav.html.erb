@@ -1,7 +1,9 @@
-<nav>
+<nav class='main-nav'>
   <% unless current_user %>
-    <%= link_to 'Login', root_path(anchor: 'login-register') %>
-    <%= link_to 'Register with Spotify', root_path(anchor: 'login-register') %>
-    <%= link_to 'About', root_path(anchor: 'about') %>
-  <% end %>
+  <ul>
+    <li><%= link_to 'Login', root_path(anchor: 'login-register') %></li>
+    <li><%= link_to 'Register with Spotify', root_path(anchor: 'login-register') %></li>
+    <li><%= link_to 'About', root_path(anchor: 'about') %></li>
+</ul>
+<% end %>
 </nav>
