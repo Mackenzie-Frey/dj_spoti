@@ -11,6 +11,11 @@
 
   <body>
     <%= render 'partials/nav' %>
+    <div class="flash-message">
+      <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: type%>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
