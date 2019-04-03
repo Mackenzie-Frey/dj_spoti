@@ -17,6 +17,8 @@ gem 'faraday'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'figaro'
+gem 'omniauth-spotify'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
