@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
-
+    
     spotify_info = Hash.new
     spotify_info[:name] = auth.info[:name]
     spotify_info[:spotify_id] = auth.uid
