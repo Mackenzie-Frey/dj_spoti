@@ -1,18 +1,15 @@
 <nav class='main-nav'>
   <% unless current_user %>
   <ul>
-    <li><%= link_to 'Login', root_path(anchor: 'login-register') %></li>
-    <li><%= link_to 'Register with Spotify', root_path(anchor: 'login-register') %></li>
+    <li><%= button_to 'Connect With Spotify', connect_path(anchor: 'login-register')%></li>
     <li><%= link_to 'About', root_path(anchor: 'about') %></li>
   </ul>
   <% end %>
 
   <% if current_user %>
   <ul>
-    <li><%= link_to 'Logout' %></li>
+    <li><%= link_to 'Logout', logout_path%></li>
     <li><%= link_to 'About', root_path(anchor: 'about') %></li>
   </ul>
   <% end %>
-
-
 </nav>

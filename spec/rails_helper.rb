@@ -86,9 +86,9 @@ RSpec.configure do |config|
   end
 
 
-  OmniAuth.config.test_mode = true
 
-def stub_oauth_registration
+def stub_oauth_connection
+  OmniAuth.config.test_mode = true
   omniauth_hash = {
     'provider' => 'spotify',
     'uid' => 'fakeId',
@@ -96,9 +96,7 @@ def stub_oauth_registration
     'credentials' => { 'token' => 'fakefaketokentoken',
       'refresh_token' => 'fakefakerefresh'}
   }
-
-    OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(omniauth_hash)
-
+  OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(omniauth_hash)
 end
 
 end

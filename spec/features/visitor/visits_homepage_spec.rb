@@ -8,16 +8,6 @@ feature 'as a visitor' do
       visit '/'
     end
 
-    it 'sees a navbar' do
-      expect(page).to have_css('nav')
-
-      within 'nav' do
-        expect(page).to have_link('Login')
-        expect(page).to have_link('Register with Spotify')
-        expect(page).to have_link('About')
-      end
-    end
-
     it 'sees an about section' do
       expect(page).to have_css('#about')
       within '#about' do
