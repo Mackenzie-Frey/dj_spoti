@@ -4,12 +4,18 @@
     <title>DjSpoti</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link href="https://unpkg.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'partials/nav' %>
+    <div class="flash-message">
+      <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: type%>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
