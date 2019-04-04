@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'A user registers an account through Spotify' do
@@ -5,16 +7,17 @@ RSpec.feature 'A user registers an account through Spotify' do
     describe 'and I scroll to the register/login section' do
       it 'I should see a register button' do
         visit '/'
-        expect(page).to have_button("Register with Spotify")
+        expect(page).to have_button('Register with Spotify')
       end
       describe 'when I click on the register button' do
-
         describe 'and I sign in successfully on Spotify' do
           before :each do
             stub_oauth_registration
-            Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:spotify]
+            mock_auth = OmniAuth.config.mock_auth[:spotify]
+            Rails.application.env_config['omniauth.auth'] = mock_auth
+
             visit '/'
-            click_button "Register with Spotify"
+            click_button 'Register with Spotify'
           end
 
           it 'should redirect me to the dashboard' do
@@ -22,21 +25,20 @@ RSpec.feature 'A user registers an account through Spotify' do
           end
 
           it 'the navigation bar should now include Logout' do
-
-            expect(page).to have_content("Logout")
-            expect(page).to_not have_content("Login")
+            expect(page).to have_content('Logout')
+            expect(page).to_not have_content('Login')
           end
 
           it 'I get a flash message that I successfully created an account' do
+            expect(page).to have_content('Logout')
+            expect(page).to_not have_content('Login')
 
-            expect(page).to have_content("Logout")
-            expect(page).to_not have_content("Login")
+            message = 'You have successfully registered an account'
 
-            expect(page).to have_content("You have successfully registered an account")
+            expect(page).to have_content(message)
           end
 
           it 'I should now have an account in the system' do
-
             expect(User.count).to eq(1)
             expect(User.last.name).to eq('Fake Name')
           end
@@ -45,21 +47,20 @@ RSpec.feature 'A user registers an account through Spotify' do
         describe 'if my spotify account is already registered in the app' do
           before :each do
             stub_oauth_registration
-            Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:spotify]
-            # This is the same spotify_id from the stubbed_omniauth
-            create(:user, spotify_id: "fakeId")
+            mock_auth = OmniAuth.config.mock_auth[:spotify]
+            Rails.application.env_config['omniauth.auth'] = mock_auth
 
+            # This is the same spotify_id from the stubbed_omniauth
+            create(:user, spotify_id: 'fakeId')
           end
           it 'I see an error message' do
             visit '/'
-            click_button "Register with Spotify"
+            click_button 'Register with Spotify'
 
-            expect(page).to have_content("Spotify has already been taken")
+            expect(page).to have_content('Spotify has already been taken')
           end
         end
       end
-
-
     end
   end
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# All controller inherit from ApplicationController
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
