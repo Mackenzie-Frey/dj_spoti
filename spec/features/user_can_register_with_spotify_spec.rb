@@ -57,7 +57,7 @@ RSpec.feature 'A user registers an account through Spotify' do
             visit '/'
             click_button 'Register with Spotify'
 
-            expect(page).to have_content('Spotify has already been taken')
+            expect(page).to have_content("This Spotify account has already been registered with DJ Spoti")
           end
         end
       end
