@@ -95,7 +95,7 @@ def stub_oauth_registration
     'info' => {'name' => 'Fake Name'},
     'credentials' => { 'token' => 'fakefaketokentoken',
       'refresh_token' => 'fakefakerefresh'}
-    }
+  }
 
     OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(omniauth_hash)
 
