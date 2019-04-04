@@ -5,8 +5,9 @@ jobs:
   deploy:
     # docker:
     #   - image: buildpack-deps:trusty
-    steps:
-      - checkout
+    
+    # steps:
+    #   - checkout
       steps:
         # Run rspec in parallel
         - run: |
