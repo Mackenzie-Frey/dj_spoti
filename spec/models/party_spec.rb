@@ -10,7 +10,7 @@ RSpec.describe PartyUser, type: :model do
     it 'party_users table' do
       user = create(:user, name: 'manoj')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      party = create(:party)
+      party = create(:party, admin: user)
       party.users <<  create(:user, spotify_id: 2)
       party.users << create(:user, spotify_id: 3)
       party.users << create(:user, spotify_id: 4)
