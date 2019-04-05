@@ -1,6 +1,7 @@
 require 'rails_helper'
 describe 'user visiting dashboard_path' do
   it 'can create party with a name' do
+    user = create(:user, name: 'test')
     stub_oauth_connection
     visit '/'
     click_on 'Connect With Spotify', match: :first
@@ -16,6 +17,6 @@ describe 'user visiting dashboard_path' do
     expect(current_path).to eq(dashboard_path)
 
     expect(Party.count).to eq(1)
-    expect(Party.first.admin).to eq(User.first)
+    expect(Party.first.admin).to eq(User.last)
   end
 end
