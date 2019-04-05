@@ -4,7 +4,6 @@ class PartyController < ApplicationController
   end
 
   def create
-    binding.pry
     party = Party.new(party_params)
     party.admin = current_user
     party.users << current_user
