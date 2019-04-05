@@ -4,8 +4,10 @@ class PartyController < ApplicationController
   end
 
   def create
+    binding.pry
     party = Party.new(party_params)
-    party.admin_id = current_user.id
+    party.admin = current_user
+    party.users << current_user
     party.save
     redirect_to dashboard_path
   end
