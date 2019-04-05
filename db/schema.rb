@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_234218) do
+ActiveRecord::Schema.define(version: 2019_04_05_002052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "parties", force: :cascade do |t|
     t.string "name"
-    t.integer "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admin_id"
+    t.index ["admin_id"], name: "index_parties_on_admin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +32,5 @@ ActiveRecord::Schema.define(version: 2019_04_04_234218) do
     t.string "refresh_token"
   end
 
+  add_foreign_key "parties", "users", column: "admin_id"
 end

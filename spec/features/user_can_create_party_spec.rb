@@ -16,5 +16,6 @@ describe 'user visiting dashboard_path' do
     expect(current_path).to eq(dashboard_path)
 
     expect(Party.count).to eq(1)
+    expect(Party.first.admin).to eq(User.first)
   end
 end

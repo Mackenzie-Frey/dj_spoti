@@ -5,7 +5,7 @@ class PartyController < ApplicationController
 
   def create
     party = Party.new(party_params)
-    party.admin = current_user.id
+    party.admin_id = current_user.id
     party.save
     redirect_to dashboard_path
   end
