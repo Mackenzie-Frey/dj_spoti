@@ -1,0 +1,135 @@
+{
+    "href": "https://api.spotify.com/v1/users/1122095781/playlists?offset=0&limit=20",
+    "items": [
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/6t5M1yDji7wjF1oR6plhTu"
+            },
+            "href": "https://api.spotify.com/v1/playlists/6t5M1yDji7wjF1oR6plhTu",
+            "id": "6t5M1yDji7wjF1oR6plhTu",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/1f06f789f362709e7cfe6611b584e17c33086d3c338945b69e19e021827da6188af930aa3d505fa1478154c48b53c26143935683149dc4c80277aa6686081ddfb4f84dbc10cce3bc2872af9df8143873",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/1f06f789f362709e7cfe6611b584e17c33086d3c338945b69e19e021827da6188af930aa3d505fa1478154c48b53c26143935683149dc4c80277aa6686081ddfb4f84dbc10cce3bc2872af9df8143873",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/1f06f789f362709e7cfe6611b584e17c33086d3c338945b69e19e021827da6188af930aa3d505fa1478154c48b53c26143935683149dc4c80277aa6686081ddfb4f84dbc10cce3bc2872af9df8143873",
+                    "width": 60
+                }
+            ],
+            "name": "Meine Shazam-Titel",
+            "owner": {
+                "display_name": "Johnny Dellinger",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/1122095781"
+                },
+                "href": "https://api.spotify.com/v1/users/1122095781",
+                "id": "1122095781",
+                "type": "user",
+                "uri": "spotify:user:1122095781"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MTcsOTJlMDVmNzc4ZTM0NWNiYTY2OTRmOWRhZGZkNzEyNDE4NDA1MThhMg==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/6t5M1yDji7wjF1oR6plhTu/tracks",
+                "total": 48
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:6t5M1yDji7wjF1oR6plhTu"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/5yukQNUdlkAILE0PgGtKDH"
+            },
+            "href": "https://api.spotify.com/v1/playlists/5yukQNUdlkAILE0PgGtKDH",
+            "id": "5yukQNUdlkAILE0PgGtKDH",
+            "images": [
+                {
+                    "height": null,
+                    "url": "https://pl.scdn.co/images/pl/default/c462536f0d611982f56b4123f377bdc414ff7440",
+                    "width": null
+                }
+            ],
+            "name": "Oliver Heldens - Best Of Heldeep Radio",
+            "owner": {
+                "display_name": "Oliver Heldens",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/oliverheldens"
+                },
+                "href": "https://api.spotify.com/v1/users/oliverheldens",
+                "id": "oliverheldens",
+                "type": "user",
+                "uri": "spotify:user:oliverheldens"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MjUxMCwzMTBjY2VkN2Y1MTEwYTM4Y2QxMGIyNGVkM2QyYjllN2Y5ZjM3ZWQ0",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/5yukQNUdlkAILE0PgGtKDH/tracks",
+                "total": 50
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:5yukQNUdlkAILE0PgGtKDH"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/4EcNf2l8rXInbJOf3tQdgU"
+            },
+            "href": "https://api.spotify.com/v1/playlists/4EcNf2l8rXInbJOf3tQdgU",
+            "id": "4EcNf2l8rXInbJOf3tQdgU",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/1b744fae3d190f9ffc04fc82711740a1b2f939014e526e72ec5838fc312a187ccc121b4179c6c6b7635a113520ccc6f1621843c438472946da3645298170f5133be793504317e004b9ee1cbdc991cf8d",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/1b744fae3d190f9ffc04fc82711740a1b2f939014e526e72ec5838fc312a187ccc121b4179c6c6b7635a113520ccc6f1621843c438472946da3645298170f5133be793504317e004b9ee1cbdc991cf8d",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/1b744fae3d190f9ffc04fc82711740a1b2f939014e526e72ec5838fc312a187ccc121b4179c6c6b7635a113520ccc6f1621843c438472946da3645298170f5133be793504317e004b9ee1cbdc991cf8d",
+                    "width": 60
+                }
+            ],
+            "name": "Future/Deep House",
+            "owner": {
+                "display_name": "Johnny Dellinger",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/1122095781"
+                },
+                "href": "https://api.spotify.com/v1/users/1122095781",
+                "id": "1122095781",
+                "type": "user",
+                "uri": "spotify:user:1122095781"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "Njc5LGQwYzkyMjFkMjc1YTk0MjNkOTdmYjA0MWVmOGI1MmIxMTNjOTg0ZTQ=",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/4EcNf2l8rXInbJOf3tQdgU/tracks",
+                "total": 670
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:4EcNf2l8rXInbJOf3tQdgU"
+        }
+    ],
+    "limit": 20,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 3
+}

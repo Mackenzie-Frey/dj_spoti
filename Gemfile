@@ -55,7 +55,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-
+  gem 'bootstrap', '~> 4.3.1'
 
 end
 
