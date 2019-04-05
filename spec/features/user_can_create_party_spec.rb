@@ -10,10 +10,11 @@ describe 'user visiting dashboard_path' do
 
     click_on 'Start A New Party'
 
-    fill_in 'party[:name]', with: 'This is a party'
+    fill_in 'party[name]', with: 'This is a party'
     click_on 'Create'
 
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content('This is a party')
+
+    expect(Party.count).to eq(1)
   end
 end

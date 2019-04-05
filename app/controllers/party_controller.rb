@@ -4,7 +4,14 @@ class PartyController < ApplicationController
   end
 
   def create
-    binding.pry
+    party = Party.new(party_params)
+    party.admin = current_user.id
+    party.save
+    redirect_to dashboard_path
   end
 
+  private
+  def party_params
+    params.require(:party).permit(:name)
+  end
 end
