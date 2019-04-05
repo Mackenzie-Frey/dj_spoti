@@ -1,3 +1,5 @@
 class Party < ApplicationRecord
-  has_one :admin, :class_name => "User", :foreign_key => "id"
+  belongs_to :admin, :foreign_key=> 'admin_id', :class_name=> 'User'
+  has_many :party_users
+  has_many :users, through: :party_users
 end

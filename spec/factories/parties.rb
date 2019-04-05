@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :party do
     name { "MyString" }
-    admin { 1 }
+    admin_id {1}
   end
 end
