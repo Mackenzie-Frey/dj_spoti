@@ -14,6 +14,10 @@ describe 'logged in user can' do
     fill_in 'ph_number', with: '7206832645'
     click_on 'Invite'
 
+    party_identifier = Party.first.identifier
+
+    visit spotify_omniauth_path(url: party_identifier)
+
     expect(Party.first.users.count).to eq(2)
   end
 end

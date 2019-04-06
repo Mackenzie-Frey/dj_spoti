@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_party
-    @current_party ||= Party.find(session[:party_id]) if session[:party_id]
+    @current_party ||= Party.find_by(identifier: session[:party_identifier]) if session[:party_identifier]
   end
 end
