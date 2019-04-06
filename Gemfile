@@ -42,6 +42,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
+gem 'twilio-ruby'
 
 
 group :development, :test do
@@ -57,7 +58,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  
+
   gem 'bootstrap', '~> 4.3.1'
 
 
@@ -76,7 +77,6 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
