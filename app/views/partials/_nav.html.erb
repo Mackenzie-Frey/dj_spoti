@@ -1,15 +1,19 @@
-<nav class='main-nav'>
-  <% unless current_user %>
-  <ul>
-    <li><%= button_to 'Connect With Spotify', connect_path(anchor: 'login-register')%></li>
-    <li><%= link_to 'About', root_path(anchor: 'about') %></li>
-  </ul>
-  <% end %>
 
-  <% if current_user %>
-  <ul>
-    <li><%= link_to 'Logout', logout_path%></li>
-    <li><%= link_to 'About', root_path(anchor: 'about') %></li>
-  </ul>
-  <% end %>
-</nav>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+   <div class="navbar-nav">
+     <ul class='navbar-nav'>
+       <li class='btn-sml btn-outline-success my-2 my-sm-0'>
+         <%= link_to 'Connect with Spotify', root_path(anchor: 'login-register'), class: 'nav-link' %>
+       </li>
+       <li class='btn-sml btn-dark'>
+         <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
+       </li>
+   </ul>
+   </div>
+  </div>
+ </nav>
+
