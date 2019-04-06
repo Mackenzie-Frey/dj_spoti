@@ -35,6 +35,42 @@ describe 'SpotifyClient' do
       current_song = @service.currently_playing
       expect(current_song).to eq(json)
     end
-  end
 
+    it '#top_plays' do
+      json_response = File.open('fixtures/example_top_plays.json')
+      stub_request(:get, 'https://api.spotify.com/v1/me/top/artists?limit=5&time_range=medium_term')
+      .to_return(status: 200, body: json_response)
+
+      top_plays = @service.top_plays
+
+      expect(top_plays[:items]).to be_a(Array)
+      expect(top_plays[:items][0][:name]).to eq('Hayley Kiyoko')
+      expect(top_plays[:items][0][:id]).to eq('3LjhVl7GzYsza1biQjTpaN')
+      expect(top_plays[:items][1][:name]).to eq('Macklemore')
+      expect(top_plays[:items][1][:id]).to eq('3JhNCzhSMTxs9WLGJJxWOY')
+    end
+
+    it '#party_playlist' do
+      artist_id1 = '3LjhVl7GzYsza1biQjTpaN'
+      artist_id2 = '3JhNCzhSMTxs9WLGJJxWOY'
+      artist_id3 = '6beUvFUlKliUYJdLOXNj9C'
+      id_collection = "#{artist_id1},#{artist_id2},#{artist_id3}"
+
+      json_response = File.open('fixtures/example_playlist_recommended.json')
+      stub_request(:get, "https://api.spotify.com/v1/recommendations?seed_artists=#{id_collection}")
+      .to_return(status: 200, body: json_response)
+
+      recommended_playlist = @service.recommended_playlist(id_collection)
+
+      expect(recommended_playlist[:tracks][0][:artists][0][:name]).to eq('Macklemore')
+      expect(recommended_playlist[:tracks][0][:album][:name]).to eq('GEMINI')
+      expect(recommended_playlist[:tracks][0][:name]).to eq('Zara (feat. Abir)')
+      expect(recommended_playlist[:tracks][0][:popularity]).to eq(51)
+
+      expect(recommended_playlist[:tracks][1][:artists][0][:name]).to eq("Hayley Kiyoko")
+      expect(recommended_playlist[:tracks][1][:album][:name]).to eq("Expectations")
+      expect(recommended_playlist[:tracks][1][:name]).to eq("Mercy / Gatekeeper")
+      expect(recommended_playlist[:tracks][1][:popularity]).to eq(50)
+    end
+  end
 end
