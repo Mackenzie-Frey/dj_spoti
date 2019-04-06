@@ -11,6 +11,10 @@ class SpotifyService
     json_for('me/top/artists?limit=5&time_range=medium_term')
   end
 
+  def recommended_playlist(id_collection)
+    json_for("recommendations?seed_artists=#{id_collection}")
+  end
+
   def json_for(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
