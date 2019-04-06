@@ -15,7 +15,6 @@ describe 'logged in user can' do
     click_on 'Invite'
 
     party_identifier = Party.first.identifier
-
     visit spotify_omniauth_path(url: party_identifier)
 
     expect(Party.first.users.count).to eq(2)

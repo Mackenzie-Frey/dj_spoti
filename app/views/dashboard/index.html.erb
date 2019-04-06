@@ -3,6 +3,7 @@
 <br>
 <br>
 <h> <%= current_party.name if current_party%>
+<%=render partial: "users" if @users%>
 <%= form_tag invite_path do %>
   <%=label_tag :Phone_Number%>
   <%=text_field_tag :ph_number%>
