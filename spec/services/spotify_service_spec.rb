@@ -32,7 +32,7 @@ describe 'SpotifyClient' do
 
     it '#currently_playing' do
       json = @service.json_for('me/player/currently-playing')
-      current_song = @service.current_song
+      current_song = @service.currently_playing
       expect(current_song).to eq(json)
     end
   end
