@@ -7,6 +7,10 @@ class SpotifyService
     json_for('me/player/currently-playing')
   end
 
+  def top_plays
+    json_for('me/top/artists?limit=5&time_range=medium_term')
+  end
+
   def party_playlist(id_collection)
     json_for()
   end
