@@ -7,7 +7,7 @@ class PartyController < ApplicationController
     party = Party.new(party_params)
     party.admin = current_user
     party.users << current_user
-    party.save
+    party.save!
     redirect_to dashboard_path
   end
 
@@ -15,4 +15,5 @@ class PartyController < ApplicationController
   def party_params
     params.require(:party).permit(:name)
   end
+
 end

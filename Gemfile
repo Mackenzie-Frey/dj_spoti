@@ -19,6 +19,8 @@ gem 'faker'
 gem 'figaro'
 gem 'omniauth-spotify'
 
+gem 'sidekiq'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -56,7 +58,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  
+
   gem 'bootstrap', '~> 4.3.1'
 
 

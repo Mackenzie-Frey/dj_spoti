@@ -104,7 +104,8 @@ def stub_oauth_connection
     'credentials' => {
        'token' => 'fakefaketokentoken',
       'refresh_token' => 'fakefakerefresh',
-      'expires_at' => 1554561894
+      'expires_at' => 1554561894,
+      'expires' => true
     }
   }
   OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(omniauth_hash)
