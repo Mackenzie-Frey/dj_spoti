@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   post '/connect', to: redirect('/auth/spotify')
   get 'auth/spotify/callback', to: 'sessions#create'
 
+   mount ActionCable.server => '/cable'
+
   resources :party
 end
