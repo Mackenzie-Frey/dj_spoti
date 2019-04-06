@@ -7,6 +7,10 @@ class SpotifyService
     json_for('me/player/currently-playing')
   end
 
+  def party_playlist(id_collection)
+    json_for()
+  end
+
   def json_for(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
