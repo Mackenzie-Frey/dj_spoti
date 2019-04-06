@@ -12,7 +12,7 @@ class SpotifyService
   end
 
   def recommended_playlist(id_collection)
-    json_for("/recommendations?seed_artists=#{id_collection}")
+    json_for("recommendations?seed_artists=#{id_collection}")
   end
 
   def json_for(url)
