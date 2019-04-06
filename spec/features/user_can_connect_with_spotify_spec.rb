@@ -6,6 +6,7 @@ RSpec.feature 'A user registers an account through Spotify' do
     describe 'and I click on connect with spotify' do
       it 'should connect to spotify by going through oauth' do
         visit '/'
+        
         expect(page).to have_button('Connect With Spotify')
       end
 
@@ -17,9 +18,7 @@ RSpec.feature 'A user registers an account through Spotify' do
             Rails.application.env_config['omniauth.auth'] = mock_auth
 
             visit '/'
-            within 'nav' do
-              click_button 'Connect With Spotify'
-            end
+            click_button("Connect With Spotify")
           end
 
           it 'should redirect me to the dashboard' do

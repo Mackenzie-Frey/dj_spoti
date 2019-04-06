@@ -5,6 +5,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
    <div class="navbar-nav">
+     <% unless current_user %>
      <ul class='navbar-nav'>
        <li class='btn-sml btn-outline-success my-2 my-sm-0'>
          <%= link_to 'Connect with Spotify', root_path(anchor: 'login-register'), class: 'nav-link' %>
@@ -12,8 +13,19 @@
        <li class='btn-sml btn-dark'>
          <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
        </li>
-   </ul>
+     </ul>
+     <% end %>
+
+     <% if current_user %>
+     <ul class='navbar-nav'>
+       <li class='btn-sml btn-outline-success my-2 my-sm-0'>
+         <%= link_to 'Logout', logout_path, class: 'nav-link' %>
+       </li>
+       <li class='btn-sml btn-dark'>
+         <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
+       </li>
+     </ul>
+     <% end %>
    </div>
   </div>
  </nav>
-
