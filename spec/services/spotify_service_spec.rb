@@ -36,17 +36,6 @@ describe 'SpotifyClient' do
       expect(current_song).to eq(json)
     end
 
-# for current user
-# get song_ids from a party, for each user
-# get the array from the party, no matter how long and take top five? or random five?
-
-    it '#party_playlist' do
-      json = @service.json_for('me/player/currently-playing')
-      ['3LjhVl7GzYsza1biQjTpaN', '3JhNCzhSMTxs9WLGJJxWOY', '6beUvFUlKliUYJdLOXNj9C',
-        '5BcAKTbp20cv7tC5VqPFoC', '1vCWHaC5f2uS3yhpwWbIA6']
-    end
-  end
-
     it '#top_plays' do
       json_response = File.open('fixtures/example_top_plays.json')
       stub_request(:get, 'https://api.spotify.com/v1/me/top/artists?limit=5&time_range=medium_term')
@@ -59,6 +48,26 @@ describe 'SpotifyClient' do
       expect(top_plays[:items][0][:id]).to eq('3LjhVl7GzYsza1biQjTpaN')
       expect(top_plays[:items][1][:name]).to eq('Macklemore')
       expect(top_plays[:items][1][:id]).to eq('3JhNCzhSMTxs9WLGJJxWOY')
+    end
+
+# for current user
+# get song_ids from a party, for each user
+# get the array from the party, no matter how long and take top five? or random five?
+
+    it '#party_playlist' do
+      artist_id1 = '3LjhVl7GzYsza1biQjTpaN'
+      artist_id2 = '3JhNCzhSMTxs9WLGJJxWOY'
+      artist_id3 = '6beUvFUlKliUYJdLOXNj9C'
+      id_collection = "#{artist_id1},#{artist_id2},#{artist_id3}"
+
+      json_response = File.open('fixtures/example_playlist_recommended.json')
+      stub_request(:get, "https://api.spotify.com/v1/recommendations?seed_artists=#{id_collection}")
+      .to_return(status: 200, body: json_response)
+
+binding.pry
+      recommended_playlist = @service.json_for("me/player/currently-playing/#{id_collection}")
+
+      expect('this').to eq('that')
     end
   end
 end
