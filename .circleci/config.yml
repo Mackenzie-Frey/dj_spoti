@@ -4,6 +4,7 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/ruby:2.4.1 # ...with this image as the primary container; this is where all `steps` will run
         environment: # environment variables for primary container
+          BUNDLER_VERSION: 2.0.1
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
@@ -32,7 +33,7 @@ jobs: # a collection of steps
 
       - run: # Install Ruby dependencies
           name: Bundle Install
-          command: bundle check || bundle install
+          command: bundle check || gem install bundler -v $BUNDLER_VERSION
 
       # Store bundle cache for Ruby dependencies
       - save_cache:
