@@ -10,7 +10,7 @@ class InvitationController < ApplicationController
 
 
   private
-  def send_invitation
-
+  def send_invitation(phone_number)
+    InvitationMailer.invite(phone_number)
   end
 end
