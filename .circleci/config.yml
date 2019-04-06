@@ -14,8 +14,8 @@ jobs: # a collection of steps
       - image: circleci/postgres:11.1 # database image
         environment: # environment variables for database
           POSTGRES_USER: dj-spoti
-          POSTGRES_DB: rails_blog
-          POSTGRES_PASSWORD: <%= ENV['DJ-SPOTI_DATABASE_PASSWORD'] %>
+          POSTGRES_DB: dj-spoti_test
+          POSTGRES_PASSWORD: ''
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
 
