@@ -2,7 +2,7 @@ version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     docker: # run the steps with Docker
-      - image: circleci/ruby:2.4.1-jessie # ...with this image as the primary container; this is where all `steps` will run
+      - image: circleci/ruby:2.4.1 # ...with this image as the primary container; this is where all `steps` will run
         environment: # environment variables for primary container
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -10,7 +10,7 @@ jobs: # a collection of steps
           PGHOST: 127.0.0.1
           PGUSER: circleci-demo-ruby
           RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine # database image
+      - image: circleci/postgres:11.1 # database image
         environment: # environment variables for database
           POSTGRES_USER: circleci-demo-ruby
           POSTGRES_DB: rails_blog
