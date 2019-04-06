@@ -1,12 +1,12 @@
 App.current_song = App.cable.subscriptions.create("CurrentSongChannel", {
   connected: function() {
-    console.log("connected")
+    console.log("Got here. Connected")
 
 
   },
 
 
-  disconnected: function() {,
+  disconnected: function() {
   console.log("disconnected")
 
 },

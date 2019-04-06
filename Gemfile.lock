@@ -322,6 +322,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.3)
   rb-readline
+  redis (~> 4.0)
   rspec-rails
   rubocop (~> 0.66.0)
   sass-rails (~> 5.0)
