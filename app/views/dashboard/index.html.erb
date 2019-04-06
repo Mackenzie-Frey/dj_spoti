@@ -2,12 +2,7 @@
 <br>
 <br>
 <br>
-<h> <%= current_party.name if current_party%>
+<h1>Party: <%= current_party.name if current_party%><h1>
 <%=render partial: "users" if @users%>
-<%= form_tag invite_path do %>
-  <%=label_tag :Phone_Number%>
-  <%=text_field_tag :ph_number%>
-  <%=submit_tag "Invite" %>
-<%end%>
-
+<%=render partial: "invite" if current_party%>
 <%= button_to 'Start A New Party', new_party_path, method: :get unless current_party%>
