@@ -7,7 +7,10 @@ class PartyController < ApplicationController
     party = Party.new(party_params)
     party.admin = current_user
     party.users << current_user
-    party.save
+
+    if party.save
+      session[:party_id] = party.id
+    end
     redirect_to dashboard_path
   end
 
