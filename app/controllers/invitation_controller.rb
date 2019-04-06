@@ -2,7 +2,7 @@ class InvitationController < ApplicationController
   def create
     phone_number = params[:ph_number]
     if phone_number
-      send_invitation(phone_number)
+      send_invitation(phone_number, current_party)
     else
       flash[:error] = 'Inviation could not be sent!!'
     end

@@ -18,4 +18,14 @@ RSpec.describe PartyUser, type: :model do
       expect(party.users.count).to eq(3)
     end
   end
+
+  describe 'unique identifier is created when creating' do
+    it 'a party' do
+      user = create(:user, name: 'manoj')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      party = create(:party, admin: user)
+
+      expect(party.identifier).to be(true)
+    end
+  end
 end
