@@ -11,8 +11,8 @@ class SpotifyService
     json_for('me/top/artists?limit=5&time_range=medium_term')
   end
 
-  def party_playlist(id_collection)
-    json_for()
+  def recommended_playlist(id_collection)
+    json_for("/recommendations?seed_artists=#{id_collection}")
   end
 
   def json_for(url)
