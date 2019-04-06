@@ -9,8 +9,11 @@ describe 'logged in user can' do
 
     fill_in 'party[name]', with: 'This is a party'
     click_on 'Create'
-    save_and_open_page
 
-    expect(current_path).to eq(dashboard_path)
+
+    fill_in 'ph_number', with: '7206832645'
+    click_on 'Invite'
+
+    expect(Party.first.users.count).to eq(2)##including admin
   end
 end
