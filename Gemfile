@@ -51,6 +51,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'database_cleaner'
