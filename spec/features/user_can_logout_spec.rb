@@ -8,9 +8,9 @@ describe 'logged in user can logout' do
     Rails.application.env_config['omniauth.auth'] = mock_auth
 
     expect(page).to_not have_link('Logout')
-    within 'nav' do
-      click_button 'Connect With Spotify'
-    end
+
+    click_button 'Connect With Spotify'
+
     expect(page).to_not have_button('Connect With Spotify')
 
     expect(current_path).to eq(dashboard_path)
