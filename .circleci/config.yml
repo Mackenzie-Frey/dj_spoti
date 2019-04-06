@@ -18,11 +18,13 @@ jobs: # a collection of steps
           POSTGRES_PASSWORD: ''
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
-
-      # Which version of bundler?
       - run:
-          name: Which bundler?
           command: gem install bundler -v $BUNDLER_VERSION
+      - run: bundle check || bundle install
+      - run: mkdir ~/rspec
+      - run:
+          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+          when: always
 
       # Restore bundle cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
@@ -31,9 +33,9 @@ jobs: # a collection of steps
             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
             - rails-demo-bundle-v2-
 
-      - run: # Install Ruby dependencies
-          name: Bundle Install
-          command: bundle check || bundle install
+      # - run: # Install Ruby dependencies
+      #     name: Bundle Install
+      #     command: bundle check || bundle install
 
       # Store bundle cache for Ruby dependencies
       - save_cache:
@@ -70,10 +72,12 @@ jobs: # a collection of steps
           command: |
             bundle exec rspec --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-      # Save test results for timing analysis
-      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test_results
+                              
+      - store_test_results:
+          path: ~/rspec
+      # # Save test results for timing analysis
+      # - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+      #     path: test_results
       # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
 
 
