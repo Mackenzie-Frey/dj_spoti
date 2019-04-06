@@ -17,6 +17,7 @@ feature 'as a visitor' do
       end
     end
 
+
     it 'sees an about section' do
       expect(page).to have_css('#about')
       within '#about' do

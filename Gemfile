@@ -50,12 +50,15 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
+  gem 'rb-readline'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  
   gem 'bootstrap', '~> 4.3.1'
+
 
 end
 
