@@ -35,6 +35,19 @@ describe 'SpotifyClient' do
       current_song = @service.currently_playing
       expect(current_song).to eq(json)
     end
-  end
 
+    it '#top_plays' do
+      json_response = File.open('fixtures/example_top_plays.json')
+      stub_request(:get, 'https://api.spotify.com/v1/me/top/artists?limit=5&time_range=medium_term')
+      .to_return(status: 200, body: json_response)
+
+      top_plays = @service.top_plays
+
+      expect(top_plays[:items]).to be_a(Array)
+      expect(top_plays[:items][0][:name]).to eq('Hayley Kiyoko')
+      expect(top_plays[:items][0][:id]).to eq('3LjhVl7GzYsza1biQjTpaN')
+      expect(top_plays[:items][1][:name]).to eq('Macklemore')
+      expect(top_plays[:items][1][:id]).to eq('3JhNCzhSMTxs9WLGJJxWOY')
+    end
+  end
 end

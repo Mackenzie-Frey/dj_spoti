@@ -1,0 +1,197 @@
+{
+    "items": [
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/3LjhVl7GzYsza1biQjTpaN"
+            },
+            "followers": {
+                "href": null,
+                "total": 844288
+            },
+            "genres": [
+                "dance pop",
+                "electropop",
+                "indie poptimism",
+                "pop",
+                "post-teen pop"
+            ],
+            "href": "https://api.spotify.com/v1/artists/3LjhVl7GzYsza1biQjTpaN",
+            "id": "3LjhVl7GzYsza1biQjTpaN",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/37faea935af9069688e361a40f27a4df5cb5af40",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/8c648322e36894b0b3d4bbe5e86b6716503f8dfe",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/b23b818020e72034a946536df3a08a67c88c6cb7",
+                    "width": 160
+                }
+            ],
+            "name": "Hayley Kiyoko",
+            "popularity": 69,
+            "type": "artist",
+            "uri": "spotify:artist:3LjhVl7GzYsza1biQjTpaN"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/3JhNCzhSMTxs9WLGJJxWOY"
+            },
+            "followers": {
+                "href": null,
+                "total": 1263508
+            },
+            "genres": [
+                "pop rap"
+            ],
+            "href": "https://api.spotify.com/v1/artists/3JhNCzhSMTxs9WLGJJxWOY",
+            "id": "3JhNCzhSMTxs9WLGJJxWOY",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/548c808ed49b59bf73155e0e4de76f74406a778e",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/04cbb38931436ebef28c5be46007d8c7a37b799c",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/df658d6ffaf00d9e9d6c2f2bd64cfccdd50f1c6a",
+                    "width": 160
+                }
+            ],
+            "name": "Macklemore",
+            "popularity": 79,
+            "type": "artist",
+            "uri": "spotify:artist:3JhNCzhSMTxs9WLGJJxWOY"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6beUvFUlKliUYJdLOXNj9C"
+            },
+            "followers": {
+                "href": null,
+                "total": 256665
+            },
+            "genres": [
+                "dance pop",
+                "electropop",
+                "pop"
+            ],
+            "href": "https://api.spotify.com/v1/artists/6beUvFUlKliUYJdLOXNj9C",
+            "id": "6beUvFUlKliUYJdLOXNj9C",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/4b19c6adf41ba7b652c4c22bdd8ca526cf00bfdd",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/14959989d90beecf7e821ba18754ad8ff774b77d",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/5b13cd312db52433b515a278d6364fd1deec771e",
+                    "width": 160
+                }
+            ],
+            "name": "King Princess",
+            "popularity": 73,
+            "type": "artist",
+            "uri": "spotify:artist:6beUvFUlKliUYJdLOXNj9C"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/5BcAKTbp20cv7tC5VqPFoC"
+            },
+            "followers": {
+                "href": null,
+                "total": 2311130
+            },
+            "genres": [
+                "dance pop",
+                "pop",
+                "pop rap"
+            ],
+            "href": "https://api.spotify.com/v1/artists/5BcAKTbp20cv7tC5VqPFoC",
+            "id": "5BcAKTbp20cv7tC5VqPFoC",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/aa77c545af000003e22621637813e2e7c65c4203",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/02b156507da36da44d7b838c325285452dffa9a6",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/89c1341da3c66efd71ecb0494fe8c4a5dad3c1aa",
+                    "width": 160
+                }
+            ],
+            "name": "Macklemore & Ryan Lewis",
+            "popularity": 77,
+            "type": "artist",
+            "uri": "spotify:artist:5BcAKTbp20cv7tC5VqPFoC"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+            },
+            "followers": {
+                "href": null,
+                "total": 12778373
+            },
+            "genres": [
+                "big room",
+                "dance pop",
+                "edm",
+                "pop",
+                "tropical house"
+            ],
+            "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
+            "id": "1vCWHaC5f2uS3yhpwWbIA6",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/81b19a403109c4fe528ee3972137127b85be9519",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/9c0d8fa969a9f5db6ff860203d6880a125e501d2",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/c55bc6f57b6bb297425c3ae694f92672dcf0e2c2",
+                    "width": 160
+                }
+            ],
+            "name": "Avicii",
+            "popularity": 85,
+            "type": "artist",
+            "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+        }
+    ],
+    "total": 50,
+    "limit": 5,
+    "offset": 0,
+    "href": "https://api.spotify.com/v1/me/top/artists?limit=5&offset=0",
+    "previous": null,
+    "next": "https://api.spotify.com/v1/me/top/artists?limit=5&offset=5"
+}
