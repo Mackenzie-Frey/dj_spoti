@@ -12,6 +12,7 @@ class InvitationController < ApplicationController
 
 
   private
+
   def send_invitation(phone_number, current_party)
     InvitationMailer.new.invite(phone_number, current_party)
   end
