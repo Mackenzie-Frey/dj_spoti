@@ -1,5 +1,8 @@
-@import 'bootstrap';
 @import "nav";
 @import "buttons";
 @import "forms";
 @import "typography";
+
+body {
+  margin-left: 20px;
+}

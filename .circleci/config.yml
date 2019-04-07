@@ -33,31 +33,11 @@ jobs: # a collection of steps
             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
             - rails-demo-bundle-v2-
 
-      # - run: # Install Ruby dependencies
-      #     name: Bundle Install
-      #     command: bundle check || bundle install
-
       # Store bundle cache for Ruby dependencies
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
-      # Only necessary if app uses webpacker or yarn in some other way
-      # - restore_cache:
-      #     keys:
-      #       - rails-demo-yarn-{{ checksum "yarn.lock" }}
-      #       - rails-demo-yarn-
-      #
-      # - run:
-      #     name: Yarn Install
-      #     command: yarn install --cache-folder ~/.cache/yarn
-
-      # Store yarn / webpacker cache
-      # - save_cache:
-      #     key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      #     paths:
-      #       - ~/.cache/yarn
 
       - run:
           name: Wait for DB
@@ -75,52 +55,4 @@ jobs: # a collection of steps
 
       - store_test_results:
           path: ~/rspec
-      # # Save test results for timing analysis
-      # - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-      #     path: test_results
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
 
-
-
-
-
-# version: 2
-# jobs:
-#   build:
-#     working_directory: ~/dj_spoti
-#   deploy:
-#     docker:
-#       - image: buildpack-deps:trusty
-#
-#     # steps:
-#     #   - checkout
-#       steps:
-#         # Run rspec in parallel
-#         - run: |
-#             bundle exec rspec --profile 10 \
-#                               --format RspecJunitFormatter \
-#                               --out test_results/rspec.xml \
-#                               --format progress \
-#                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-#
-#         # Save test results for timing analysis
-#         - store_test_results:
-#             path: test_results
-#
-#         # Deploy to heroku
-#       - run:
-#           name: Deploy Master to Heroku
-#           command: |
-#             git push https://heroku:$ENV['HEROKU_SECRET_KEY']@git.heroku.com/$dj-spoti.git master
-#
-# workflows:
-#   version: 2
-#   build-deploy:
-#     jobs:
-#       - build
-#       - deploy:
-#           requires:
-#             - build
-#           filters:
-#             branches:
-#               only: master

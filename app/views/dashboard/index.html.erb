@@ -6,3 +6,5 @@
 <%=render partial: "users" if @users%>
 <%=render partial: "invite" if current_party%>
 <%= button_to 'Start A New Party', new_party_path, method: :get unless current_party%>
+<%= button_to 'End Party', party_path(current_party), method: :delete if current_party && current_party.admin == current_user%>
+<%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user%>

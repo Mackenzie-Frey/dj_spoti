@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post '/invite', to: 'invitation#create'
 
   get '/join', to: 'join#show'
+  delete '/party_users', to: 'party_users#destroy'
 
    mount ActionCable.server => '/cable'
 

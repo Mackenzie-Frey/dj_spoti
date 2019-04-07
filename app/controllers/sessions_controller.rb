@@ -3,10 +3,11 @@ class SessionsController < ApplicationController
     party = Party.find_by(identifier: request.env["omniauth.params"]["url"]) if request.env["omniauth.params"]["url"]
     if user = User.find_by(spotify_id: spotify_params(request.env['omniauth.auth'])[:spotify_id])
       session[:user_id] = user.id
+      session[:party_identifier] = party.identifier if party
       flash[:success] = 'You Have Successfully Connected With Spotify'
     else
       user = User.new(spotify_params(request.env['omniauth.auth']))
-      register_and_login_user(user)
+      register_and_login_user(user, party)
     end
     join_party(party) if party
     redirect_to dashboard_path
@@ -30,9 +31,10 @@ class SessionsController < ApplicationController
     spotify_info
   end
 
-  def register_and_login_user(user)
+  def register_and_login_user(user, party)
     if user.save
       session[:user_id] = user.id
+      session[:party_identifier] = party.identifier if party
       flash[:success] = 'You Have Successfully Connected With Spotify'
     else
       flash[:error] = user.errors.full_messages.to_sentence

@@ -13,3 +13,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+var counter = 1;
+function addInput(divName){
+  var newdiv = document.createElement('div');
+  newdiv.innerHTML = "Phone Number" + `<br><input type='text' name='ph_number${counter}' >`;
+  document.getElementById(divName).appendChild(newdiv);
+  window.scrollTo(0,document.body.scrollHeight);
+  counter++;
+}

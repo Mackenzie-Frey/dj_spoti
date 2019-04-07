@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
+
 VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
@@ -28,6 +29,7 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.javascript_driver = :selenium_chrome
+
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5
