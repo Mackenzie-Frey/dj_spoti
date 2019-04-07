@@ -52,7 +52,5 @@ jobs: # a collection of steps
           command: |
             bundle exec rspec --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
       - store_test_results:
           path: ~/rspec
-
