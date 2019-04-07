@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   get '/join', to: 'join#show'
 
+   mount ActionCable.server => '/cable'
+
   resources :party
 end

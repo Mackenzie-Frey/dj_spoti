@@ -25,6 +25,8 @@ class SessionsController < ApplicationController
     spotify_info[:spotify_id] = auth_hash.uid
     spotify_info[:access_token] = auth_hash.credentials.token
     spotify_info[:refresh_token] = auth_hash.credentials.refresh_token
+    spotify_info[:expires_at] = auth_hash.credentials.expires_at
+    spotify_info[:expires] = auth_hash.credentials.expires
     spotify_info
   end
 
