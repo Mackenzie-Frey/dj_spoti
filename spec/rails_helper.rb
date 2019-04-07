@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
+
 VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
@@ -28,6 +29,7 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.javascript_driver = :selenium_chrome
+
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5
@@ -101,8 +103,12 @@ def stub_oauth_connection
     'provider' => 'spotify',
     'uid' => 'fakeId',
     'info' => {'name' => 'Fake Name'},
-    'credentials' => { 'token' => 'fakefaketokentoken',
-      'refresh_token' => 'fakefakerefresh'}
+    'credentials' => {
+       'token' => 'fakefaketokentoken',
+      'refresh_token' => 'fakefakerefresh',
+      'expires_at' => 1554561894,
+      'expires' => true
+    }
   }
   OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(omniauth_hash)
 end

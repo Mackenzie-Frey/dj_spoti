@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   get '/join', to: 'join#show'
   delete '/party_users', to: 'party_users#destroy'
 
+   mount ActionCable.server => '/cable'
+
   resources :party
 end
