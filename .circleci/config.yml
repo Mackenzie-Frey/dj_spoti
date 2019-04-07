@@ -1,4 +1,3 @@
-
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
@@ -56,4 +55,3 @@ jobs: # a collection of steps
                               
       - store_test_results:
           path: ~/rspec
-    
