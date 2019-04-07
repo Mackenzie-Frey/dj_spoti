@@ -12,7 +12,12 @@
 //
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require jquery
+//= require jquery_ujs
+
+//= require_tree ./channels
+// require_tree .
 var counter = 1;
 function addInput(divName){
   var newdiv = document.createElement('div');

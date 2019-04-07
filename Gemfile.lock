@@ -107,6 +107,7 @@ GEM
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery (0.0.1)
     json (2.2.0)
     jwt (2.1.0)
     launchy (2.4.3)
@@ -320,6 +321,7 @@ DEPENDENCIES
   faraday
   figaro
   jbuilder (~> 2.5)
+  jquery
   launchy
   listen (>= 3.0.5, < 3.2)
   omniauth-spotify
