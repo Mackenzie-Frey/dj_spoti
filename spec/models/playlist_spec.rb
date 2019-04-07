@@ -13,23 +13,24 @@ context 'The aggregated party playlist & seeds' do
     @party.users <<  create(:user, spotify_id: 2, access_token: ENV['HOURLY_SPOTIFY_TOKEN'])
     @party.users << create(:user, spotify_id: 3, access_token: ENV['HOURLY_SPOTIFY_TOKEN'])
     @party.users << create(:user, spotify_id: 4, access_token: ENV['HOURLY_SPOTIFY_TOKEN'])
+
+    @playlist = Playlist.new(@party.users)
   end
 
   it 'exist' do
-    playlist = Playlist.new(@party.users)
-
-    expect(playlist).to be_a(Playlist)
+    expect(@playlist).to be_a(Playlist)
   end
 
   it '#make - is made when a party is created' do
-    @party.playlist_seeds.make
+    @playlist.make
 
     expect(@party.playlist_seeds).to eq('some string for playlist seeds')
   end
 
   it '#update - updates when a user joins a party' do
     @party[:playlist_seeds] = 'something'
-    @party.playlist_seeds.update()
+
+    @playlist.update(@user)
 
     expect(@party.playlist_seeds).to eq('some different string for playlist seeds')
   end

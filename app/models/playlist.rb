@@ -4,7 +4,10 @@ class Playlist
   end
 
   def make
-    SpotifyService.new(token).top_plays
+    binding.pry
+    thing = @party_users.map do |party_user|
+      SpotifyService.new(party_user.access_token).top_plays
+    end
   end
 
   def update(current_user)
