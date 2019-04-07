@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     party = Party.find_by(identifier: request.env["omniauth.params"]["url"]) if request.env["omniauth.params"]["url"]
     if user = User.find_by(spotify_id: spotify_params(request.env['omniauth.auth'])[:spotify_id])
       session[:user_id] = user.id
+      session[:party_identifier] = party.identifier
       flash[:success] = 'You Have Successfully Connected With Spotify'
     else
       user = User.new(spotify_params(request.env['omniauth.auth']))
@@ -31,6 +32,7 @@ class SessionsController < ApplicationController
   def register_and_login_user(user)
     if user.save
       session[:user_id] = user.id
+      session[:party_identifier] = party.identifier
       flash[:success] = 'You Have Successfully Connected With Spotify'
     else
       flash[:error] = user.errors.full_messages.to_sentence
