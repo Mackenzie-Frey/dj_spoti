@@ -44,6 +44,7 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
+gem 'twilio-ruby'
 
 
 group :development, :test do
@@ -54,6 +55,7 @@ group :development, :test do
   gem 'pry'
   gem 'rb-readline'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'database_cleaner'
@@ -77,7 +79,6 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
