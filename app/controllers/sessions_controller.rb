@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
       user = User.new(spotify_params(request.env['omniauth.auth']))
       register_and_login_user(user)
     end
-    join_party(party) if party
+    if party
+      join_party(party)
+      binding.pry
+      Playlist.new(party.users).make_playlist_seeds
+    end
     redirect_to dashboard_path
   end
 
@@ -39,5 +43,6 @@ class SessionsController < ApplicationController
 
   def join_party(party)
     party.users << current_user
+    party.update_playlist
   end
 end
