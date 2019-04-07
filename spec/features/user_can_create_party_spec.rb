@@ -19,4 +19,20 @@ describe 'user visiting dashboard_path' do
     expect(Party.count).to eq(1)
     expect(Party.first.admin).to eq(User.last)
   end
+
+  describe 'unique identifier is created when creating' do
+    it 'a party' do
+      user = create(:user, name: 'test')
+      stub_oauth_connection
+      visit '/'
+      click_on 'Connect With Spotify', match: :first
+
+      click_on 'Start A New Party'
+
+      fill_in 'party[name]', with: 'This is a party'
+      click_on 'Create'
+
+      expect(Party.first.identifier).to be_a(String)
+    end
+  end
 end
