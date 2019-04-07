@@ -8,6 +8,7 @@ class PartyController < ApplicationController
     party.identifier = SecureRandom.urlsafe_base64.to_s
     party.admin = current_user
     party.users << current_user
+    # TrackBroadcastWorker.perform_async(party.current_song)
     if party.save
       session[:party_identifier] = party.identifier
     end
@@ -23,4 +24,5 @@ class PartyController < ApplicationController
   def party_params
     params.require(:party).permit(:name)
   end
+
 end

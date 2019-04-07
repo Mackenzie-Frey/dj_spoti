@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_04_06_201419) do
     t.datetime "updated_at", null: false
     t.string "access_token"
     t.string "refresh_token"
+    t.boolean "expires"
+    t.integer "expires_at"
   end
 
   add_foreign_key "parties", "users", column: "admin_id"
