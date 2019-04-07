@@ -14,6 +14,11 @@ class PartyController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def destroy
+    party = current_user.parties.find(params[:id])
+    party.destroy
+  end
+
   private
   def party_params
     params.require(:party).permit(:name)
