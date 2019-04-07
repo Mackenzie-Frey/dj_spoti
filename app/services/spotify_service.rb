@@ -8,7 +8,7 @@ class SpotifyService
   end
 
   def extract_artist_ids(result)
-    thing = result[:items].map do |artist|
+    result[:items].map do |artist|
       artist[:id]
     end
   end

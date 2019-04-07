@@ -14,25 +14,32 @@ context 'The aggregated party playlist & seeds' do
     @party.users << create(:user, spotify_id: 3, access_token: ENV['HOURLY_SPOTIFY_TOKEN'])
     @party.users << create(:user, spotify_id: 4, access_token: ENV['HOURLY_SPOTIFY_TOKEN'])
 
-    @playlist = Playlist.new(@party.users)
+    @playlist = Playlist.new(@party)
   end
 
   it 'exist' do
     expect(@playlist).to be_a(Playlist)
   end
 
-  it '#make - is made when a party is created' do
-    @playlist.make
+  it '#aggregated_top_play_ids - is made when a party is created' do
+    @playlist.aggregated_top_play_ids
 
-    expect(@party.playlist_seeds).to eq('some string for playlist seeds')
+    expect(@party.playlist_seeds).to be_a(String)
+    expect(@party.playlist_seeds.length).to be(114)
+    expect(@party.playlist_seeds.count(',')).to eq(4)
   end
 
   it '#update - updates when a user joins a party' do
-    @party[:playlist_seeds] = 'something'
+    playlist_seeds = @playlist.aggregated_top_play_ids
 
+    # add a user to a party to call the update method
+    # or add to test for a user joining a party that it changes the playlist_seeds
     @playlist.update(@user)
 
-    expect(@party.playlist_seeds).to eq('some different string for playlist seeds')
+    expect(@party.playlist_seeds).to_not eq(playlist_seeds)
+    expect(@party.playlist_seeds).to be_a(String)
+    expect(@party.playlist_seeds.length).to be(114)
+    expect(@party.playlist_seeds.count(',')).to eq(4)
   end
 end
 

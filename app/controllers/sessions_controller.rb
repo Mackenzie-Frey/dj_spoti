@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
     end
     if party
       join_party(party)
-      binding.pry
-      Playlist.new(party.users).make
+      Playlist.new(party).aggregated_top_play_ids
     end
     redirect_to dashboard_path
   end
