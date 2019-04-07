@@ -1,7 +1,6 @@
 require 'rails_helper'
 describe 'admin who have started party' do
   it 'can end party' do
-    user = create(:user)
     stub_oauth_connection
     visit '/'
     click_on 'Connect With Spotify'
