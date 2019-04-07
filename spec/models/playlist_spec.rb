@@ -22,13 +22,13 @@ context 'The aggregated party playlist' do
   end
 
   it 'is made when a party is created' do
-    @party.playlist_seeds.make_playlist_seeds
+    @party.playlist_seeds.make
 
     expect(@party.playlist).to eq('some string for playlist seeds')
   end
 
   it 'updates when a user joins a party' do
-    @party.playlist_seeds.update_playlist_seeds
+    @party.playlist_seeds.update
 
     expect(@party.playlist).to eq('some different string for playlist seeds')
   end

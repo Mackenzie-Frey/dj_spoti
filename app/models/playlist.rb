@@ -3,11 +3,11 @@ class Playlist
     @party_users = party_users
   end
 
-  def make_playlist_seeds
+  def make
     SpotifyService.new(token).top_plays
   end
 
-  def update_playlist_seeds
+  def update(current_user)
 
   end
 end

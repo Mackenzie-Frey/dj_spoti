@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if party
       join_party(party)
       binding.pry
-      Playlist.new(party.users).make_playlist_seeds
+      Playlist.new(party.users).make
     end
     redirect_to dashboard_path
   end
@@ -43,6 +43,6 @@ class SessionsController < ApplicationController
 
   def join_party(party)
     party.users << current_user
-    party.update_playlist
+    party.playlist_seeds.update(current_user)
   end
 end
