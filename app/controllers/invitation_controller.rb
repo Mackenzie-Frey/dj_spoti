@@ -1,11 +1,13 @@
 class InvitationController < ApplicationController
   def create
-    phone_number = params[:ph_number]
-    if phone_number
-      send_invitation(phone_number, current_party)
-    else
-      flash[:error] = 'Inviation could not be sent!!'
+    params.each do |key, value|
+      begin
+        send_invitation(value, current_party) if key.start_with?("ph_number")
+      rescue
+        flash[:error] = "Inviation could not be sent to `#{value}`.Please Make sure its a valid number."
+      end
     end
+    redirect_to dashboard_path
   end
 
 
