@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context 'The aggregated party playlist' do
+context 'The aggregated party playlist & seeds' do
   before :each do
     @user = create(:user, name: 'manoj')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
@@ -15,22 +15,23 @@ context 'The aggregated party playlist' do
     @party.users << create(:user, spotify_id: 4, access_token: ENV['HOURLY_SPOTIFY_TOKEN'])
   end
 
-  it 'exists' do
+  it 'exist' do
     playlist = Playlist.new(@party.users)
 
     expect(playlist).to be_a(Playlist)
   end
 
-  it 'is made when a party is created' do
+  it '#make - is made when a party is created' do
     @party.playlist_seeds.make
 
-    expect(@party.playlist).to eq('some string for playlist seeds')
+    expect(@party.playlist_seeds).to eq('some string for playlist seeds')
   end
 
-  it 'updates when a user joins a party' do
-    @party.playlist_seeds.update
+  it '#update - updates when a user joins a party' do
+    @party[:playlist_seeds] = 'something'
+    @party.playlist_seeds.update()
 
-    expect(@party.playlist).to eq('some different string for playlist seeds')
+    expect(@party.playlist_seeds).to eq('some different string for playlist seeds')
   end
 end
 
