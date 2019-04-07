@@ -7,8 +7,15 @@ class SpotifyService
     json_for('me/player/currently-playing')
   end
 
+  def extract_artist_ids(result)
+    thing = result[:items].map do |artist|
+      artist[:id]
+    end
+  end
+
   def top_plays
-    json_for('me/top/artists?limit=5&time_range=medium_term')
+    result = json_for('me/top/artists?limit=5&time_range=medium_term')
+    extract_artist_ids(result)
   end
 
   def recommended_playlist(id_collection)

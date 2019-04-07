@@ -43,11 +43,9 @@ describe 'SpotifyClient' do
 
       top_plays = @service.top_plays
 
-      expect(top_plays[:items]).to be_a(Array)
-      expect(top_plays[:items][0][:name]).to eq('Hayley Kiyoko')
-      expect(top_plays[:items][0][:id]).to eq('3LjhVl7GzYsza1biQjTpaN')
-      expect(top_plays[:items][1][:name]).to eq('Macklemore')
-      expect(top_plays[:items][1][:id]).to eq('3JhNCzhSMTxs9WLGJJxWOY')
+      expect(top_plays).to be_a(Array)
+      expect(top_plays.count).to eq(5)
+      expect(top_plays).to eq(["3LjhVl7GzYsza1biQjTpaN", "3JhNCzhSMTxs9WLGJJxWOY", "6beUvFUlKliUYJdLOXNj9C", "5BcAKTbp20cv7tC5VqPFoC", "1vCWHaC5f2uS3yhpwWbIA6"])
     end
 
     it '#party_playlist' do
