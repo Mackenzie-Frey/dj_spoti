@@ -1,2 +1,55 @@
 <h1>Welcome to DJSpoti </h1>
 <%= button_to 'Start A New Party', new_party_path, method: :get%>
+
+<!-- import ajax and spotify's web player sdk library -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+<!-- script to initialize spotify web player -->
+<script>
+  window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = 'BQCH_nUr6fUcHiUE0hzGnbymPPYlPv7ryYLT3m6rxCematYxbpxiG0_x1hb8UpQ50PRudWwRYmDdVR9NYEmAco8sA_EhyepC5ROiJKz-5jqPJ6ELw3VHYToFVM8F-dgoEa0EWw5DJRS1eEvZv0DY4S74sDlmzmJCCAvjDPzAy1lQrTY2RDWU3lOoeG5wECtd';
+    const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
+    const player = new Spotify.Player({
+      name: 'DJ Spoti',
+      getOAuthToken: cb => { cb(token); }
+    });
+
+    // Error handling
+    player.addListener('initialization_error', ({ message }) => { console.error(message); });
+    player.addListener('authentication_error', ({ message }) => { console.error(message); });
+    player.addListener('account_error', ({ message }) => { console.error(message); });
+    player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+    // Playback status updates
+    player.addListener('player_state_changed', state => { console.log(state); });
+
+    // Ready
+    player.addListener('ready', data => {
+      console.log('Ready with Device ID', data.device_id);
+      play(data.device_id);
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+      console.log('Device ID has gone offline', device_id);
+    });
+
+    // Connect to the player!
+    player.connect();
+
+    // Play the song!
+    function play(device_id) {
+      $.ajax({
+       url: "https://api.spotify.com/v1/me/player/play?device_id=23af457167a615683a6ff6194ce955ccaf34622f",
+       type: "PUT",
+       data: '{"uris": [spotify:track:1nMTZpPK7y79YmNUJnCMS7]}',
+       beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer BQCH_nUr6fUcHiUE0hzGnbymPPYlPv7ryYLT3m6rxCematYxbpxiG0_x1hb8UpQ50PRudWwRYmDdVR9NYEmAco8sA_EhyepC5ROiJKz-5jqPJ6ELw3VHYToFVM8F-dgoEa0EWw5DJRS1eEvZv0DY4S74sDlmzmJCCAvjDPzAy1lQrTY2RDWU3lOoeG5wECtd');
+       const device_id = '23af457167a615683a6ff6194ce955ccaf34622f' },
+       success: function(data) {
+         console.log(data)
+       }
+      });
+    };
+  };
+</script>
