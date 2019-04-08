@@ -42,6 +42,8 @@ context 'The aggregated party playlist & seeds' do
     # add a user to a party to call the update method
     # or add to test for a user joining a party that it changes the playlist_seeds
     # should any vcr's be used
+    # are the environment variables accounted for? ie HOURLY_SPOTIFY_TOKEN
+
     @playlist.aggregated_top_play_ids
     initial_playlist_seeds = @party.playlist_seeds
 
