@@ -18,6 +18,7 @@
 
 //= require_tree ./channels
 // require_tree .
+
 var counter = 1;
 function addInput(divName){
   var newdiv = document.createElement('div');
@@ -25,4 +26,21 @@ function addInput(divName){
   document.getElementById(divName).appendChild(newdiv);
   window.scrollTo(0,document.body.scrollHeight);
   counter++;
+}
+
+function myFunction() {
+ var myForm = document.getElementById('endParty');
+ var result = confirm("Are you sure you want to kick all party animals out of this party?");
+   if (result) {
+      myForm.submit();
+   }else {
+     event.preventDefault();
+     window.location="/dashboard";
+   }
+
+}
+
+function areYouSure() {
+ var result = alert("Please Leave The Current Party And Click The Invitation Link Again.");
+  window.location="/dashboard";
 }
