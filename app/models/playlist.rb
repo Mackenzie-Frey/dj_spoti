@@ -17,8 +17,4 @@ class Playlist
   def select_seeds(all_ids)
     all_ids.flatten.uniq.sample(5).join(',')
   end
-
-#   def update(current_user)
-# binding.pry
-#   end
 end
