@@ -5,31 +5,16 @@
 
 <section class='party text-center'>
 
-<h1>Party: <%= current_party.name if current_party%><h1>
-<%=render partial: "users" if @users%>
-<%=render partial: "invite" if current_party%>
-<%= button_to 'Start A New Party', new_party_path, method: :get unless current_party%>
-<%= button_to 'End Party', party_path(current_party), method: :delete if current_party && current_party.admin == current_user%>
-<%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user%>
+  <h1>Party: <%= current_party.name if current_party%><h1>
+    <%=render partial: "users" if @users%>
+    <%=render partial: "invite" if current_party%>
+    <%= button_to 'Start A New Party', new_party_path, method: :get unless current_party%>
+    <%= button_to 'End Party', party_path(current_party), method: :delete if current_party && current_party.admin == current_user%>
+    <%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user%>
 </section>
 
 <% if current_party && current_party.current_song%>
-<section class='currently-playing text-center'>
-  <h3>Currently playing:</h3>
-  <img src= <%= current_party.current_song.image %> class="img-thumbnail">
-  <p>
-  <% if current_party.current_song.artists.count > 1 %>
-  <strong>Artists: </strong><%= current_party.current_song.artists.join(" & ")%>
-  </p>
-  <% else %>
-  <p>
-  <strong>Artist: </strong><%= current_party.current_song.artists.first %>
-  </p>
-  <p>
-  <strong>Title: </strong> <%= current_party.current_song.name %>
-  </p>
+<%= render 'partials/current_song' %>
 
-  <% end %>
 
-</section>
 <% end %>
