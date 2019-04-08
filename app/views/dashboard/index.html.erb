@@ -13,7 +13,7 @@
 <%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user%>
 </section>
 
-<% if current_party %>
+<% if current_party && current_party.current_song%>
 <section class='currently-playing text-center'>
   <h3>Currently playing:</h3>
   <img src= <%= current_party.current_song.image %> class="img-thumbnail">
