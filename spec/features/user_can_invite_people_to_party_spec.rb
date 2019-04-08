@@ -13,7 +13,7 @@ describe 'logged in user can' do
     click_on 'Create'
 
 
-    fill_in 'ph_number', with: '7206832645'
+    fill_in 'ph_number', with: '3036899999'
     click_on 'Invite'
 
     party_identifier = Party.first.identifier

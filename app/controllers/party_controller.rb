@@ -10,6 +10,8 @@ class PartyController < ApplicationController
     party.users << current_user
     if party.save
       session[:party_identifier] = party.identifier
+      # binding.pry
+      # new_playlist(party)
     end
     redirect_to dashboard_path
   end
