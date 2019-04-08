@@ -12,7 +12,11 @@
 <%= button_to 'Start A New Party', new_party_path, method: :get unless current_party %>
 <%= button_to 'End Party', party_path(current_party), method: :delete,  onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
 <%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user %>
+<%  if current_party && current_party.current_song %>
 
-<%= render 'partials/current_song' if current_party && current_party.current_song %>
+<%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
+
+
+<% end %>
 
 </section>

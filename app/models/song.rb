@@ -12,4 +12,23 @@ class Song
     @album = data[:item][:album][:name]
     @image = data[:item][:album][:images][0][:url]
   end
+
+  def serialize_data
+    {
+      id: @id,
+      name: @name,
+      artists: @artists,
+      album: @album,
+      image: @image
+    }
+  end
+
+  # def self.song_object(data)
+  #   @id = data[:id]
+  #   @name = data[:name]
+  #   @artists = data[:artists]
+  #   @album = data[:album]
+  #   @image = data[:image]
+  #   return self
+  # end
 end

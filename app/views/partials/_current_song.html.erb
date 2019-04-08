@@ -1,16 +1,16 @@
-<section class='currently-playing text-center'>
+<section class='currently-playing text-center' id='song-playing'>
   <h3>Currently playing:</h3>
-  <img src= <%= current_party.current_song.image %> class="img-thumbnail">
-  <% if current_party.current_song.artists.count > 1 %>
+  <img src= <%= current_song.image %> class="img-thumbnail">
+  <% if current_song.artists.count > 1 %>
     <p>
-    <strong>Artists: </strong><%= current_party.current_song.artists.join(" & ")%>
+    <strong>Artists: </strong><%= current_song.artists.join(" & ")%>
   </p>
   <% else %>
   <p>
-    <strong>Artist: </strong><%= current_party.current_song.artists.first %>
+    <strong>Artist: </strong><%= current_song.artists.first %>
   </p>
   <p>
-    <strong>Title: </strong> <%= current_party.current_song.name %>
+    <strong>Title: </strong> <%= current_song.name %>
   </p>
 
   <% end %>
