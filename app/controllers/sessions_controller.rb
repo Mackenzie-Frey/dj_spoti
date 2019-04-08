@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     end
     if party
       join_party(party)
-      Playlist.new(party).aggregated_top_play_ids
+      # binding.pry
+      # Playlist.new(party).aggregated_top_play_ids
     end
     redirect_to dashboard_path
   end
@@ -42,6 +43,8 @@ class SessionsController < ApplicationController
 
   def join_party(party)
     party.users << current_user
-    party.playlist_seeds.update(current_user)
+    Playlist.new(party).aggregated_top_play_ids
+
+    # party.playlist_seeds.update(current_user)
   end
 end

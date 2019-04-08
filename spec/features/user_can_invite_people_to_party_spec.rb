@@ -2,6 +2,8 @@ require 'rails_helper'
 describe 'logged in user can' do
   it 'invite people to party' do
     stub_oauth_connection
+    stub_spotify_top_plays
+
     visit '/'
     click_on 'Connect With Spotify', match: :first
 

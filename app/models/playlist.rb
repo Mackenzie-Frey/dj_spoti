@@ -18,7 +18,7 @@ class Playlist
     all_ids.flatten.uniq.sample(5).join(',')
   end
 
-  def update(current_user)
-
-  end
+#   def update(current_user)
+# binding.pry
+#   end
 end
