@@ -1,8 +1,8 @@
 <section class='currently-playing text-center'>
   <h3>Currently playing:</h3>
   <img src= <%= current_party.current_song.image %> class="img-thumbnail">
-  <p>
-    <% if current_party.current_song.artists.count > 1 %>
+  <% if current_party.current_song.artists.count > 1 %>
+    <p>
     <strong>Artists: </strong><%= current_party.current_song.artists.join(" & ")%>
   </p>
   <% else %>
