@@ -1,8 +1,10 @@
 class JoinController < ApplicationController
   def show
-    redirect_to spotify_omniauth_path(url: params[:i])
+    if session[:party_identifier]
+    else
+      redirect_to spotify_omniauth_path(url: params[:i])
+    end
   end
-
 
   private
   def send_invitation(phone_number, current_party)
