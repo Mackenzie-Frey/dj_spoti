@@ -2,6 +2,7 @@ require 'rails_helper'
 describe 'user visiting dashboard_path' do
   it 'can create party with a name' do
     user = create(:user, name: 'test')
+    stub_spotify_top_plays
     stub_oauth_connection
     visit '/'
     click_on 'Connect With Spotify', match: :first
@@ -23,6 +24,7 @@ describe 'user visiting dashboard_path' do
   describe 'unique identifier is created when creating' do
     it 'a party' do
       user = create(:user, name: 'test')
+      stub_spotify_top_plays
       stub_oauth_connection
       visit '/'
       click_on 'Connect With Spotify', match: :first

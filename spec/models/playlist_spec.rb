@@ -5,6 +5,7 @@ context 'The aggregated party playlist & seeds' do
     @user = create(:user, name: 'manoj')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     @party = create(:party, admin: @user)
+    stub_spotify_top_plays
 
     # test in the party for a playlist being created
     # these users all have the same key which expires every hour
