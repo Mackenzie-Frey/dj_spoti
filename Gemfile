@@ -45,6 +45,8 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
 gem 'twilio-ruby'
+gem 'jquery-rails'
+
 
 
 group :development, :test do
