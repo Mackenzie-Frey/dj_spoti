@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   get '/logout', to: 'sessions#destroy'
 
-  get 'auth/spotify', as: 'spotify_omniauth'
+  # get 'auth/spotify', as: 'spotify_omniauth'
 
   get '/connect', to: redirect("/auth/spotify")
 
