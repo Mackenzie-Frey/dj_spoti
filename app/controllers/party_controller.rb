@@ -11,6 +11,8 @@ class PartyController < ApplicationController
     # TrackBroadcastWorker.perform_async(party.current_song)
     if party.save
       session[:party_identifier] = party.identifier
+      TrackBroadcastJob.perform_later(party.current_song.serialize_data) if party.current_song
+
     end
     redirect_to dashboard_path
   end
@@ -26,4 +28,15 @@ class PartyController < ApplicationController
   def party_params
     params.require(:party).permit(:name)
   end
+
+  # def serialized_data
+  #   {
+  #     id: party.current_song.id,
+  #     name: party.current_song.name,
+  #     artists: party.current_song.artists,
+  #     album: party.current_song.album,
+  #     image: party.current_song.image
+  #   }
+  #
+  # end
 end

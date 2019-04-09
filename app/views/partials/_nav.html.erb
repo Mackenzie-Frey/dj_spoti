@@ -1,31 +1,32 @@
-
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon"></span>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="black-nav">
+   <img src="https://developer.spotify.com/assets/branding-guidelines/icon3@2x.png" width="30" height="30" class="d-inline-block align-top" alt="">
+  <a class="navbar-brand" href="#">DJ Spoti</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-   <div class="navbar-nav">
-     <% unless current_user %>
-     <ul class='navbar-nav'>
-       <li class='btn-sml btn-outline-success my-2 my-sm-0'>
-         <%= link_to 'Connect with Spotify', root_path(anchor: 'login-register'), class: 'nav-link' %>
-       </li>
-       <li class='btn-sml btn-dark'>
-         <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
-       </li>
-     </ul>
-     <% end %>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <% unless current_user %>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <%= link_to 'Connect with Spotify', root_path(anchor: 'login-register'), class: 'nav-link' %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
+      </li>
 
-     <% if current_user %>
-     <ul class='navbar-nav'>
-       <li class='btn-sml btn-outline-success my-2 my-sm-0'>
-         <%= link_to 'Logout', logout_path, class: 'nav-link' %>
-       </li>
-       <li class='btn-sml btn-dark'>
-         <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
-       </li>
-     </ul>
-     <% end %>
-   </div>
+    </ul>
+    <% end %>
+
+    <% if current_user %>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <%= link_to 'Logout', logout_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
+      </li>
+
+    </ul>
+    <% end %>
   </div>
- </nav>
+</nav>

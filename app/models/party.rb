@@ -7,10 +7,12 @@ class Party < ApplicationRecord
     @current_song ||= calculate_current_song
   end
 
+  def current_song=(song)
+    @current_song = song
+  end
 
   private
 
-  
   def calculate_current_song
     SongFacade.new(self.admin.access_token).current_song
   end

@@ -10,9 +10,8 @@ class CurrentService
     current_song = SongFacade.new(self.party.admin.access_token).current_song
     #=> <#SongObject id: 1234, title: "asdf", album_art: "http://example.com/photo.jpg">
     if current_song.id != @party.current_song.id
-      party.current_song = current_song
-      "Track changed"
-      TrackBroadcastJob.perform_later(track)
+      party.current_song = SongFacade.new(self.party.admin.access_token).current_song
+      TrackBroadcastJob.perform_later(current_song.serialize_data)
     end
   end
 
