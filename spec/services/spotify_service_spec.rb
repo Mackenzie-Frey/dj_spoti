@@ -2,8 +2,16 @@ require 'rails_helper'
 
 describe 'SpotifyClient' do
   before :each do
-    @token = 'token'
-    @service = SpotifyService.new(@token)
+    user = User.create(spotify_id: "31plzrfruxb34tdffhr4vbimuxl4",
+                       name: "Manoj Pant",
+                       created_at: Time.now,
+                       updated_at: Time.now - 3200,
+                       access_token: "",
+                       refresh_token: "",
+                       expires: true,
+                       expires_at: 1554837955)
+
+    @service = SpotifyService.new(user)
 
     @song_json = File.open('./fixtures/example_current_song.json')
     stub_request(:get, 'https://api.spotify.com/v1/me/player/currently-playing')
@@ -72,5 +80,37 @@ describe 'SpotifyClient' do
       expect(recommended_playlist[:tracks][1][:name]).to eq("Mercy / Gatekeeper")
       expect(recommended_playlist[:tracks][1][:popularity]).to eq(50)
     end
+  end
+end
+
+describe 'refres_token method ' do
+  it 'refreshes when user.updated at is more than 55 minutes old from time now', :vcr do
+    token = "BQAJEXoQfBGIOb0Jq34v_8RBA40OuVmx24SK1ZGD48Z0PPJ-dL-0bRHajAHJs3gN5dWqKk0syHwIRUTL0wZ7dK1Kf3sHq2YiJu-Iai2SvS7kM0Diye4Ck6W3b0Ei3ktfWe7yopA-I-ndvfux-wq9Zj-IhGp66dHcLjJaEV8mLLZLJyfYmhCpzXfjDQhqR59d5LrpGiM4"
+    user = User.create(spotify_id: "31plzrfruxb34tdffhr4vbimuxl4",
+                       name: "Manoj Pant",
+                       created_at: Time.now,
+                       updated_at: Time.now - 2.hour,
+                       access_token: token,
+                       refresh_token: "abced",
+                       expires: true,
+                       expires_at: 1554837955)
+    service = SpotifyService.new(user)
+
+    expect(user.access_token).to_not eq(token) ##since it is updated!!
+  end
+
+  it 'does not refresh when user.updated at is less than 55 minutes old from time now', :vcr do
+    token = ""
+    user = User.create(spotify_id: "31plzrfruxb34tdffhr4vbimuxl4",
+                       name: "Manoj Pant",
+                       created_at: Time.now,
+                       updated_at: Time.now - 3200,
+                       access_token: token,
+                       refresh_token: "",
+                       expires: true,
+                       expires_at: 1554837955)
+    service = SpotifyService.new(user)
+
+    expect(user.access_token).to eq(token) ##since it is not updated!!
   end
 end
