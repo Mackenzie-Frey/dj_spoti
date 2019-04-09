@@ -16,7 +16,7 @@ class Playlist
   end
 
   def user_top_plays(party_user)
-    if !party_user.seed_artists.nil?
+    if party_user.seed_artists.nil?
       party_user.update!(seed_artists:
       SpotifyService.new(party_user.access_token).top_plays)
     end
@@ -34,3 +34,5 @@ end
 
 # Make an endpoint/Serializer for Web Player to hit with the tracks or save
 # save the tracks to the db on the party and update when a new user joins.
+
+# Calls a new playlist at the end of each song
