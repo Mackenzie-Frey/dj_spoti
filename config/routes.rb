@@ -20,4 +20,7 @@ Rails.application.routes.draw do
    mount ActionCable.server => '/cable'
 
   resources :party
+
+  get '/profile', to: 'profile#show'
+  get '/song_search', to: 'song_search#index'
 end

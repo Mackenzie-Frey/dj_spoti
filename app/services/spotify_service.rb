@@ -3,6 +3,10 @@ class SpotifyService
     @token = token
   end
 
+  def search(query)
+    json_for(
+  end
+
   def currently_playing
     json_for('me/player/currently-playing')
   end

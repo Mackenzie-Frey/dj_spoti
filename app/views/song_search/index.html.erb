@@ -1,0 +1,3 @@
+<% @facade.songs.each do |song| %>
+  Title: <%= song.title %> <%= link_to 'Set as Theme Song', theme_song_path %>
+<% end %>
