@@ -20,4 +20,13 @@ Rails.application.routes.draw do
    mount ActionCable.server => '/cable'
 
   resources :party
+
+  namespace :api do
+    namespace :v1 do
+      get '/parties/:identifier/player_state_changed', to: 'party#show', param: :identifier, as: 'check_song'
+
+    end
+  end
+
+
 end
