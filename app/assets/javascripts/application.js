@@ -37,7 +37,7 @@ function myFunction() {
 
 }
 
-function areYouSure() {
- var result = alert("Please Leave The Current Party And Click The Invitation Link Again.");
-  window.location="/dashboard";
-}
+
+$(".test").click(function(){
+  alert("The paragraph was clicked.");
+});

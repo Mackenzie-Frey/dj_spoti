@@ -1,8 +1,13 @@
 class SessionsController < ApplicationController
+  cattr_accessor :code
   def create
+    SessionsController.token_code(params[:code])
     party = Party.find_by(identifier: request.env["omniauth.params"]["url"]) if request.env["omniauth.params"]["url"]
     if user = User.find_by(spotify_id: spotify_params(request.env['omniauth.auth'])[:spotify_id])
       session[:user_id] = user.id
+      user.update(access_token: spotify_params(request.env['omniauth.auth'])[:access_token])
+      user.update(refresh_token: spotify_params(request.env['omniauth.auth'])[:refresh_token])
+      user.update(expires_at: spotify_params(request.env['omniauth.auth'])[:expires_at])
       session[:party_identifier] = party.identifier if party
       flash[:success] = 'You Have Successfully Connected With Spotify'
     else
@@ -42,6 +47,10 @@ class SessionsController < ApplicationController
   end
 
   def join_party(party)
-    party.users << current_user
+    party.users << current_user unless party.users.include?(current_user)
+  end
+
+  def self.token_code(code)
+    self.code = code
   end
 end

@@ -11,8 +11,12 @@ describe 'logged in user can' do
     click_on 'Create'
 
 
+
     fill_in 'ph_number', with: '9999999999'
     click_on 'Invite'
+    click_on 'Logout'
+    ##admin logt out and  guest is gonna login and visit invitation path.
+    guest_login
 
     party_identifier = Party.first.identifier
     visit spotify_omniauth_path(url: party_identifier)
