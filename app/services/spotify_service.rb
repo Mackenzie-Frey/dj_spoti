@@ -34,7 +34,7 @@ class SpotifyService
   private
 
   def access_token_expired?(current_user)
-    if (Time.now.utc - current_user.updated_at) > 3300
+    if (current_user.expires_at - Time.now.utc) < 300
       refresh_token(current_user, encoded_authorization)
     else
       return
@@ -48,6 +48,7 @@ class SpotifyService
   def refresh_token(current_user, encoded_authorization)
     json_parsed = JSON.parse(refresh_token_conn(current_user, encoded_authorization))
     current_user.update(access_token: json_parsed["access_token"])
+    current_user.update(expires_at: Time.now.utc + 1.hour)
   end
 
   def refresh_token_conn(current_user, encoded_authorization)
