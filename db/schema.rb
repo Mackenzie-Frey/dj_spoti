@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_171425) do
     t.datetime "updated_at", null: false
     t.string "access_token"
     t.string "refresh_token"
-    t.boolean "expires"
-    t.integer "expires_at"
     t.string "seed_artists"
   end
 

@@ -20,7 +20,7 @@ context 'The aggregated party playlist & seeds' do
 
   it '#aggregated_top_play_ids - is made when a party is created' do
     @playlist.aggregated_top_play_ids
-binding.pry
+# binding.pry
     expect(@party.playlist_seeds).to be_a(String)
     expect(@party.playlist_seeds.length).to be(114)
     expect(@party.playlist_seeds.count(',')).to eq(4)

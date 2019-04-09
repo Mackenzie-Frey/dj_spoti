@@ -8,9 +8,12 @@ class SpotifyService
   end
 
   def extract_artist_ids(result)
-    result[:items].map do |artist|
-      artist[:id]
+    ids = ""
+    result[:items].each do |artist|
+      ids += "," + artist[:id]
     end
+    binding.pry
+    ids
   end
 
   def top_plays
