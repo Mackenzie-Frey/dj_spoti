@@ -48,7 +48,7 @@ describe 'SpotifyClient' do
       expect(top_plays).to eq(["3LjhVl7GzYsza1biQjTpaN", "3JhNCzhSMTxs9WLGJJxWOY", "6beUvFUlKliUYJdLOXNj9C", "5BcAKTbp20cv7tC5VqPFoC", "1vCWHaC5f2uS3yhpwWbIA6"])
     end
 
-    it '#party_playlist' do
+    it '#recommended_playlist(id_collection)' do
       artist_id1 = '3LjhVl7GzYsza1biQjTpaN'
       artist_id2 = '3JhNCzhSMTxs9WLGJJxWOY'
       artist_id3 = '6beUvFUlKliUYJdLOXNj9C'
