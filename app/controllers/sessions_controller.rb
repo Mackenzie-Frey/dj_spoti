@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def create
     party = Party.find_by(identifier: request.env["omniauth.params"]["url"]) if request.env["omniauth.params"]["url"]
     user = User.find_or_create_by!(spotify_id: spotify_params[:spotify_id]) do |user|
@@ -7,7 +8,6 @@ class SessionsController < ApplicationController
     user.update(expires_at: Time.at(spotify_params[:expires_at]).utc)
     user.update(access_token: spotify_params[:access_token])
     user.update(refresh_token:   spotify_params[:refresh_token])
-
     login_user(user)
     join_party(party) if party
     redirect_to dashboard_path
