@@ -126,5 +126,4 @@ RSpec.configure do |config|
     }
     OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(omniauth_hash)
   end
-
 end
