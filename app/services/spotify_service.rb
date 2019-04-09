@@ -8,6 +8,9 @@ class SpotifyService
   end
 
   def extract_artist_ids(result)
+    # result[:items].map do |artist|
+    #   artist[:id]
+    # end
     result[:items].map do |artist|
       artist[:id]
     end.join(",")

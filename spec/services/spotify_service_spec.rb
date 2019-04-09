@@ -43,9 +43,10 @@ describe 'SpotifyClient' do
 
       top_plays = @service.top_plays
 
-      expect(top_plays).to be_a(Array)
-      expect(top_plays.count).to eq(5)
-      expect(top_plays).to eq(["3LjhVl7GzYsza1biQjTpaN", "3JhNCzhSMTxs9WLGJJxWOY", "6beUvFUlKliUYJdLOXNj9C", "5BcAKTbp20cv7tC5VqPFoC", "1vCWHaC5f2uS3yhpwWbIA6"])
+      expect(top_plays).to be_a(String)
+      expect(top_plays.length).to be(114)
+      expect(top_plays.count(',')).to eq(4)
+      expect(top_plays).to eq("3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6")
     end
 
     it '#recommended_playlist(id_collection)' do

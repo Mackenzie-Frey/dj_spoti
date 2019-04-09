@@ -27,17 +27,21 @@ context 'The aggregated party playlist & seeds' do
   end
 
   it '#update - updates when a non-admin user joins a party' do
-    new_user = create(:user, name: 'new party animal', spotify_id: 5, access_token: 'fake_token_request_is_stubbed')
+    different_artist_seeds = "3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6,3LjhVl7GzYsza1biQjTpaN"
+    new_user = create(:user, name: 'new party animal', spotify_id: 5,
+      access_token: 'fake_token_request_is_stubbed', seed_artists: different_artist_seeds)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(new_user)
-    @party.users << new_user
 
     @playlist.aggregated_top_play_ids
     initial_playlist_seeds = @party.playlist_seeds
 
+    @party.users << new_user
     @playlist.aggregated_top_play_ids
 
     expect(@party.playlist_seeds).to_not eq(initial_playlist_seeds)
     expect(@party.playlist_seeds).to be_a(String)
+    binding.pry
     expect(@party.playlist_seeds.length).to be(114)
     expect(@party.playlist_seeds.count(',')).to eq(4)
   end

@@ -5,17 +5,27 @@ class Playlist
 
   def aggregated_top_play_ids
     all_ids = @party.users.map do |party_user|
+      # binding.pry
+      binding.pry
       user_top_plays(party_user)
     end
+    # binding.pry
    @party.playlist_seeds = select_seeds(all_ids)
    @party.save!
+   binding.pry
   end
 
   def select_seeds(all_ids)
+    binding.pry
+    # all_ids.flatten.uniq.sample(5).join(',')
     all_ids.flatten.uniq.sample(5).join(',')
+    all_ids.each do |party_user_ids|
+      
+    end
   end
 
   def user_top_plays(party_user)
+    binding.pry
     if party_user.seed_artists.nil?
       party_user.update!(seed_artists:
       SpotifyService.new(party_user.access_token).top_plays)
