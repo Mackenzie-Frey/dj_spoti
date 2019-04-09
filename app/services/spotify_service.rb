@@ -1,7 +1,8 @@
 class SpotifyService
   def initialize(user)
-    @token = user.access_token
-    access_token_expired?(user)
+    @user = user
+    @token = @user.access_token
+    access_token_expired?(@user)
   end
 
   def currently_playing
