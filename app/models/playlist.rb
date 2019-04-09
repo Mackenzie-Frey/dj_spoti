@@ -6,8 +6,7 @@ class Playlist
 
   def aggregated_top_play_ids
     all_ids = @party_users.map do |party_user|
-      binding.pry
-      user_top_plays(party_user)
+      party_user.seed_artists
     end
      @party.playlist_seeds = select_seeds(all_ids)
      @party.save!
@@ -17,9 +16,13 @@ class Playlist
     all_ids.flatten.uniq.sample(5).join(',')
   end
 
-# might need to be adjusted after saving seed artists to users db
-  def user_top_plays(party_user)
-    SpotifyService.new(party_user.access_token).top_plays
+  def user_top_plays
+    if party_user.seed_artists
+      party_user.seed_artists
+    else
+      party_user.update!(seed_artists:
+      SpotifyService.new(party_user.access_token).top_plays)
+    end
   end
 end
 
@@ -27,8 +30,6 @@ end
 #   SpotifyService.new(party_user.access_token).top_plays
 # end
 
-# create a migration to add seed_artists to a users
-
-# Manually store the value for the api call by running an if statement
-
 # rake task to update it the values.
+
+# run just model testing to fill simplcov holes
