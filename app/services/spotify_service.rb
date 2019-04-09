@@ -18,8 +18,15 @@ class SpotifyService
     extract_artist_ids(result)
   end
 
+  def extract_track_ids(result)
+    result[:tracks].map do |track|
+      "spotify:track:#{track[:id]}"
+    end
+  end
+
   def recommended_playlist(id_collection)
-    json_for("recommendations?seed_artists=#{id_collection}")
+    result = json_for("recommendations?seed_artists=#{id_collection}")
+    extract_track_ids(result)
   end
 
   def json_for(url)
