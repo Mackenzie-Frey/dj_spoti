@@ -5,9 +5,20 @@ class PartyController < ApplicationController
 
   def create
     party = Party.new(party_params)
+    party.identifier = SecureRandom.urlsafe_base64.to_s
     party.admin = current_user
     party.users << current_user
-    party.save
+    # TrackBroadcastWorker.perform_async(party.current_song)
+    if party.save
+      session[:party_identifier] = party.identifier
+    end
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    party = current_user.parties.find(params[:id])
+    party.destroy
+    session[:party_identifier] = nil
     redirect_to dashboard_path
   end
 

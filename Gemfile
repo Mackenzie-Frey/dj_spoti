@@ -19,6 +19,8 @@ gem 'faker'
 gem 'figaro'
 gem 'omniauth-spotify'
 
+gem 'sidekiq'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -29,7 +31,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +44,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
+gem 'twilio-ruby'
+gem 'jquery-rails'
+
 
 
 group :development, :test do
@@ -52,11 +57,12 @@ group :development, :test do
   gem 'pry'
   gem 'rb-readline'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  
+
   gem 'bootstrap', '~> 4.3.1'
 
 
@@ -75,7 +81,6 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,8 +1,20 @@
 <h1>Welcome to DJSpoti </h1>
-<%= button_to 'Start A New Party', new_party_path, method: :get%>
+<br>
+<br>
+<br>
+<h1>Party: <%= current_party.name if current_party%><h1>
+  
+<%=render partial: "users" if @users%>
+<%=render partial: "invite" if current_party%>
+<%= button_to 'Start A New Party', new_party_path, method: :get unless current_party%>
+<%= button_to 'End Party', party_path(current_party), method: :delete,  onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user%>
+<%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user%>
+
+<% if current_party && current_user == current_party.admin %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- import spotify's web player sdk library & initialize web player -->
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
 <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
     const token = '<%= current_user.access_token %>';
@@ -66,8 +78,12 @@
     };
   };
 </script>
+ 
+  
 
 <img id="current-track"/>
 <h3 id="current-track-name"></h3>
 <h4 id="current-track-album"></h4>
 <h5 id="current-track-artist"></h5>
+
+<% end %>
