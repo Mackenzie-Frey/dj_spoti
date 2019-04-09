@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe 'user visiting dashboard_path' do
   it 'can create party with a name' do
-    user = create(:user, name: 'test')
+    create(:user, name: 'test')
     stub_spotify_top_plays
     stub_oauth_connection
     visit '/'
@@ -19,11 +19,14 @@ describe 'user visiting dashboard_path' do
 
     expect(Party.count).to eq(1)
     expect(Party.first.admin).to eq(User.last)
+    expect(Party.first.playlist_seeds).to be_a(String)
+    expect(Party.first.playlist_seeds.length).to be(114)
+    expect(Party.first.playlist_seeds.count(',')).to eq(4)
   end
 
   describe 'unique identifier is created when creating' do
     it 'a party' do
-      user = create(:user, name: 'test')
+      create(:user, name: 'test')
       stub_spotify_top_plays
       stub_oauth_connection
       visit '/'
