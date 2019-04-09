@@ -1,12 +1,12 @@
 class Playlist
   def initialize(party)
     @party = party
-    @party_users = party.users
   end
 
   def aggregated_top_play_ids
-    all_ids = @party_users.map do |party_user|
+    all_ids = party.users.map do |party_user|
       party_user.seed_artists
+      user_top_plays(party_user)
     end
      @party.playlist_seeds = select_seeds(all_ids)
      @party.save!
@@ -16,7 +16,7 @@ class Playlist
     all_ids.flatten.uniq.sample(5).join(',')
   end
 
-  def user_top_plays
+  def user_top_plays(party_user)
     if party_user.seed_artists
       party_user.seed_artists
     else
@@ -33,3 +33,5 @@ end
 # rake task to update it the values.
 
 # run just model testing to fill simplcov holes
+
+# Make an endpoint/Serializer for Web Player to hit with the tracks
