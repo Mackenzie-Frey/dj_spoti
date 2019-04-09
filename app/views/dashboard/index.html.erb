@@ -8,4 +8,3 @@
 <%= button_to 'Start A New Party', new_party_path, method: :get unless current_party%>
 <%= button_to 'End Party', party_path(current_party), method: :delete,  onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user%>
 <%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user%>
-<button class'test' >This </button>
