@@ -40,6 +40,5 @@ class SessionsController < ApplicationController
   def join_party(party)
     party.users << current_user
     new_playlist(party)
-    # Playlist.new(party).aggregated_top_play_ids
   end
 end
