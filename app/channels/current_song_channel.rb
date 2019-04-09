@@ -8,8 +8,9 @@ class CurrentSongChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  # def receive(payload)
-  #   ActionCable.server.broadcast('current_song', {song: payload["song"]})
-  # end
+  def receive(data)
+    ActionCable.server.broadcast 'current-song',
+            {song: data["song"]}
+  end
 
 end

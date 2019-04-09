@@ -14,15 +14,7 @@ App.current_song = App.cable.subscriptions.create("CurrentSongChannel", {
 
   received: function(data) {
     console.log("Received function");
-    var song = $('#song-playing');
-		song.append(data['song']);
-    console.log("")
-
-    // App.messages.send({song: data})
-    // console.log("song I received ")
-    // console.log(data.party_identifier)
-
-
-
+    var song = $("#song-playing");
+		song.html(data['song']);
   }
 });

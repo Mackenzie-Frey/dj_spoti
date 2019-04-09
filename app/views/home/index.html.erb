@@ -20,7 +20,7 @@
 
 
 
-<% unless current_user do %>
+<% if !current_user %>
 <section id='login-register'>
   <div class="card border-0" >
     <h2 class="card-title text-center">Login</h2>

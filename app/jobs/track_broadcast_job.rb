@@ -5,14 +5,12 @@ class TrackBroadcastJob < ApplicationJob
     ActionCable.server.broadcast "current-song", {
       song: render_song(song)
       }
-      
+
   end
 
   private
 
   def render_song(song)
-
-
     ApplicationController.renderer.render(
       partial: 'partials/current_song',
       locals: {
