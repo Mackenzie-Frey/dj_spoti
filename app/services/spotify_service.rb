@@ -1,15 +1,11 @@
 class SpotifyService
-  def initialize(token)
-    @token = token
+  def initialize(user)
+    @token = user.access_token
+    access_token_expired?(user)
   end
 
   def currently_playing
     json_for('me/player/currently-playing')
-  end
-
-  def refresh_token(body)
-    response = refresh_token_conn(body)
-    JSON.parse(response.body, symbolize_names: true)
   end
 
   def top_plays
@@ -32,7 +28,31 @@ class SpotifyService
     end
   end
 
-  def refresh_token_conn(body)
-    Faraday.post('https://accounts.spotify.com/api/token', body)
+  private
+
+  def access_token_expired?(current_user)
+    if (Time.now.utc - current_user.updated_at) > 3300
+      refresh_token(current_user, encoded_authorization)
+    else
+      return
+    end
+  end
+
+  def encoded_authorization
+    Base64.strict_encode64("#{ENV["SPOTIFY_CLIENT_ID"]}:#{ENV["SPOTIFY_CLIENT_SECRET"]}")
+  end
+
+  def refresh_token(current_user, encoded_authorization)
+    json_parsed = JSON.parse(refresh_token_conn(current_user, encoded_authorization))
+    current_user.update(access_token: json_parsed["access_token"])
+  end
+
+  def refresh_token_conn(current_user, encoded_authorization)
+    response = Faraday.post("https://accounts.spotify.com/api/token") do |req|
+      req.headers["Content-Type"] = "application/x-www-form-urlencoded"
+      req.headers["Authorization"] = "Basic #{encoded_authorization}"
+      req.body = {"grant_type":"refresh_token", "refresh_token":"#{current_user.refresh_token}"}
+    end
+    response.body
   end
 end
