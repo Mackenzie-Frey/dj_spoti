@@ -5,9 +5,9 @@ class SongFacade
 
   def current_song
     data = service.currently_playing
-    if data[:is_playing]
+    if data && data[:is_playing]
       Song.new(data)
-    end 
+    end
   end
 
   def service
