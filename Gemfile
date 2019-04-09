@@ -21,6 +21,14 @@ gem 'omniauth-spotify'
 
 gem 'sidekiq'
 
+gem 'jquery-rails'
+
+gem 'active_model_serializers'
+
+
+
+
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

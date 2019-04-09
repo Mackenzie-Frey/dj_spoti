@@ -1,0 +1,29 @@
+App.current_song = App.cable.subscriptions.create("CurrentSongChannel", {
+  connected: function() {
+    console.log("Got here. Connected");
+
+
+  },
+
+
+  disconnected: function() {
+  console.log("disconnected");
+
+},
+
+
+  received: function(data) {
+    console.log("Received function");
+    var song = $("#song-playing");
+		song.html(data['song']);
+  }
+});
+
+$(document).on 'change', '[data-behavior~=room_speaker]', (event) ->
+  if event.keyCode is 13 #return = send
+    App.room.speak event.target.value
+    event.target.value = ''
+    event.preventDefault()
+// $(document).change(function(event) {
+//  App.current_song.set(event.state)
+// });
