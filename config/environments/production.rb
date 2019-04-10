@@ -3,8 +3,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.web_socket_server_url = "wss://dj-spoti.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://dj-spoti.herokuapp.com', 'http://dj-spoti.herokuapp.com']
   # Code is not reloaded between requests.
   config.cache_classes = true
+
+
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -93,4 +97,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
 end
