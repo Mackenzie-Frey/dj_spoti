@@ -13,9 +13,13 @@
 <%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user %>
 
 <%  if current_party && current_party.current_song  %>
+  <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
+    <%= render current_song%>
+  </div>
 
-<%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
-
+<% else %>
+  <div class="hidden" id ='currently-playing-song'>
+  </div>
 <% end %>
 
 </section>

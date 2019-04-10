@@ -1,5 +1,22 @@
 App.current_song = App.cable.subscriptions.create 'CurrentSongChannel',
 
+
+  received: (data) ->
+    console.log 'received method here with their data:'
+    console.log data
+    song = $('#song-playing')
+    song.html data['song']
+    # $('#currently-playing-song').removeClass 'hidden'
+    # $('[data-current-party=\'' + data.current_party + '\']').append data.song
+    return
+  #
+  # play: (song) ->
+  #   console.log 'play method here'
+  #   console.log song
+  #   @perform 'play', song: song
+  #
+
+
   connected: ->
     console.log 'Got here. Connected'
     return
@@ -8,30 +25,8 @@ App.current_song = App.cable.subscriptions.create 'CurrentSongChannel',
     console.log 'disconnected'
     return
 
-  received: (data) ->
-    console.log 'received mehtod here'
-    console.log data
-    song = $('#song-playing')
-    song.html data['song']
-    
-    return
-
-  #
-  #
-  # play: (song) ->
-  #   console.log 'play method here'
-  #   console.log songc
-  #   @perform 'play', data: song
 
 
-#
-#
-#     console.log 'Received function'
-#     console.log 'This is what is going through the channel:' + data['song']
-#     song = $('#song-playing')
-#     song.html data['song']
-#     return
-# )
 
 
 # // $(document).on 'change', '[data-behavior~=room_speaker]', (event) ->
