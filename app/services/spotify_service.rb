@@ -30,8 +30,7 @@ class SpotifyService
   end
 
   # def party_tracks
-  #   top_plays
-  #
+  #   recommended_playlist(id_collection)
   # end
 
   def json_for(url)

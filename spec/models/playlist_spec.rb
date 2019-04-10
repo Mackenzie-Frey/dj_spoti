@@ -44,4 +44,23 @@ context 'The aggregated party playlist & seeds' do
     expect(@party.playlist_seeds.length).to be(114)
     expect(@party.playlist_seeds.count(',')).to eq(4)
   end
+
+  xit 'outputs the array Peregrine needs' do
+    # Between the test setup and the below line, it creates parties with playlist_seeds,
+    # and party_users with seed_artists
+    @playlist.aggregated_top_play_ids
+
+    #make sure this gets set in config and reset hourly
+    # token = ENV['HOURLY_TOKEN']
+    #
+    # binding.pry
+    #
+    # SpotifyService.new(token).
+
+    # want to call something like this:
+    # SpotifyService.new(token).party_tracks
+  end
 end
+
+#
+# SpotifyService.new(token).party_tracks

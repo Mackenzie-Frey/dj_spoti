@@ -65,5 +65,3 @@ describe 'SpotifyClient' do
     end
   end
 end
-
-# SpotifyService.new(token).party_tracks
