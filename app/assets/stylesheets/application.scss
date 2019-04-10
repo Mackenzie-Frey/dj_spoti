@@ -13,13 +13,13 @@ body {
 
   // Invite Section
   .invite {
-    background-color: green;
+    background-color: #1DB954;
     height: 100vh;
   }
 
   // Currently Playing Section
   .currently-playing {
-    background-color: black;
+    background-color: #191414;
     height: 100vh;
     color: white
   }
@@ -27,11 +27,11 @@ body {
 
 // '/party/new?'
   .new-party {
-    background-color: red;
+    background-color: #1DB954;
     height: 100vh;
     color: white;
   }
 
-  .new-party-form {
+  .new-party-form-container {
     padding-top: 50vh;
   }
