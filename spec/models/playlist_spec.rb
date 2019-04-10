@@ -62,4 +62,6 @@ end
 # delete playlist_seeds form db
 # does it update a party playlist each time a user joins
 # maybe select_seeds(all_ids) should be an array of seeds
-#parse data for Peregrine ie extract new line characters
+# parse data for Peregrine ie extract new line characters
+
+# change double quotes on inner to single quotes for extract_track_ids and that it saves to db.

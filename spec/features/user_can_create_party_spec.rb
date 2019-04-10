@@ -4,6 +4,13 @@ describe 'user visiting dashboard_path' do
     create(:user, name: 'test')
     stub_spotify_top_plays
     stub_oauth_connection
+
+    all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"]
+    id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
+    allow_any_instance_of(Playlist).to receive(:select_seeds).with(all_ids).and_return(id_collection)
+
+    stub_recommended_playlist
+
     visit '/'
     click_on 'Connect With Spotify', match: :first
 
@@ -19,9 +26,8 @@ describe 'user visiting dashboard_path' do
 
     expect(Party.count).to eq(1)
     expect(Party.first.admin).to eq(User.last)
-    expect(Party.first.playlist_seeds).to be_a(String)
-    expect(Party.first.playlist_seeds.length).to be(114)
-    expect(Party.first.playlist_seeds.count(',')).to eq(4)
+    expect(Party.first.playlist_tracks).to be_a(String)
+    expect(Party.first.playlist_tracks).to eq("[\"spotify:track:4IlBZXHTwY7DoxA4piiHtM\", \"spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z\"]")
   end
 
   describe 'unique identifier is created when creating' do

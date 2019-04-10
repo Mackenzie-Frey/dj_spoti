@@ -34,8 +34,8 @@ def stub_spotify_top_plays
 end
 
 def stub_recommended_playlist
-  id_collection = "1vCWHaC5f2uS3yhpwWbIA6,5BcAKTbp20cv7tC5VqPFoC,6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY"
-  json_response = File.open('fixtures/example_recommendation_party_tracks.json')
+  id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
+  json_response = File.open('fixtures/example_playlist_recommended.json')
   stub_request(:get, "https://api.spotify.com/v1/recommendations?seed_artists=#{id_collection}")
   .to_return(status: 200, body: json_response)
 end

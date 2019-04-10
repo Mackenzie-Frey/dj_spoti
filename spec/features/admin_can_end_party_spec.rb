@@ -11,8 +11,8 @@ describe 'admin who have started party' do
     click_on 'Start A New Party'
     fill_in 'party[name]', with: 'party'
     click_on 'Create'
-    expect(Party.count).to eq(1)
 
+    expect(Party.count).to eq(1)
     expect(current_path).to eq(dashboard_path)
     click_on 'End Party'
 
