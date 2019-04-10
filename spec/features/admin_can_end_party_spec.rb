@@ -30,7 +30,7 @@ describe 'non admin user cant'  do
     stub_spotify_top_plays
     stub_select_seeds
     stub_recommended_playlist
-    
+
     visit '/join?i=abcd'
 
     expect(current_path).to eq(dashboard_path)
