@@ -5,7 +5,7 @@
 #     visit '/'
 #     click_on 'Connect With Spotify'
 #
-#     click_on 'Start A New Party'##start button clicked
+#     click_on 'Start Party'##start button clicked
 #     fill_in 'party[name]', with: 'party'##filled out form for party name
 #     click_on 'Create'##click on create
 #     click_on 'End Party'##party is started now click on end party
@@ -36,6 +36,6 @@ describe 'non admim user cant'  do
     expect(page).to_not have_content(party.name)
     expect(Party.count).to eq(1)##just making sure normal user is not destroying party
 
-    expect(page).to have_button("Start A New Party")
+    expect(page).to have_button("Start Party")
   end
 end

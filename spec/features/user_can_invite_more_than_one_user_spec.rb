@@ -8,7 +8,7 @@ require 'rails_helper'
 #     visit '/'
 #     click_on 'Connect With Spotify', match: :first
 #
-#     click_on 'Start A New Party'
+#     click_on 'Start Party'
 #
 #     fill_in 'party[name]', with: 'This is a party'
 #     click_on 'Create'

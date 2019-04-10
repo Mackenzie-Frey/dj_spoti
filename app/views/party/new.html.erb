@@ -1,5 +1,5 @@
 <%=form_for @party, :url =>'/party' do |f| %>
  <%= f.label :name %>
  <%= f.text_field :name %>
- <%= f.submit %>
+ <%= f.submit 'Create Party', class: 'btn btn-primary text-uppercase p-3' %>
  <% end %>
