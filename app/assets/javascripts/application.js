@@ -29,18 +29,25 @@ function addInput(divName){
 }
 
 function myFunction() {
- var myForm = document.getElementById('endParty');
+  var myForm = document.getElementById('endParty');
  var result = confirm("Are you sure you want to kick all party animals out of this party?");
    if (result) {
       myForm.submit();
    }else {
      event.preventDefault();
-     window.location="/dashboard";
    }
 
 }
 
-function areYouSure() {
- var result = alert("Please Leave The Current Party And Click The Invitation Link Again.");
-  window.location="/dashboard";
-}
+// $(document).ready(function() {
+//   $('#endParty').click(function() {
+//     var myForm = $('#endParty');
+//     confirm("Are you sure you want to kick all party animals out of this party?");
+//     if (result) {
+//        myForm.submit();
+//     }else {
+//       event.preventDefault();
+//       window.location="/dashboard";
+//     }
+//   });
+// });

@@ -16,7 +16,6 @@
 
 <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
 
-
 <% end %>
 
 </section>
@@ -26,6 +25,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- import spotify's web player sdk library & initialize web player -->
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
 
 <script>
   window.onSpotifyWebPlaybackSDKReady = () => {

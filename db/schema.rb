@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_201419) do
+ActiveRecord::Schema.define(version: 2019_04_09_224907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_201419) do
     t.datetime "updated_at", null: false
     t.string "access_token"
     t.string "refresh_token"
-    t.boolean "expires"
-    t.integer "expires_at"
+    t.datetime "expires_at"
   end
 
   add_foreign_key "parties", "users", column: "admin_id"
