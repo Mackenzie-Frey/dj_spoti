@@ -19,6 +19,7 @@ gem 'faker'
 gem 'figaro'
 gem 'omniauth-spotify'
 
+
 gem 'sidekiq'
 
 gem 'jquery-rails'
@@ -72,6 +73,7 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   gem 'bootstrap', '~> 4.3.1'
+  gem 'action-cable-testing'
 
 
 end
