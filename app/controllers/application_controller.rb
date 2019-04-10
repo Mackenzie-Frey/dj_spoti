@@ -2,6 +2,8 @@
 
 # All controller inherit from ApplicationController
 class ApplicationController < ActionController::Base
+  # include SessionsHelper
+
   helper_method :current_user,
                 :current_party
 

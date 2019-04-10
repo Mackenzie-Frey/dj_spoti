@@ -19,6 +19,16 @@ gem 'faker'
 gem 'figaro'
 gem 'omniauth-spotify'
 
+gem 'sidekiq'
+
+gem 'jquery-rails'
+
+gem 'active_model_serializers'
+
+
+
+
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -29,7 +39,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,6 +53,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
 gem 'twilio-ruby'
+gem 'jquery-rails'
+
 
 
 group :development, :test do
@@ -71,6 +83,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'skylight'
 end
 
 group :test do

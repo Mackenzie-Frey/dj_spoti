@@ -10,7 +10,44 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require jquery
+//= require jquery_ujs
+
+//= require_tree ./channels
+// require_tree .
+
+var counter = 1;
+function addInput(divName){
+  var newdiv = document.createElement('div');
+  newdiv.innerHTML = "Phone Number" + `<br><input type='text' name='ph_number${counter}' >`;
+  document.getElementById(divName).appendChild(newdiv);
+  window.scrollTo(0,document.body.scrollHeight);
+  counter++;
+}
+
+function myFunction() {
+  var myForm = document.getElementById('endParty');
+ var result = confirm("Are you sure you want to kick all party animals out of this party?");
+   if (result) {
+      myForm.submit();
+   }else {
+     event.preventDefault();
+   }
+
+}
+
+// $(document).ready(function() {
+//   $('#endParty').click(function() {
+//     var myForm = $('#endParty');
+//     confirm("Are you sure you want to kick all party animals out of this party?");
+//     if (result) {
+//        myForm.submit();
+//     }else {
+//       event.preventDefault();
+//       window.location="/dashboard";
+//     }
+//   });
+// });

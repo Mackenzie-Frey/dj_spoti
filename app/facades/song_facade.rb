@@ -1,14 +1,16 @@
 class SongFacade
-  def initialize(token)
-    @token = token
+  def initialize(user)
+    @user = user
   end
 
   def current_song
     data = service.currently_playing
-    Song.new(data)
+    if data && data[:is_playing]
+      Song.new(data)
+    end
   end
 
   def service
-    SpotifyService.new(@token)
+    SpotifyService.new(@user)
   end
 end

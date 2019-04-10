@@ -1,6 +1,8 @@
 <h2> Invite More Party Animals!!</h2>
 <%= form_tag invite_path do %>
-  <%=label_tag :Phone_Number%>
-  <%=text_field_tag :ph_number%>
+  <div id="dynamicInput">
+    Phone Number<br><input type="text" name="ph_number">
+  </div>
+  <input type="button" value="+" onClick="addInput('dynamicInput');">
   <%=submit_tag "Invite" %>
 <%end%>
