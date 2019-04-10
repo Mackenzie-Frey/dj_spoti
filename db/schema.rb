@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_201419) do
+ActiveRecord::Schema.define(version: 2019_04_09_210901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_201419) do
     t.index ["admin_id"], name: "index_parties_on_admin_id"
   end
 
-  create_table "party_users", force: :cascade do |t|
-    t.bigint "party_id"
-    t.bigint "user_id"
-    t.index ["party_id"], name: "index_party_users_on_party_id"
-    t.index ["user_id"], name: "index_party_users_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "spotify_id"
     t.string "name"
@@ -40,9 +33,10 @@ ActiveRecord::Schema.define(version: 2019_04_06_201419) do
     t.string "refresh_token"
     t.boolean "expires"
     t.integer "expires_at"
+    t.bigint "party_id"
+    t.index ["party_id"], name: "index_users_on_party_id"
   end
 
   add_foreign_key "parties", "users", column: "admin_id"
-  add_foreign_key "party_users", "parties"
-  add_foreign_key "party_users", "users"
+  add_foreign_key "users", "parties"
 end
