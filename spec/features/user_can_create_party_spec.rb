@@ -5,10 +5,7 @@ describe 'user visiting dashboard_path' do
     stub_spotify_top_plays
     stub_oauth_connection
 
-    all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"]
-    id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
-    allow_any_instance_of(Playlist).to receive(:select_seeds).with(all_ids).and_return(id_collection)
-
+    stub_select_seeds
     stub_recommended_playlist
 
     visit '/'
@@ -35,6 +32,9 @@ describe 'user visiting dashboard_path' do
       create(:user, name: 'test')
       stub_spotify_top_plays
       stub_oauth_connection
+      stub_select_seeds
+      stub_recommended_playlist
+      
       visit '/'
       click_on 'Connect With Spotify', match: :first
 
