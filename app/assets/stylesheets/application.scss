@@ -9,4 +9,33 @@ body {
   margin-left: 20px;
 }
 
-// Dashboard Page
+// '/dashboard'
+
+  // Invite Section
+  .invite {
+    background-color: red;
+    height: 100vh;
+  }
+
+  // Currently Playing Section
+  .currently-playing {
+    background-color: black;
+    height: 100vh;
+    color: white
+  }
+
+
+// '/party/new?'
+  .new-party {
+    background-color: black;
+    height: 100vh;
+    color: white;
+  }
+
+  .new-party-form {
+    padding-top: 50vh;
+  }
+
+  .inner-form {
+    display: block;
+  }

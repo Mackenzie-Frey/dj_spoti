@@ -1,28 +1,30 @@
-<h1 class='text-center'>Welcome to DJ Spoti </h1>
+<!-- <h1 class='text-center'>Welcome to DJ Spoti </h1>
 <br>
 <br>
-<br>
+<br> -->
+<div class='currently-playing'>
+  <section class='party text-center'>
 
-<section class='party text-center'>
+  <h1><%= 'Party: ' + current_party.name if current_party %><h1>
+  <%= render partial: "users" if @users %>
+  <%= render partial: "invite" if current_party %>
+  <h1 class='text-center'>Welcome to DJ Spoti </h1>
+  <%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase p-4' unless current_party %>
+  <%= button_to 'End Party', party_path(current_party), method: :delete, class: 'btn btn-primary text-uppercase p-3', onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
+  <%= button_to 'Leave Party', party_users_path, method: :delete, class: 'btn btn-primary text-uppercase p-3' if current_party && current_party.admin != current_user %>
 
-<h1><%= 'Party: ' + current_party.name if current_party %><h1>
-<%= render partial: "users" if @users %>
-<%= render partial: "invite" if current_party %>
-<%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase p-4' unless current_party %>
-<%= button_to 'End Party', party_path(current_party), method: :delete, class: 'btn btn-primary text-uppercase p-3', onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
-<%= button_to 'Leave Party', party_users_path, method: :delete, class: 'btn btn-primary text-uppercase p-3' if current_party && current_party.admin != current_user %>
+  <%  if current_party && current_party.current_song  %>
+    <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
+      <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
+    </div>
 
-<%  if current_party && current_party.current_song  %>
-  <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
-    <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
-  </div>
+  <% else %>
+    <div class="hidden" id ='currently-playing-song'>
+    </div>
+  <% end %>
 
-<% else %>
-  <div class="hidden" id ='currently-playing-song'>
-  </div>
-<% end %>
-
-</section>
+  </section>
+</div>
 
 
 <section class='spotify-web-player'>
