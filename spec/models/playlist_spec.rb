@@ -50,24 +50,4 @@ context 'The aggregated party playlist & seeds' do
     expect(@party.playlist_tracks).to_not eq(initial_playlist_seeds)
     expect(@party.playlist_tracks).to be_a(String)
   end
-
-  # it 'outputs the array Peregrine needs' do
-  #   # Between the test setup and the below line, it creates parties with playlist_seeds,
-  #   # and party_users with seed_artists
-  #   @playlist.aggregated_top_play_ids
-  #
-  #   # binding.pry
-  #
-  #   SpotifyService.new(@user).party_tracks
-  #   # Peregrine wants this
-  #   #["spotify:track:<track_id>","spotify:track:<track_id>","spotify:track:<track_id>"]
-  #   # save to database the track ids probably on extract track ids method.... maybe not because we need the party
-  # end
 end
-
-# delete playlist_seeds form db
-# does it update a party playlist each time a user joins
-# maybe select_seeds(all_ids) should be an array of seeds
-# parse data for Peregrine ie extract new line characters
-
-# change double quotes on inner to single quotes for extract_track_ids and that it saves to db.

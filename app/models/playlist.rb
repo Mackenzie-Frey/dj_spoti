@@ -11,9 +11,6 @@ class Playlist
     tracks = SpotifyService.new(@party.admin).recommended_playlist(id_collection)
     @party.update_attributes(playlist_tracks: tracks)
     @party.save!
-
-   # @party.playlist_seeds = select_seeds(all_ids)
-   # @party.save!
   end
 
   def select_seeds(all_ids)
