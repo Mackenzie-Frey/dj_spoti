@@ -8,16 +8,9 @@ class Playlist
       user_top_plays(party_user)
     end
     id_collection = select_seeds(all_ids)
-    binding.pry
     tracks = SpotifyService.new(@party.admin).recommended_playlist(id_collection)
     @party.update_attributes(playlist_tracks: tracks)
     @party.save!
-binding.pry
-    # call the service again on behalf of the party and
-    # call the aggregated recommended_playlist(id_collection)
-    # then save to database
-
-
 
    # @party.playlist_seeds = select_seeds(all_ids)
    # @party.save!

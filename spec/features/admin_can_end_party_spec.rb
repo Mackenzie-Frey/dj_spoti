@@ -3,6 +3,7 @@ describe 'admin who have started party' do
   it 'can end party' do
     stub_oauth_connection
     stub_spotify_top_plays
+    stub_recommended_playlist
 
     visit '/'
     click_on 'Connect With Spotify'
