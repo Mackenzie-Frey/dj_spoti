@@ -7,8 +7,10 @@ class Playlist
     all_ids = @party.users.map do |party_user|
       user_top_plays(party_user)
     end
-   @party.playlist_seeds = select_seeds(all_ids)
-   @party.save!
+    id_collection = select_seeds(all_ids)
+    tracks = SpotifyService.new(@party.admin).recommended_playlist(id_collection)
+    @party.update_attributes(playlist_tracks: tracks)
+    @party.save!
   end
 
   def select_seeds(all_ids)

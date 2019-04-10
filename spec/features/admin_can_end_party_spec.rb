@@ -3,6 +3,8 @@ describe 'admin who have started party' do
   it 'can end party' do
     stub_oauth_connection
     stub_spotify_top_plays
+    stub_select_seeds
+    stub_recommended_playlist
 
     visit '/'
     click_on 'Connect With Spotify'
@@ -10,8 +12,8 @@ describe 'admin who have started party' do
     click_on 'Start A New Party'
     fill_in 'party[name]', with: 'party'
     click_on 'Create'
-    expect(Party.count).to eq(1)
 
+    expect(Party.count).to eq(1)
     expect(current_path).to eq(dashboard_path)
     click_on 'End Party'
 
@@ -26,6 +28,9 @@ describe 'non admin user cant'  do
 
     stub_oauth_connection## logged in user who is gonna join party next line
     stub_spotify_top_plays
+    stub_select_seeds
+    stub_recommended_playlist
+
     visit '/join?i=abcd'
 
     expect(current_path).to eq(dashboard_path)

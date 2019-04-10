@@ -22,6 +22,9 @@ describe 'non admim user cant'  do
 
     stub_oauth_connection## logged in user who is gonna join party next line
     stub_spotify_top_plays
+    stub_select_seeds
+    stub_recommended_playlist
+    
     visit '/join?i=abcd'
 
     expect(current_path).to eq(dashboard_path)
