@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_224907) do
     t.index ["admin_id"], name: "index_parties_on_admin_id"
   end
 
-  create_table "party_users", force: :cascade do |t|
-    t.bigint "party_id"
-    t.bigint "user_id"
-    t.index ["party_id"], name: "index_party_users_on_party_id"
-    t.index ["user_id"], name: "index_party_users_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "spotify_id"
     t.string "name"
@@ -39,11 +32,12 @@ ActiveRecord::Schema.define(version: 2019_04_09_224907) do
     t.datetime "updated_at", null: false
     t.string "access_token"
     t.string "refresh_token"
+    t.bigint "party_id"
+    t.index ["party_id"], name: "index_users_on_party_id"
     t.string "seed_artists"
     t.datetime "expires_at"
   end
 
   add_foreign_key "parties", "users", column: "admin_id"
-  add_foreign_key "party_users", "parties"
-  add_foreign_key "party_users", "users"
+  add_foreign_key "users", "parties"
 end

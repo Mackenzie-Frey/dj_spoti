@@ -12,7 +12,7 @@ class Api::V1::PartyController < ApplicationController
     # service.check_for_track_change
     # # render :nothing => true
     render json: {
-      message: "Job done!"
+      message: "Song Updated!"
     }
   end
 

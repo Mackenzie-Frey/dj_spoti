@@ -29,7 +29,7 @@
 
 <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = '<%= current_user.access_token %>';
+    let token = '<%= current_user.access_token %>';
     const partyId = '<%= current_party.identifier %>';
     // const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
     const player = new Spotify.Player({
@@ -77,9 +77,7 @@
       myHeaders.append("Authorization", `Bearer ${token}`);
       trackList = {
         "uris": [
-        "spotify:track:46O6QtxuzX3iZn9hMXoeqo",
-        "spotify:track:3SZRNr41jBk5SPS2TCBMmL",
-        "spotify:track:2Y0iGXY6m6immVb2ktbseM"
+        "spotify:track:46O6QtxuzX3iZn9hMXoeqo", "spotify:track:3SZRNr41jBk5SPS2TCBMmL", "spotify:track:2Y0iGXY6m6immVb2ktbseM"
         ]};
       var myInit = {
         method: 'PUT',

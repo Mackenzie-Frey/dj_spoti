@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe PartyUser, type: :model do
+RSpec.describe Party, type: :model do
   describe 'validations' do
-    it { should belong_to(:user)}
-    it { should belong_to(:party)}
+    it { should belong_to(:admin) }
+    it { should have_many(:users) }
   end
 
   describe 'party can have many users through' do
-    it 'party_users table' do
+    it 'party table' do
       user = create(:user, name: 'manoj')
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       party = create(:party, admin: user)
       party.users <<  create(:user, spotify_id: 2)
       party.users << create(:user, spotify_id: 3)
