@@ -39,7 +39,7 @@ function myFunction() {
 
 };
 
-function djSpoti(partyId, token) {
+function djSpoti(partyId, token, trackList) {
   window.onSpotifyWebPlaybackSDKReady = () => {
     // let token = '<%= current_user.access_token %>';
     // const partyId = '<%= current_party.identifier %>';
@@ -87,16 +87,16 @@ function djSpoti(partyId, token) {
       var myHeaders = new Headers({});
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
-      trackList = {
-        "uris": [
-        "spotify:track:46O6QtxuzX3iZn9hMXoeqo",
-        "spotify:track:3SZRNr41jBk5SPS2TCBMmL",
-        "spotify:track:2Y0iGXY6m6immVb2ktbseM"
-        ]};
+      // trackList = {
+      //   "uris": [
+      //   "spotify:track:46O6QtxuzX3iZn9hMXoeqo",
+      //   "spotify:track:3SZRNr41jBk5SPS2TCBMmL",
+      //   "spotify:track:2Y0iGXY6m6immVb2ktbseM"
+      //   ]};
       var myInit = {
         method: 'PUT',
         headers: myHeaders,
-        body: JSON.stringify(trackList)
+        body: JSON.parse(trackList)
       };
       fetch(url, myInit).then(function(response){
         if(response.ok) {

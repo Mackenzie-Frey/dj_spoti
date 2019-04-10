@@ -26,7 +26,7 @@
 <!-- import spotify's web player sdk library & initialize web player -->
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
-  djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
+  djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>', '<%= current_party.playlist_tracks %>');
 </script>
 <% end %>
 
