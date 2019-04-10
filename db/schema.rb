@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_210901) do
+ActiveRecord::Schema.define(version: 2019_04_09_224907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_210901) do
     t.datetime "updated_at", null: false
     t.bigint "admin_id"
     t.string "identifier"
+    t.string "playlist_seeds"
     t.index ["admin_id"], name: "index_parties_on_admin_id"
   end
 
@@ -31,10 +32,10 @@ ActiveRecord::Schema.define(version: 2019_04_09_210901) do
     t.datetime "updated_at", null: false
     t.string "access_token"
     t.string "refresh_token"
-    t.boolean "expires"
-    t.integer "expires_at"
     t.bigint "party_id"
     t.index ["party_id"], name: "index_users_on_party_id"
+    t.string "seed_artists"
+    t.datetime "expires_at"
   end
 
   add_foreign_key "parties", "users", column: "admin_id"

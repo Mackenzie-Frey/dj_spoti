@@ -4,7 +4,7 @@ class InvitationController < ApplicationController
       begin
         send_invitation(value, current_party) if key.start_with?("ph_number")
       rescue
-        flash[:error] = "Inviation could not be sent to `#{value}`.Please Make sure its a valid number."
+        flash[:error] = "Inviation could not be sent to #{value}.Please Make sure its a valid number."
       end
     end
     redirect_to dashboard_path

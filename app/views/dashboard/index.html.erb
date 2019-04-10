@@ -16,7 +16,6 @@
 
 <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
 
-
 <% end %>
 
 </section>
@@ -26,6 +25,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- import spotify's web player sdk library & initialize web player -->
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
 
 <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
@@ -43,27 +43,20 @@
     player.addListener('playback_error', ({ message }) => { console.error(message); });
 
      // Playback status updates
-    player.addListener('player_state_changed', state => {
-      // broadcast
-      $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
-      $('#current-track-name').text(state.track_window.current_track.album.name);
-      $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
-      $('#current-track-album').text(state.track_window.current_track.name);
-      console.log(state);
-      fetch(`api/v1/parties/${partyId}/player_state_changed`)
+     player.addListener('player_state_changed', state => {
+        // broadcast
+        $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
+        $('#current-track-name').text(state.track_window.current_track.album.name);
+        $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
+        $('#current-track-album').text(state.track_window.current_track.name);
+        console.log(state);
+        fetch(`api/v1/parties/${partyId}/player_state_changed`)
 
-    .then(response => response.json())
-    .then(data => console.log('made call'+ JSON.stringify(data)))
-      //   function(response) {
-      //     if (response.status !== 200) {
-      //     console.log('Looks like there was a problem. Status Code: ' + response.status);
-      //   } else {
-      //   // Examine the text in the response
-      //     response.json().then( function(data) {
-      //       console.log(data);
-      //     })
-      //   }
+      .then(response => response.json())
+      .then(data => console.log('made call'+ JSON.stringify(data)))
+
     });
+
      // Ready
     player.addListener('ready', data => {
       console.log('Ready with Device ID', data.device_id);
@@ -93,7 +86,7 @@
       };
       fetch(url, myInit).then(function(response){
         if(response.ok) {
-          console.log(response)
+          console.log(response);
           return response.blob();
         }
       });

@@ -1,8 +1,9 @@
+
 production: &production
   adapter: redis
   url: redis://10.10.3.153:6381
   channel_prefix: dj-spoti_production
-  
+
 development: &development
   adapter: redis
   url: redis://localhost:6379

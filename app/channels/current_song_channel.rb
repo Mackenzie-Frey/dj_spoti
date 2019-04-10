@@ -1,16 +1,13 @@
 
 class CurrentSongChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "current-song"
+    stream_from "current_song"
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
-  end
+  # def play(data)
+  #   ActionCable.server.broadcast "current_song", song: data['song']
+  # end
 
-  def receive(data)
-    ActionCable.server.broadcast 'current-song',
-            {song: data["song"]}
-  end
+
 
 end

@@ -13,6 +13,6 @@ class Party < ApplicationRecord
   private
 
   def calculate_current_song
-    SongFacade.new(self.admin.access_token).current_song
+    SongFacade.new(self.admin).current_song
   end
 end

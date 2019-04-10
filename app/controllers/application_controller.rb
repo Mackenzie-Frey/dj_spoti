@@ -24,4 +24,7 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def new_playlist(party)
+    Playlist.new(party).aggregated_top_play_ids
+  end
 end

@@ -1,4 +1,3 @@
-
 class CurrentService
   attr_reader :party
 
@@ -17,9 +16,9 @@ class CurrentService
     end
   end
 
-end
+  end
 
 
-# # in the console or the controller
-# player = CurrentlyPlayingService.new(Party.last)
-# player.check_for_track_change
+  # # in the console or the controller
+  # player = CurrentlyPlayingService.new(Party.last)
+  # player.check_for_track_change
