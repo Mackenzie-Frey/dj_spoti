@@ -3,6 +3,7 @@ describe 'admin who have started party' do
   it 'can end party' do
     stub_oauth_connection
     stub_spotify_top_plays
+    stub_select_seeds
     stub_recommended_playlist
 
     visit '/'
@@ -27,6 +28,9 @@ describe 'non admin user cant'  do
 
     stub_oauth_connection## logged in user who is gonna join party next line
     stub_spotify_top_plays
+    stub_select_seeds
+    stub_recommended_playlist
+    
     visit '/join?i=abcd'
 
     expect(current_path).to eq(dashboard_path)
