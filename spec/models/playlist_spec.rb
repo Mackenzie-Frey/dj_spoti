@@ -33,9 +33,7 @@ context 'The aggregated party playlist & seeds' do
       access_token: 'fake_token_request_is_stubbed', seed_artists: different_artist_seeds)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(new_user)
-    # stub_spotify_top_plays
-    # @party.users << new_user
-    # @playlist.aggregated_top_play_ids
+
     stub_spotify_top_plays
     stub_select_seeds_intitial_party
     stub_recommended_playlist_initial_party

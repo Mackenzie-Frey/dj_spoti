@@ -17,8 +17,7 @@ class Playlist
   end
 
   def select_seeds(all_ids)
-    binding.pry
-    thing = all_ids.map do |party_user_ids|
+    all_ids.map do |party_user_ids|
       party_user_ids.split(",")
     end.flatten.uniq.sample(5).join(',')
   end
