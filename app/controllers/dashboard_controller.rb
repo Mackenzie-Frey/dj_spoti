@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
+  before_action :require_user!
   def index
-    @users = current_party.users  if current_party
+    @users = current_party.users if current_party
     # TrackBroadcastJob.perform_later(current_party.current_song.serialize_data)
       # ActionCable.server.broadcast "current_song", serialized_data
 
