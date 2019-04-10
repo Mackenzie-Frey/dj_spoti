@@ -5,7 +5,6 @@
 <div class='currently-playing'>
   <section class='party text-center'>
 
-  <h1><%= 'Party: ' + current_party.name if current_party %><h1>
   <%= render partial: "users" if @users %>
   <%= render partial: "invite" if current_party %>
   <h1 class='text-center'>Welcome to DJ Spoti </h1>
