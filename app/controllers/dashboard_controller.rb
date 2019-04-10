@@ -4,7 +4,16 @@ class DashboardController < ApplicationController
       facade: SongFacade.new(current_user)
     }
     @users = current_party.users  if current_party
-    # TrackBroadcastJob.perform_later(current_party.current_song.serialize_data)
+
+    if current_party
+      token = current_party.admin.access_token
+
+      current_song = SongFacade.new(token).current_song
+      if current_song
+        TrackBroadcastJob.perform_later(current_song.serialize_data)
+      end
+    end
+
       # ActionCable.server.broadcast "current_song", serialized_data
 
 

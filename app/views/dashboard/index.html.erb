@@ -12,8 +12,10 @@
 <%= button_to 'End Party', party_path(current_party), method: :delete,  onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
 <%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user %>
 
-<%  if current_party && current_party.current_song && current_party.admin != current_user %>
-  <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
+<%  if current_party && current_party.current_song  %>
+
+<%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
+
 <% end %>
 
 </section>
@@ -28,6 +30,7 @@
 <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
     const token = '<%= current_user.access_token %>';
+    const partyId = '<%= current_party.identifier %>';
     // const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
     const player = new Spotify.Player({
       name: 'DJ Spoti',
@@ -40,15 +43,20 @@
     player.addListener('playback_error', ({ message }) => { console.error(message); });
 
      // Playback status updates
-    player.addListener('player_state_changed', state => {
-      // broadcast
-      $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
-      $('#current-track-name').text(state.track_window.current_track.album.name);
-      $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
-      $('#current-track-album').text(state.track_window.current_track.name);
-      debugger;
-      console.log(state);
+     player.addListener('player_state_changed', state => {
+        // broadcast
+        $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
+        $('#current-track-name').text(state.track_window.current_track.album.name);
+        $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
+        $('#current-track-album').text(state.track_window.current_track.name);
+        console.log(state);
+        fetch(`api/v1/parties/${partyId}/player_state_changed`)
+
+      .then(response => response.json())
+      .then(data => console.log('made call'+ JSON.stringify(data)))
+
     });
+
      // Ready
     player.addListener('ready', data => {
       console.log('Ready with Device ID', data.device_id);
@@ -61,6 +69,7 @@
      // Connect to the player!
     player.connect();
      // Play the song!
+     console.log("playing")
     function play(device_id) {
       var url = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`
       var myHeaders = new Headers({});
@@ -79,6 +88,7 @@
       };
       fetch(url, myInit).then(function(response){
         if(response.ok) {
+          console.log(response);
           return response.blob();
         }
       });
@@ -88,12 +98,7 @@
 
 <% end %>
 
-<img id="current-track" data-behavior="now_playing"/>
-<h3 id="current-track-name" data-behavior="now_playing"></h3>
-<h4 id="current-track-album" data-behavior="now_playing"></h4>
-<h5 id="current-track-artist" data-behavior="now_playing"></h5>
-
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form>
+<img id="current-track"/>
+<h3 id="current-track-name"></h3>
+<h4 id="current-track-album"></h4>
+<h5 id="current-track-artist"></h5>

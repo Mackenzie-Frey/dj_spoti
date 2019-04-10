@@ -11,7 +11,8 @@ class PartyController < ApplicationController
     # TrackBroadcastWorker.perform_async(party.current_song)
     if party.save
       session[:party_identifier] = party.identifier
-      TrackBroadcastJob.perform_later(party.current_song.serialize_data) if party.current_song
+      party.current_song
+      # TrackBroadcastJob.perform_later(party.current_song.serialize_data) if party.current_song
 
     end
     redirect_to dashboard_path
