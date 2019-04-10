@@ -45,22 +45,20 @@ context 'The aggregated party playlist & seeds' do
     expect(@party.playlist_seeds.count(',')).to eq(4)
   end
 
-  xit 'outputs the array Peregrine needs' do
+  it 'outputs the array Peregrine needs' do
     # Between the test setup and the below line, it creates parties with playlist_seeds,
     # and party_users with seed_artists
     @playlist.aggregated_top_play_ids
 
-    #make sure this gets set in config and reset hourly
-    # token = ENV['HOURLY_TOKEN']
-    #
     # binding.pry
-    #
-    # SpotifyService.new(token).
 
-    # want to call something like this:
-    # SpotifyService.new(token).party_tracks
+    SpotifyService.new(@user).party_tracks
+    # Peregrine wants this
+    #["spotify:track:<track_id>","spotify:track:<track_id>","spotify:track:<track_id>"]
+    # save to database the track ids probably on extract track ids method.... maybe not because we need the party
   end
 end
 
-#
-# SpotifyService.new(token).party_tracks
+# delete playlist_seeds form db
+# does it update a party playlist each time a user joins
+# maybe select_seeds(all_ids) should be an array of seeds
