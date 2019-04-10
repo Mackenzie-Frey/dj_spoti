@@ -2,6 +2,8 @@ require 'rails_helper'
 describe 'admin who have started party' do
   it 'can end party' do
     stub_oauth_connection
+    stub_spotify_top_plays
+
     visit '/'
     click_on 'Connect With Spotify'
 
@@ -23,6 +25,7 @@ describe 'non admim user cant'  do
     party = create(:party, identifier: 'abcd', admin: user)
 
     stub_oauth_connection## logged in user who is gonna join party next line
+    stub_spotify_top_plays
     visit '/join?i=abcd'
 
     expect(current_path).to eq(dashboard_path)
