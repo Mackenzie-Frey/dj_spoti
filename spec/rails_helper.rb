@@ -6,6 +6,8 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 require "helpers/stub_helper"
+require "action_cable/testing/rspec"
+
 
 
 VCR.configure do |config|

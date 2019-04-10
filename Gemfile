@@ -38,6 +38,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'bootstrap', '~> 4.3.1'
+  gem 'action-cable-testing'
 end
 
 group :development do

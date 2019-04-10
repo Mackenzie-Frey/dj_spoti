@@ -32,3 +32,53 @@ def stub_spotify_top_plays
   stub_request(:get, 'https://api.spotify.com/v1/me/top/artists?limit=5&time_range=medium_term')
   .to_return(status: 200, body: json_response)
 end
+
+def stub_recommended_playlist
+  id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
+  json_response = File.open('fixtures/example_playlist_recommended.json')
+  stub_request(:get, "https://api.spotify.com/v1/recommendations?seed_artists=#{id_collection}")
+  .to_return(status: 200, body: json_response)
+end
+
+def stub_select_seeds
+  all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"]
+  id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
+
+  allow_any_instance_of(Playlist).to receive(:select_seeds) {id_collection}
+  allow_any_instance_of(Playlist).to receive(:select_seeds).with(all_ids).and_return(id_collection)
+end
+
+def stub_select_seeds_intitial_party
+  all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6",
+ "3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6",
+ "3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"]
+  id_collection = "3JhNCzhSMTxs9WLGJJxWOY,1vCWHaC5f2uS3yhpwWbIA6,5BcAKTbp20cv7tC5VqPFoC,3LjhVl7GzYsza1biQjTpaN,6beUvFUlKliUYJdLOXNj9C"
+
+  allow_any_instance_of(Playlist).to receive(:select_seeds) {id_collection}
+  allow_any_instance_of(Playlist).to receive(:select_seeds).with(all_ids).and_return(id_collection)
+end
+
+def stub_recommended_playlist_initial_party
+  id_collection = "3JhNCzhSMTxs9WLGJJxWOY,1vCWHaC5f2uS3yhpwWbIA6,5BcAKTbp20cv7tC5VqPFoC,3LjhVl7GzYsza1biQjTpaN,6beUvFUlKliUYJdLOXNj9C"
+  json_response = File.open('fixtures/example_playlist_recommended.json')
+  stub_request(:get, "https://api.spotify.com/v1/recommendations?seed_artists=#{id_collection}")
+  .to_return(status: 200, body: json_response)
+end
+
+def stub_select_seeds_user_joins_party
+  all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6",
+              "3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6",
+              "3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6",
+              "3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6,3LjhVl7GzYsza1biQjTpaN"]
+  id_collection = "5BcAKTbp20cv7tC5VqPFoC,6beUvFUlKliUYJdLOXNj9C,1vCWHaC5f2uS3yhpwWbIA6,3JhNCzhSMTxs9WLGJJxWOY,3LjhVl7GzYsza1biQjTpaN"
+
+  allow_any_instance_of(Playlist).to receive(:select_seeds) {id_collection}
+  allow_any_instance_of(Playlist).to receive(:select_seeds).with(all_ids).and_return(id_collection)
+end
+
+def stub_recommended_playlist_user_joins_party
+  id_collection = "5BcAKTbp20cv7tC5VqPFoC,6beUvFUlKliUYJdLOXNj9C,1vCWHaC5f2uS3yhpwWbIA6,3JhNCzhSMTxs9WLGJJxWOY,3LjhVl7GzYsza1biQjTpaN"
+  json_response = File.open('fixtures/example_playlist_recommended_new_user_joins_party.json')
+  stub_request(:get, "https://api.spotify.com/v1/recommendations?seed_artists=#{id_collection}")
+  .to_return(status: 200, body: json_response)
+end

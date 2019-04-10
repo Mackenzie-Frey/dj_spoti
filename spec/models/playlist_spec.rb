@@ -5,7 +5,6 @@ context 'The aggregated party playlist & seeds' do
     @user = create(:user, name: 'manoj')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     @party = create(:party, admin: @user)
-    stub_spotify_top_plays
 
     @party.users <<  create(:user, spotify_id: 2, access_token: 'fake_token_request_is_stubbed')
     @party.users << create(:user, spotify_id: 3, access_token: 'fake_token_request_is_stubbed')
@@ -19,11 +18,13 @@ context 'The aggregated party playlist & seeds' do
   end
 
   it '#aggregated_top_play_ids - is made when a party is created' do
+    stub_spotify_top_plays
+    stub_select_seeds
+    stub_recommended_playlist
     @playlist.aggregated_top_play_ids
 
-    expect(@party.playlist_seeds).to be_a(String)
-    expect(@party.playlist_seeds.length).to be(114)
-    expect(@party.playlist_seeds.count(',')).to eq(4)
+    expect(@party.playlist_tracks).to be_a(String)
+    expect(@party.playlist_tracks).to eq("[\"spotify:track:4IlBZXHTwY7DoxA4piiHtM\", \"spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z\"]")
   end
 
   it '#update - updates when a non-admin user joins a party' do
@@ -33,34 +34,20 @@ context 'The aggregated party playlist & seeds' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(new_user)
 
+    stub_spotify_top_plays
+    stub_select_seeds_intitial_party
+    stub_recommended_playlist_initial_party
+
     @playlist.aggregated_top_play_ids
-    initial_playlist_seeds = @party.playlist_seeds
+    initial_playlist_seeds = @party.playlist_tracks
+
+    stub_select_seeds_user_joins_party
+    stub_recommended_playlist_user_joins_party
 
     @party.users << new_user
     @playlist.aggregated_top_play_ids
 
-    expect(@party.playlist_seeds).to_not eq(initial_playlist_seeds)
-    expect(@party.playlist_seeds).to be_a(String)
-    expect(@party.playlist_seeds.length).to be(114)
-    expect(@party.playlist_seeds.count(',')).to eq(4)
-  end
-
-  xit 'outputs the array Peregrine needs' do
-    # Between the test setup and the below line, it creates parties with playlist_seeds,
-    # and party_users with seed_artists
-    @playlist.aggregated_top_play_ids
-
-    #make sure this gets set in config and reset hourly
-    # token = ENV['HOURLY_TOKEN']
-    #
-    # binding.pry
-    #
-    # SpotifyService.new(token).
-
-    # want to call something like this:
-    # SpotifyService.new(token).party_tracks
+    expect(@party.playlist_tracks).to_not eq(initial_playlist_seeds)
+    expect(@party.playlist_tracks).to be_a(String)
   end
 end
-
-#
-# SpotifyService.new(token).party_tracks
