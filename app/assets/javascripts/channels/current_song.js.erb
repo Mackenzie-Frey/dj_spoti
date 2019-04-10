@@ -1,0 +1,24 @@
+<% Party.all.each do |party| %>
+App['current_song' + <%=party.identifier%>] = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: <%=party.identifier%>}, {
+  connected: function() {
+    console.log('Got here. Connected');
+  },
+  disconnected: function() {
+    console.log('disconnected');
+  }
+
+  received: function(data) {
+    $("[data-current-party='" + data.party + "']").removeClass('hidden')
+   return $("[data-current-party='" + data.party + "']").append(data.song);
+
+
+    // 
+    // var song = $('#song-playing');
+    // var partyId = data['party']
+    // var partyId = $("[data-current-party]").data().party_identifier
+    // console.log('received method here with their data:');
+    // console.log(data);
+    // song = $('#song-playing');
+    // partyId =
+    // song.html(data['song']);
+  },

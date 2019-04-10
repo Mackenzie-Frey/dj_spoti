@@ -3,7 +3,8 @@ class TrackBroadcastJob < ApplicationJob
 
   def perform(party_identifier, song)
     ActionCable.server.broadcast "current_song_#{party_identifier}", {
-      song: render_song(song)
+      song: render_song(song),
+      party: party_identifier
       }
 
   end
