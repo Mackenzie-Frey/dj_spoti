@@ -5,6 +5,7 @@ describe 'user clicking invitation link' do
     party = create(:party, identifier: 'abcd', admin: user)
 
     stub_oauth_connection
+
     visit '/join?i=abcd'
 
     expect(party.users.count).to eq(1)

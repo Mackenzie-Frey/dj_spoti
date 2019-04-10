@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.spotify.com/api/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=AQCzIKW8-VCySiDZQ-OIn8LZHWPCG-TbBhxIHdgPkp738tNEtBtyV8YJ-ccTkhua-80oF1AI4GOwNm4kIdhnwdR7NY6o99y_bBSSWBf_-_HfnP5xNZQb9dt6jYLNE71Qxm7wow
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Basic ZmQ5MWI2MGViMzY5NGYyOGFlZjcxYzJlOGNjOTdhYTc6OTMwYWM1YTg3YTY1NGNjYmJhOGMxNGQxZWZhNjAzM2Q=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 09 Apr 2019 18:45:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=600
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"XC_A-chXt0bvg_ZM0mXF1AEovtPD-Pc6Q9dNFr31VTdhl3edN6xWg0tvQCJZkyjOeKcrHb24jJCvpOrxNYBkKLiR9Hbv9bwz6UwCQUmaD__Hz4Lzhn-Ta8iM_jaY7DqZ0qpSWSbU1j0BCLLa5","token_type":"Bearer","expires_in":3600,"scope":"playlist-read-private
+        user-read-playback-state user-read-email user-read-private"}'
+    http_version:
+  recorded_at: Tue, 09 Apr 2019 18:45:54 GMT
+recorded_with: VCR 4.0.0
