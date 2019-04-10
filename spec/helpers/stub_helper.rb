@@ -41,10 +41,6 @@ def stub_recommended_playlist
 end
 
 def stub_select_seeds
-  # all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"]
-  # id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
-  # allow_any_instance_of(Playlist).to receive(:select_seeds).with(all_ids).and_return(id_collection)
-
   all_ids = ["3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"]
   id_collection = "6beUvFUlKliUYJdLOXNj9C,3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6"
 
