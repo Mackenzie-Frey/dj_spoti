@@ -61,19 +61,9 @@ describe 'SpotifyClient' do
 
       recommended_playlist = @service.recommended_playlist(id_collection)
 
-# keep the below comments as the recommended_playlist method will likely have the output change when integrated with web player
-
       expect(recommended_playlist).to eq(["spotify:track:4IlBZXHTwY7DoxA4piiHtM", "spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z"])
-
-      # expect(recommended_playlist[:tracks][0][:artists][0][:name]).to eq('Macklemore')
-      # expect(recommended_playlist[:tracks][0][:album][:name]).to eq('GEMINI')
-      # expect(recommended_playlist[:tracks][0][:name]).to eq('Zara (feat. Abir)')
-      # expect(recommended_playlist[:tracks][0][:popularity]).to eq(51)
-      #
-      # expect(recommended_playlist[:tracks][1][:artists][0][:name]).to eq("Hayley Kiyoko")
-      # expect(recommended_playlist[:tracks][1][:album][:name]).to eq("Expectations")
-      # expect(recommended_playlist[:tracks][1][:name]).to eq("Mercy / Gatekeeper")
-      # expect(recommended_playlist[:tracks][1][:popularity]).to eq(50)
     end
   end
 end
+
+# SpotifyService.new(token).party_tracks

@@ -8,9 +8,6 @@ class SpotifyService
   end
 
   def extract_artist_ids(result)
-    # result[:items].map do |artist|
-    #   artist[:id]
-    # end
     result[:items].map do |artist|
       artist[:id]
     end.join(",")
@@ -31,6 +28,11 @@ class SpotifyService
     result = json_for("recommendations?seed_artists=#{id_collection}")
     extract_track_ids(result)
   end
+
+  # def party_tracks
+  #   top_plays
+  #
+  # end
 
   def json_for(url)
     response = conn.get(url)

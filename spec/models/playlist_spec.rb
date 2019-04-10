@@ -41,7 +41,6 @@ context 'The aggregated party playlist & seeds' do
 
     expect(@party.playlist_seeds).to_not eq(initial_playlist_seeds)
     expect(@party.playlist_seeds).to be_a(String)
-    binding.pry
     expect(@party.playlist_seeds.length).to be(114)
     expect(@party.playlist_seeds.count(',')).to eq(4)
   end
