@@ -1,9 +1,10 @@
 class TrackBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(song)
-    ActionCable.server.broadcast "current_song", {
-      song: render_song(song)
+  def perform(party_identifier, song)
+    ActionCable.server.broadcast "current_song_#{party_identifier}", {
+      song: render_song(song),
+      party: party_identifier
       }
 
   end

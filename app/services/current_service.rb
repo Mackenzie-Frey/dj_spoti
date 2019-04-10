@@ -12,11 +12,11 @@ class CurrentService
 
     if current_song && current_song.id != @party.current_song.id
       party.current_song = SongFacade.new(self.party.admin.access_token).current_song
-      TrackBroadcastJob.perform_later(current_song.serialize_data)
+      TrackBroadcastJob.perform_later(@party.identifier, current_song.serialize_data)
     end
   end
 
-  end
+end
 
 
   # # in the console or the controller
