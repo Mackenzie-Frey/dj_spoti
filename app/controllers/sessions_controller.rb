@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-  
+
   def create
     party = Party.find_by(identifier: request.env["omniauth.params"]["url"]) if request.env["omniauth.params"]["url"]
-    user = User.find_or_create_by!(spotify_id: spotify_params[:spotify_id]) do |user|
-      user.name = spotify_params[:name]
+    user = User.find_or_create_by!(spotify_id: spotify_params[:spotify_id]) do |u|
+      u.name = spotify_params[:name]
     end
     user.update(expires_at: Time.at(spotify_params[:expires_at]).utc)
     user.update(access_token: spotify_params[:access_token])
@@ -40,7 +40,8 @@ class SessionsController < ApplicationController
   end
 
   def join_party(party)
-    session[:party_identifier] = party.identifier
     party.users << current_user unless party.users.include?(current_user)
+    session[:party_identifier] = party.identifier
+    new_playlist(party)
   end
 end

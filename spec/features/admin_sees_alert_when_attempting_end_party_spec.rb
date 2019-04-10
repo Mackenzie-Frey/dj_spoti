@@ -21,6 +21,7 @@ describe 'non admim user cant'  do
     party = create(:party, identifier: 'abcd', admin: user)
 
     stub_oauth_connection## logged in user who is gonna join party next line
+    stub_spotify_top_plays
     visit '/join?i=abcd'
 
     expect(current_path).to eq(dashboard_path)

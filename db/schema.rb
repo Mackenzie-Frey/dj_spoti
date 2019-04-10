@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_224907) do
     t.datetime "updated_at", null: false
     t.bigint "admin_id"
     t.string "identifier"
+    t.string "playlist_seeds"
     t.index ["admin_id"], name: "index_parties_on_admin_id"
   end
 
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_224907) do
     t.datetime "updated_at", null: false
     t.string "access_token"
     t.string "refresh_token"
+    t.string "seed_artists"
     t.datetime "expires_at"
   end
 

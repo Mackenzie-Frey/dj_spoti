@@ -2,6 +2,8 @@ require 'rails_helper'
 describe 'logged in user can' do
   it 'invite people to party' do
     stub_oauth_connection
+    stub_spotify_top_plays
+
     visit '/'
     click_on 'Connect With Spotify', match: :first
 
@@ -9,8 +11,6 @@ describe 'logged in user can' do
 
     fill_in 'party[name]', with: 'This is a party'
     click_on 'Create'
-
-
 
     fill_in 'ph_number', with: '9999999999'
     click_on 'Invite'

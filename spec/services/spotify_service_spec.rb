@@ -51,14 +51,13 @@ describe 'SpotifyClient' do
 
       top_plays = @service.top_plays
 
-      expect(top_plays[:items]).to be_a(Array)
-      expect(top_plays[:items][0][:name]).to eq('Hayley Kiyoko')
-      expect(top_plays[:items][0][:id]).to eq('3LjhVl7GzYsza1biQjTpaN')
-      expect(top_plays[:items][1][:name]).to eq('Macklemore')
-      expect(top_plays[:items][1][:id]).to eq('3JhNCzhSMTxs9WLGJJxWOY')
+      expect(top_plays).to be_a(String)
+      expect(top_plays.length).to be(114)
+      expect(top_plays.count(',')).to eq(4)
+      expect(top_plays).to eq("3LjhVl7GzYsza1biQjTpaN,3JhNCzhSMTxs9WLGJJxWOY,6beUvFUlKliUYJdLOXNj9C,5BcAKTbp20cv7tC5VqPFoC,1vCWHaC5f2uS3yhpwWbIA6")
     end
 
-    it '#party_playlist' do
+    it '#recommended_playlist(id_collection)' do
       artist_id1 = '3LjhVl7GzYsza1biQjTpaN'
       artist_id2 = '3JhNCzhSMTxs9WLGJJxWOY'
       artist_id3 = '6beUvFUlKliUYJdLOXNj9C'
@@ -70,15 +69,7 @@ describe 'SpotifyClient' do
 
       recommended_playlist = @service.recommended_playlist(id_collection)
 
-      expect(recommended_playlist[:tracks][0][:artists][0][:name]).to eq('Macklemore')
-      expect(recommended_playlist[:tracks][0][:album][:name]).to eq('GEMINI')
-      expect(recommended_playlist[:tracks][0][:name]).to eq('Zara (feat. Abir)')
-      expect(recommended_playlist[:tracks][0][:popularity]).to eq(51)
-
-      expect(recommended_playlist[:tracks][1][:artists][0][:name]).to eq("Hayley Kiyoko")
-      expect(recommended_playlist[:tracks][1][:album][:name]).to eq("Expectations")
-      expect(recommended_playlist[:tracks][1][:name]).to eq("Mercy / Gatekeeper")
-      expect(recommended_playlist[:tracks][1][:popularity]).to eq(50)
+      expect(recommended_playlist).to eq(["spotify:track:4IlBZXHTwY7DoxA4piiHtM", "spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z"])
     end
   end
 end

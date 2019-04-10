@@ -9,13 +9,31 @@ class SpotifyService
     json_for('me/player/currently-playing')
   end
 
+  def extract_artist_ids(result)
+    result[:items].map do |artist|
+      artist[:id]
+    end.join(",")
+  end
+
   def top_plays
-    json_for('me/top/artists?limit=5&time_range=medium_term')
+    result = json_for('me/top/artists?limit=5&time_range=medium_term')
+    extract_artist_ids(result)
+  end
+
+  def extract_track_ids(result)
+    result[:tracks].map do |track|
+      "spotify:track:#{track[:id]}"
+    end
   end
 
   def recommended_playlist(id_collection)
-    json_for("recommendations?seed_artists=#{id_collection}")
+    result = json_for("recommendations?seed_artists=#{id_collection}")
+    extract_track_ids(result)
   end
+
+  # def party_tracks
+  #   recommended_playlist(id_collection)
+  # end
 
   def json_for(url)
     response = conn.get(url)

@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def current_party
     @current_party ||= Party.find_by(identifier: session[:party_identifier]) if session[:party_identifier]
   end
+
+  def new_playlist(party)
+    Playlist.new(party).aggregated_top_play_ids
+  end
 end
