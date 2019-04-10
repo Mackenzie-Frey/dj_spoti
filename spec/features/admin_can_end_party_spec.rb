@@ -17,7 +17,7 @@ describe 'admin who have started party' do
   end
 end
 
-describe 'non admim user cant'  do
+describe 'non admin user cant'  do
   it 'end party but can  leave party' do
     user = create(:user)
     party = create(:party, identifier: 'abcd', admin: user)

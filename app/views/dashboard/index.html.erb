@@ -29,7 +29,7 @@
 
 <script>
   window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = '<%= current_user.access_token %>';
+    let token = '<%= current_user.access_token %>';
     const partyId = '<%= current_party.identifier %>';
     // const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
     const player = new Spotify.Player({
@@ -44,6 +44,11 @@
 
      // Playback status updates
     player.addListener('player_state_changed', state => {
+      // broadcast
+      $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
+      $('#current-track-name').text(state.track_window.current_track.album.name);
+      $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
+      $('#current-track-album').text(state.track_window.current_track.name);
       console.log(state);
       fetch(`api/v1/parties/${partyId}/player_state_changed`)
 
@@ -79,9 +84,7 @@
       myHeaders.append("Authorization", `Bearer ${token}`);
       trackList = {
         "uris": [
-        "spotify:track:46O6QtxuzX3iZn9hMXoeqo",
-        "spotify:track:3SZRNr41jBk5SPS2TCBMmL",
-        "spotify:track:2Y0iGXY6m6immVb2ktbseM"
+        "spotify:track:46O6QtxuzX3iZn9hMXoeqo", "spotify:track:3SZRNr41jBk5SPS2TCBMmL", "spotify:track:2Y0iGXY6m6immVb2ktbseM"
         ]};
       var myInit = {
         method: 'PUT',
@@ -100,12 +103,7 @@
 
 <% end %>
 
-<!-- <img id="current-track" data-behavior="now_playing"/>
-<h3 id="current-track-name" data-behavior="now_playing"></h3>
-<h4 id="current-track-album" data-behavior="now_playing"></h4>
-<h5 id="current-track-artist" data-behavior="now_playing"></h5>
-
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form> -->
+<img id="current-track"/>
+<h3 id="current-track-name"></h3>
+<h4 id="current-track-album"></h4>
+<h5 id="current-track-artist"></h5>
