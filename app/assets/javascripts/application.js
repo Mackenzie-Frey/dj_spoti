@@ -45,6 +45,7 @@ const playlist = async (partyId) => {
 }
 
 function djSpoti(partyId, token) {
+  // var tracks = await playlist(partyId);
   window.onSpotifyWebPlaybackSDKReady = () => {
     const player = new Spotify.Player({
       name: 'DJ Spoti',
