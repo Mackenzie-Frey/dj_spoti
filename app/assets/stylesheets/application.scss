@@ -5,25 +5,23 @@
 @import "typography";
 @import "bootstrap";
 
-body {
-  margin-left: 20px;
-}
+// body {
+//   margin-left: 20px;
+// }
 
 // '/dashboard'
-
   // Invite Section
   .invite {
     background-color: #1DB954;
     height: 100vh;
   }
-
+  
   // Currently Playing Section
   .currently-playing {
     background-color: #191414;
     height: 100vh;
     color: white
   }
-
 
 // '/party/new'
   .new-party {
