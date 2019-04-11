@@ -17,8 +17,8 @@
 
 .container {
   position: relative;
-  width: 100%;
-  max-width: 400px;
+  // width: 100%;
+  // max-width: 400px;
 }
 
 .container img {
@@ -63,7 +63,7 @@
 
   // Currently Playing Section
   .currently-playing {
-    background-color: #191414;
+    background-color: black;
     height: 100vh;
     color: white
   }
