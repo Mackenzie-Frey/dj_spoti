@@ -1,7 +1,6 @@
 require 'twilio-ruby'
 
 class InvitationMailer < ApplicationMailer
-
   def invite(phone_number, current_party)
     account_sid = ENV["ACCOUNT_SID"]
     auth_token = ENV["AUTH_TOKEN"]
