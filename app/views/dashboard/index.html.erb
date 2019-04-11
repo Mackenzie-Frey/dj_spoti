@@ -1,11 +1,9 @@
-<div class='currently-playing'>
+<div class='dashboard'>
   <section class='party text-center'>
     <%= render partial: "users" if @users %>
     <%= render partial: "invite" if current_party %>
-    <!-- <h1 class='text-center'>Welcome to DJ Spoti </h1> -->
+
     <%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase color-green p-4' unless current_party %>
-   <%# button_to 'End Party', party_path(current_party), method: :delete, class: 'btn btn-primary text-uppercase p-3', onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user
-  button_to 'Leave Party', party_users_path, method: :delete, class: 'btn btn-primary text-uppercase color-green p-3' if current_party && current_party.admin != current_user  %> %>
 
     <%  if current_party && current_party.current_song  %>
       <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
@@ -95,9 +93,9 @@
     </script>
 
     <% end %>
-    <img id="current-track"/>
+    <!-- <img id="current-track"/>
     <h3 id="current-track-name"></h3>
     <h4 id="current-track-album"></h4>
-    <h5 id="current-track-artist"></h5>
+    <h5 id="current-track-artist"></h5> -->
   </section>
 </div>
