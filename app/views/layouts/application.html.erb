@@ -23,7 +23,9 @@
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <script>
-    djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
-  </script>
+  <% if current_user && current_party %>
+    <script>
+      djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
+    </script>
+  <% end %>
 </html>
