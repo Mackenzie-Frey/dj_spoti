@@ -39,8 +39,33 @@ function myFunction() {
 
 }
 
-// $(document).ready(function() {
-//   $('#endParty').click(function() {
+
+
+$(document).ready(function() {
+  $('.testclass').click(function(event) {
+    event.preventDefault();
+
+    var value = $('.phone_input').val()
+    fetch(`/invite?ph_number=${value}`, {
+      method: 'post',
+      body: JSON.stringify({
+        ph_number: '7206832645'
+      })
+    })
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 //     var myForm = $('#endParty');
 //     confirm("Are you sure you want to kick all party animals out of this party?");
 //     if (result) {
@@ -49,5 +74,3 @@ function myFunction() {
 //       event.preventDefault();
 //       window.location="/dashboard";
 //     }
-//   });
-// });
