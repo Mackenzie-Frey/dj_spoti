@@ -11,10 +11,10 @@ App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create(
   received: function(data) {
     console.log("Receiving with " + data.song);
     console.log(data.party);
-    // song = $('#song-playing');
-    // song.html(data['song']);
-    $("[data-current-party='" + data.party + "']").removeClass('hidden');
-   return $("[data-current-party='" + data.party + "']").html(data.song);
+    song = $('#song-playing');
+    song.html(data['song']);
+    // $("[data-current-party='" + data.party + "']").removeClass('hidden');
+   // return $("[data-current-party='" + data.party + "']").html(data.song);
  },
 });
 <% end %>
