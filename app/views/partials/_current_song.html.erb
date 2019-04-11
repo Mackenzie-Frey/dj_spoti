@@ -1,19 +1,17 @@
 <section class='currently-playing text-center' id='song-playing'>
-  <h3>Currently playing:</h3>
+  <h3>Currently Playing</h3>
 
   <img src= <%= current_song.image %> class="img-thumbnail">
   <% if current_song.artists.count > 1 %>
     <p>
-    <strong>Artists: </strong><%= current_song.artists.join(" & ")%>
-  </p>
+      <strong>Artists: </strong><%= current_song.artists.join(" & ")%>
+    </p>
   <% else %>
-  <p>
-    <strong>Artist: </strong><%= current_song.artists.first %>
-  </p>
-  <p>
-    <strong>Title: </strong> <%= current_song.name %>
-  </p>
-
+    <p>
+      <strong>Artist: </strong><%= current_song.artists.first %>
+    </p>
+    <p>
+      <strong>Title: </strong> <%= current_song.name %>
+    </p>
   <% end %>
-
 </section>
