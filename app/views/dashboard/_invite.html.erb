@@ -3,7 +3,7 @@
 <div class='invite'>
   <div class='form-container'>
     <h2>Invite Party Animals to <br> <br> <%= current_party.name + ' Party' if current_party %> !</h2>
-
+    <h4>Party id: <%= current_party.identifier %>  </h4>
     <form id='form'>
       <div id="dynamicInput">
         Phone Number<br><input type="text" name="ph_number" class='phone_input'>

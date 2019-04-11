@@ -4,6 +4,7 @@ App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create(
   connected: function() {
     console.log('Got here. Connected');
   },
+
   disconnected: function() {
     console.log('disconnected');
   },
@@ -13,7 +14,7 @@ App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create(
     console.log(data.party);
     $('#currently-playing-song').html(data.song);
 
-    // document.getElementById("#currently-playing-song").innerHTML = data.song;
+    // document.getElementById("currently-playing-song").innerHTML = data.song;
 
  },
 });
