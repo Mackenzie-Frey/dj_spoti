@@ -1,19 +1,16 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="black-nav">
    <img src="https://developer.spotify.com/assets/branding-guidelines/icon3@2x.png" width="30" height="30" class="d-inline-block align-top" alt="">
-  <a class="navbar-brand" href="#">DJ Spoti</a>
+  <%= link_to "DJ Spoti", root_path, class:"navbar-brand" %>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <% unless current_user %>
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <%= link_to 'Connect with Spotify', root_path(anchor: 'login-register'), class: 'nav-link' %>
+      <li class="nav-item active" style='float:right;'>
+        <%= link_to 'CONNECT WITH SPOTIFY', root_path(anchor: 'login-register'), class: 'nav-link' %>
       </li>
-      <li class="nav-item active">
-        <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
-      </li>
-
     </ul>
     <% end %>
 
@@ -22,11 +19,34 @@
       <li class="nav-item active">
         <%= link_to 'Logout', logout_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item active">
-        <%= link_to 'About', root_path(anchor: 'about'), class: 'nav-link' %>
-      </li>
-
     </ul>
     <% end %>
+    <li class="nav-item active">
+      <button style="background: black" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        ABOUT
+      </button>
+    </li>
   </div>
+
+
 </nav>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body" style='background:black;border-radius: 0px'>
+        <section class="jumbotron text-center" id="about">
+                <div class="container">
+                  <h1 class="jumbotron-heading">About</h1>
+                  <p class="lead text-muted">
+
+                    At parties, there is often one person who ends up being in charge of the music.
+                    What if everyone’s preferences could be taken into consideration by simply inviting
+                    one’s friends via a text message, from there, the music would then take care of itself.
+                  </p>
+
+                  <p class="lead text-muted">
+                    DJ Spoti aggregates the favorite songs of all session party users and cultivates a
+                    playlist with all user preferences in mind.
+                  </p>
+                </div>
+        </section>
+      </div>
+    </div>
