@@ -15,6 +15,7 @@ class PartyController < ApplicationController
       party.current_song
       # TrackBroadcastJob.perform_later(party.current_song.serialize_data) if party.current_song
     end
+    invite_people(params)
     redirect_to dashboard_path
   end
 
@@ -31,14 +32,17 @@ class PartyController < ApplicationController
     params.require(:party).permit(:name)
   end
 
-  # def serialized_data
-  #   {
-  #     id: party.current_song.id,
-  #     name: party.current_song.name,
-  #     artists: party.current_song.artists,
-  #     album: party.current_song.album,
-  #     image: party.current_song.image
-  #   }
-  #
-  # end
+  def invite_people(params)
+    params.each do |key, value|
+      begin
+        send_invitation(value, current_party) if key.start_with?("ph_number")
+      rescue
+        flash[:error] = "Inviation could not be sent to #{value}.Please Make sure its a valid number."
+      end
+    end
+  end
+
+  def send_invitation(phone_number, current_party)
+    InvitationMailer.new.invite(phone_number, current_party)
+  end
 end
