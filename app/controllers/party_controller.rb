@@ -20,7 +20,11 @@ class PartyController < ApplicationController
 
   def destroy
     party = Party.find(current_user.party_id)
-    current_user.update_attribute(:party_id, nil)
+    if current_user == current_party.admin
+      User.where(party_id: party.id).update_all(party_id: nil)
+    else
+      current_user.update_attribute(:party_id, nil)
+    end
     party.destroy
     session[:party_identifier] = nil
     redirect_to dashboard_path

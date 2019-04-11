@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/parties/:identifier/player_state_changed', to: 'party#show', param: :identifier, as: 'check_song'
-
+      get 'parties/:identifer/playlist', to: 'party/playlist#show', param: :identifier, as: 'party_playlist'
     end
   end
 
