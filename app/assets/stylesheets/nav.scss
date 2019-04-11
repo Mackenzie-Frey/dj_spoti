@@ -4,3 +4,26 @@ $spotifygreen: #1DB954;
 #black-nav {
     background-color: black !important;
 }
+
+// .conditional-right-nav {
+//   display: flex;
+// }
+//
+// .conditional-right-nav-inner {
+//   flex: right;
+// }
+
+.navbar-collapse {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+.btn-primary {
+    margin-left: 7%;
+  }
+  
+.navbar-nav {
+  list-style-type: none;
+}

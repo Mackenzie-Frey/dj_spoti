@@ -6,28 +6,32 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <li class="nav-item active">
       <button style="background: black" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         ABOUT
       </button>
-    </li>
-
-    <% unless current_user %>
-    <ul class="navbar-nav">
-      <li class="nav-item active" style='float:right;'>
-        <%= link_to 'CONNECT WITH SPOTIFY', root_path(anchor: 'login-register'), class: 'nav-link' %>
-      </li>
-    </ul>
-    <% end %>
-
-    <% if current_user %>
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <%= link_to 'Logout', logout_path, class: 'nav-link' %>
-      </li>
-    </ul>
-    <% end %>
   </div>
+
+    <div class='conditional-right-nav'>
+      <div class='conditional-right-nav-inner'>
+        <% unless current_user %>
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to 'CONNECT WITH SPOTIFY', root_path(anchor: 'login-register'), class: 'nav-link' %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+
+      <div class='conditional-right-nav-inner'>
+        <% if current_user %>
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to 'Logout', logout_path, class: 'nav-link' %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
 
 
 </nav>
