@@ -3,18 +3,16 @@
 
 
 <% if !current_user %>
-<section id='login-register'>
-  <div class="card border-0" style='background: black;border-radius: 0px;' >
-  <div class="card-body text-center" style="padding:0;margin-top:0">
-    </p>
-<div class ='test'>
-  <div class="container">
-  <img src="images/image.png" alt="Snow" >
-  <%= button_to "Connect With Spotify", spotify_omniauth_path, method: :get, class: 'btn btn-primary text-uppercase'%>
-  </div>
-</div>
-
-  </div></img>
-  </div>
-</section>
+  <section id='login-register'>
+    <div class="card border-0" style='background: black;border-radius: 0px;' >
+      <div class="card-body text-center" style="padding:0;margin-top:0">
+        <div class ='test'>
+          <div class="container">
+            <img src="images/image.png" alt="Snow" >
+            <%= button_to "Connect With Spotify", spotify_omniauth_path, method: :get, class: 'btn btn-primary text-uppercase p-3'%>
+          </div>
+        </div>
+      </div></img>
+    </div>
+  </section>
 <% end %>

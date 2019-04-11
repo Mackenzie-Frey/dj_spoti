@@ -5,9 +5,7 @@
 @import "typography";
 @import "bootstrap";
 
-body {
-  margin-left: 20px;
-}
+
 
 .test {
   height: 100vh;
@@ -47,3 +45,33 @@ body {
 .container .btn:hover {
   background-color: black;
 }
+
+// body {
+//   margin-left: 20px;
+// }
+
+// '/dashboard'
+  .dashboard {
+    background-color: #191414;
+    height: 100vh;
+  }
+
+  // Invite Section
+  .invite {
+    background-color: #1DB954;
+    height: 100vh;
+  }
+
+  // Currently Playing Section
+  .currently-playing {
+    background-color: #191414;
+    height: 100vh;
+    color: white
+  }
+
+// '/party/new'
+  .new-party {
+    background-color: #1DB954;
+    height: 100vh;
+    color: white;
+  }
