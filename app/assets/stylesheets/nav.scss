@@ -1,17 +1,16 @@
 $spotifygreen: #1DB954;
 
-
-#black-nav {
-    background-color: black !important;
+.navbar {
+  padding-top: 1.5rem !important;
 }
 
-// .conditional-right-nav {
-//   display: flex;
-// }
-//
-// .conditional-right-nav-inner {
-//   flex: right;
-// }
+#black-nav {
+  background-color: black !important;
+}
+
+.conditional-right-nav {
+  margin-right: 4%;
+}
 
 .navbar-collapse {
   display: flex;
@@ -19,11 +18,10 @@ $spotifygreen: #1DB954;
   justify-content: space-between;
 }
 
-
-.btn-primary {
-    margin-left: 7%;
+.about-btn {
+    margin-left: 2rem;
   }
-  
+
 .navbar-nav {
   list-style-type: none;
 }
