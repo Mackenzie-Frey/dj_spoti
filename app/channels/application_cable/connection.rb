@@ -3,6 +3,11 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
 
+    def connect
+      logger.add_tags 'ActionCable', "Connect method"  
+
+    end
+
     # identified_by :current_user
     #
     # # identified_by :current_user

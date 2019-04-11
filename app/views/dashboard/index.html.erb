@@ -1,3 +1,11 @@
+<% if current_party %>
+<script type="text/javascript">
+  var current_party_identifier = '<%= current_party.identifier %>';
+
+</script>
+<% end %>
+
+
 <div class='dashboard'>
   <section class='party text-center'>
     <%= render partial: "users" if @users %>
@@ -34,9 +42,9 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
 
-    <script>
+    <!-- <script>
       djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
-    </script>
+    </script> -->
 
     <% end %>
     <img id="current-track"/>

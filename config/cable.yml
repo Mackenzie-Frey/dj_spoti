@@ -1,11 +1,11 @@
 
-production: 
+production:
   adapter: redis
   url: redis://redistogo:65b9f4c439553ff80bc3b1a10310baae@dory.redistogo.com:11392/
   channel_prefix: dj-spoti_production
 
 development:
-  adapter: async
+  adapter: redis
 
 test:
-  adapter: async
+  adapter: redis
