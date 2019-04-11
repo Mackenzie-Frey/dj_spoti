@@ -19,6 +19,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
 gem 'twilio-ruby'
@@ -37,7 +38,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  gem 'bootstrap', '~> 4.3.1'
   gem 'action-cable-testing'
 end
 

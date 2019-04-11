@@ -1,5 +1,9 @@
-<%=form_for @party, :url =>'/party' do |f| %>
- <%= f.label :name %>
- <%= f.text_field :name %>
- <%= f.submit %>
- <% end %>
+<div class='new-party'>
+  <div class='form-container text-center'>
+    <%=form_for @party, :url =>'/party' do |f| %>
+     <%= f.label :name %>
+     <div class='inner-form'><%= f.text_field :name %></div>
+     <div class='inner-form'><%= f.submit 'Create Party', class: 'btn btn-primary text-uppercase color-black p-3' %></div>
+     <% end %>
+  </div>
+</div>

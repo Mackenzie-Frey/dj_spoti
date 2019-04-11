@@ -1,44 +1,38 @@
-<h1 class='text-center'>Welcome to DJSpoti </h1>
-<br>
-<br>
-<br>
+<div class='dashboard'>
+  <section class='party text-center'>
+    <%= render partial: "users" if @users %>
+    <%= render partial: "invite" if current_party %>
 
-<section class='party text-center'>
+    <%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase color-green p-4' unless current_party %>
 
-<h1><%= 'Party: ' + current_party.name if current_party %><h1>
-<%= render partial: "users" if @users %>
-<%= render partial: "invite" if current_party %>
-<%= button_to 'Start A New Party', new_party_path, method: :get unless current_party %>
-<%= button_to 'End Party', party_path(current_party), method: :delete,  onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
-<%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user %>
+    <%  if current_party && current_party.current_song  %>
+      <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
+        <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
+      </div>
 
-<%  if current_party && current_party.current_song  %>
-  <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
-    <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
-  </div>
-
-<% else %>
-  <div class="hidden" id ='currently-playing-song'>
-  </div>
-<% end %>
-
-</section>
+    <% else %>
+      <div class="hidden" id ='currently-playing-song'>
+      </div>
+    <% end %>
+  </section>
 
 
-<section class='spotify-web-player'>
+  <section class='spotify-web-player'>
+    <% if current_party && current_user == current_party.admin %>
 
-<% if current_party && current_user == current_party.admin %>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- import spotify's web player sdk library & initialize web player -->
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
-<script>
-  djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
-</script>
-<% end %>
-</section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- import spotify's web player sdk library & initialize web player -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
 
-<img id="current-track"/>
-<h3 id="current-track-name"></h3>
-<h4 id="current-track-album"></h4>
-<h5 id="current-track-artist"></h5>
+    <script>
+      djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
+    </script>
+
+    <% end %>
+    <!-- <img id="current-track"/>
+    <h3 id="current-track-name"></h3>
+    <h4 id="current-track-album"></h4>
+    <h5 id="current-track-artist"></h5> -->
+  </section>
+</div>
