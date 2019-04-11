@@ -17,6 +17,7 @@ describe 'user visiting dashboard_path' do
     click_on 'Start Party'
 
     fill_in 'party[name]', with: 'This is a party'
+    fill_in 'ph_number', with: '7206832645'
     click_on 'Create'
 
     expect(current_path).to eq(dashboard_path)
@@ -34,7 +35,7 @@ describe 'user visiting dashboard_path' do
       stub_oauth_connection
       stub_select_seeds
       stub_recommended_playlist
-      
+
       visit '/'
       click_on 'Connect With Spotify', match: :first
 
