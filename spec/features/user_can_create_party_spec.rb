@@ -12,9 +12,9 @@ describe 'user visiting dashboard_path' do
     click_on 'Connect With Spotify', match: :first
 
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_button('Start A New Party')
+    expect(page).to have_button('Start Party')
 
-    click_on 'Start A New Party'
+    click_on 'Start Party'
 
     fill_in 'party[name]', with: 'This is a party'
     click_on 'Create'
@@ -38,7 +38,7 @@ describe 'user visiting dashboard_path' do
       visit '/'
       click_on 'Connect With Spotify', match: :first
 
-      click_on 'Start A New Party'
+      click_on 'Start Party'
 
       fill_in 'party[name]', with: 'This is a party'
       click_on 'Create'

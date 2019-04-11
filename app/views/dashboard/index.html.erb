@@ -1,111 +1,101 @@
-<h1 class='text-center'>Welcome to DJSpoti </h1>
-<br>
-<br>
-<br>
+<div class='dashboard'>
+  <section class='party text-center'>
+    <%= render partial: "users" if @users %>
+    <%= render partial: "invite" if current_party %>
 
-<section class='party text-center'>
+    <%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase color-green p-4' unless current_party %>
 
-<h1><%= 'Party: ' + current_party.name if current_party %><h1>
-<%= render partial: "users" if @users %>
-<%= render partial: "invite" if current_party %>
-<%= button_to 'Start A New Party', new_party_path, method: :get unless current_party %>
-<%= button_to 'End Party', party_path(current_party), method: :delete,  onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
-<%= button_to 'Leave Party', party_users_path, method: :delete if current_party && current_party.admin != current_user %>
+    <%  if current_party && current_party.current_song  %>
+      <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
+        <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
+      </div>
 
-<%  if current_party && current_party.current_song  %>
-  <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>>
-    <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
-  </div>
-
-<% else %>
-  <div class="hidden" id ='currently-playing-song'>
-  </div>
-<% end %>
-
-</section>
+    <% else %>
+      <div class="hidden" id ='currently-playing-song'>
+      </div>
+    <% end %>
+  </section>
 
 
-<section class='spotify-web-player'>
+  <section class='spotify-web-player'>
+    <% if current_party && current_user == current_party.admin %>
 
-<% if current_party && current_user == current_party.admin %>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- import spotify's web player sdk library & initialize web player -->
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- import spotify's web player sdk library & initialize web player -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
 
-<script>
-  window.onSpotifyWebPlaybackSDKReady = () => {
-    let token = '<%= current_user.access_token %>';
-    const partyId = '<%= current_party.identifier %>';
-    // const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
-    const player = new Spotify.Player({
-      name: 'DJ Spoti',
-      getOAuthToken: cb => { cb(token); }
-    });
-     // Error handling
-    player.addListener('initialization_error', ({ message }) => { console.error(message); });
-    player.addListener('authentication_error', ({ message }) => { console.error(message); });
-    player.addListener('account_error', ({ message }) => { console.error(message); });
-    player.addListener('playback_error', ({ message }) => { console.error(message); });
+    <script>
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        let token = '<%= current_user.access_token %>';
+        const partyId = '<%= current_party.identifier %>';
+        // const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
+        const player = new Spotify.Player({
+          name: 'DJ Spoti',
+          getOAuthToken: cb => { cb(token); }
+        });
+         // Error handling
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
 
-     // Playback status updates
-     player.addListener('player_state_changed', state => {
-        // broadcast
-        $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
-        $('#current-track-name').text(state.track_window.current_track.album.name);
-        $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
-        $('#current-track-album').text(state.track_window.current_track.name);
-        console.log(state);
-        fetch(`api/v1/parties/${partyId}/player_state_changed`)
+         // Playback status updates
+         player.addListener('player_state_changed', state => {
+            // broadcast
+            $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
+            $('#current-track-name').text(state.track_window.current_track.album.name);
+            $('#current-track-artist').text(state.track_window.current_track.artists[0].name);
+            $('#current-track-album').text(state.track_window.current_track.name);
+            console.log(state);
+            fetch(`api/v1/parties/${partyId}/player_state_changed`)
 
-      .then(response => response.json())
-      .then(data => console.log('made call'+ JSON.stringify(data)))
+          .then(response => response.json())
+          .then(data => console.log('made call'+ JSON.stringify(data)))
 
-    });
+        });
 
-     // Ready
-    player.addListener('ready', data => {
-      console.log('Ready with Device ID', data.device_id);
-      play(data.device_id);
-    });
-     // Not Ready
-    player.addListener('not_ready', ({ device_id }) => {
-      console.log('Device ID has gone offline', device_id);
-    });
-     // Connect to the player!
-    player.connect();
-     // Play the song!
-     console.log("playing")
-    function play(device_id) {
-      var url = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`
-      var myHeaders = new Headers({});
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", `Bearer ${token}`);
-      trackList = {
-        "uris": [
-        "spotify:track:46O6QtxuzX3iZn9hMXoeqo", "spotify:track:3SZRNr41jBk5SPS2TCBMmL", "spotify:track:2Y0iGXY6m6immVb2ktbseM"
-        ]};
-      var myInit = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: JSON.stringify(trackList)
+         // Ready
+        player.addListener('ready', data => {
+          console.log('Ready with Device ID', data.device_id);
+          play(data.device_id);
+        });
+         // Not Ready
+        player.addListener('not_ready', ({ device_id }) => {
+          console.log('Device ID has gone offline', device_id);
+        });
+         // Connect to the player!
+        player.connect();
+         // Play the song!
+         console.log("playing")
+        function play(device_id) {
+          var url = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`
+          var myHeaders = new Headers({});
+          myHeaders.append("Content-Type", "application/json");
+          myHeaders.append("Authorization", `Bearer ${token}`);
+          trackList = {
+            "uris": [
+            "spotify:track:46O6QtxuzX3iZn9hMXoeqo", "spotify:track:3SZRNr41jBk5SPS2TCBMmL", "spotify:track:2Y0iGXY6m6immVb2ktbseM"
+            ]};
+          var myInit = {
+            method: 'PUT',
+            headers: myHeaders,
+            body: JSON.stringify(trackList)
+          };
+          fetch(url, myInit).then(function(response){
+            if(response.ok) {
+              console.log(response);
+              return response.blob();
+            }
+          });
+        };
       };
-      fetch(url, myInit).then(function(response){
-        if(response.ok) {
-          console.log(response);
-          return response.blob();
-        }
-      });
-    };
-  };
-</script>
+    </script>
 
-<% end %>
-</section>
-
-
-<img id="current-track"/>
-<h3 id="current-track-name"></h3>
-<h4 id="current-track-album"></h4>
-<h5 id="current-track-artist"></h5>
+    <% end %>
+    <!-- <img id="current-track"/>
+    <h3 id="current-track-name"></h3>
+    <h4 id="current-track-album"></h4>
+    <h5 id="current-track-artist"></h5> -->
+  </section>
+</div>

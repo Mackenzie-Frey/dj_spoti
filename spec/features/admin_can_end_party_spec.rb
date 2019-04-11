@@ -9,7 +9,7 @@ describe 'admin who have started party' do
     visit '/'
     click_on 'Connect With Spotify'
 
-    click_on 'Start A New Party'
+    click_on 'Start Party'
     fill_in 'party[name]', with: 'party'
     click_on 'Create'
 
@@ -42,6 +42,6 @@ describe 'non admin user cant'  do
     expect(page).to_not have_content(party.name)
     expect(Party.count).to eq(1)##just making sure normal user is not destroying party
 
-    expect(page).to have_button("Start A New Party")
+    expect(page).to have_button("Start Party")
   end
 end

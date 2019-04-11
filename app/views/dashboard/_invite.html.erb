@@ -1,8 +1,15 @@
-<h2> Invite More Party Animals!!</h2>
-<%= form_tag invite_path do %>
-  <div id="dynamicInput">
-    Phone Number<br><input type="text" name="ph_number">
+<div class='invite'>
+  <div class='form-container'>
+    <h2>Invite Party Animals to <br> <br> <%= current_party.name + ' Party' if current_party %> !</h2>
+    <%= form_tag invite_path do %>
+      <div id="dynamicInput">
+        Phone Number<br><input type="text" name="ph_number">
+      </div>
+      <div class='inner-form'>
+        <%= submit_tag "Invite", class: 'btn btn-primary text-uppercase p-3 color-black' %>
+      </div>
+    <% end %>
+    <%= button_to 'End Party', party_path(current_party), method: :delete, class: 'btn btn-primary text-uppercase color-black p-3', onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
+    <%= button_to 'Leave Party', party_users_path, method: :delete, class: 'btn btn-primary text-uppercase color-black p-3' if current_party && current_party.admin != current_user %>
   </div>
-  <input type="button" value="+" onClick="addInput('dynamicInput');">
-  <%=submit_tag "Invite" %>
-<%end%>
+</div>
