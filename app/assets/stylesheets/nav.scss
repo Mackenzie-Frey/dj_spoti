@@ -8,6 +8,12 @@ $spotifygreen: #1DB954;
   background-color: black !important;
 }
 
+.logo {
+  width: 4%;
+  height: 4%;
+  margin-left: 1rem;
+}
+
 .conditional-right-nav {
   margin-right: 2rem;
 }
@@ -19,8 +25,9 @@ $spotifygreen: #1DB954;
 }
 
 .about-btn {
-    margin-left: 2rem;
-  }
+  margin-left: 2rem;
+  border-color: black !important;
+}
 
 .navbar-nav {
   list-style-type: none;
