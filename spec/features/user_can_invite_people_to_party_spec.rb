@@ -14,8 +14,9 @@ describe 'logged in user can' do
     fill_in 'party[name]', with: 'This is a party'
     click_on 'Create'
 
-    fill_in 'ph_number', with: '9999999999'
+    fill_in 'ph_number', with: '7206832645'
     click_on 'Invite'
+
     click_on 'Logout'
     ##admin logt out and  guest is gonna login and visit invitation path.
     guest_login

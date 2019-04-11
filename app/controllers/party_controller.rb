@@ -15,12 +15,17 @@ class PartyController < ApplicationController
       party.current_song
       # TrackBroadcastJob.perform_later(party.current_song.serialize_data) if party.current_song
     end
+    invite_people(params)
     redirect_to dashboard_path
   end
 
   def destroy
     party = Party.find(current_user.party_id)
-    current_user.update_attribute(:party_id, nil)
+    if current_user == current_party.admin
+      User.where(party_id: party.id).update_all(party_id: nil)
+    else
+      current_user.update_attribute(:party_id, nil)
+    end
     party.destroy
     session[:party_identifier] = nil
     redirect_to dashboard_path
@@ -31,14 +36,17 @@ class PartyController < ApplicationController
     params.require(:party).permit(:name)
   end
 
-  # def serialized_data
-  #   {
-  #     id: party.current_song.id,
-  #     name: party.current_song.name,
-  #     artists: party.current_song.artists,
-  #     album: party.current_song.album,
-  #     image: party.current_song.image
-  #   }
-  #
-  # end
+  def invite_people(params)
+    params.each do |key, value|
+      begin
+        send_invitation(value, current_party) if key.start_with?("ph_number")
+      rescue
+        flash[:error] = "Inviation could not be sent to #{value}.Please Make sure its a valid number."
+      end
+    end
+  end
+
+  def send_invitation(phone_number, current_party)
+    InvitationMailer.new.invite(phone_number, current_party)
+  end
 end

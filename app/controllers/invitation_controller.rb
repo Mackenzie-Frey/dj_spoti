@@ -1,4 +1,6 @@
 class InvitationController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     params.each do |key, value|
       begin
@@ -9,7 +11,6 @@ class InvitationController < ApplicationController
     end
     redirect_to dashboard_path
   end
-
 
   private
 

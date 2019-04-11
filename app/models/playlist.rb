@@ -21,8 +21,7 @@ class Playlist
 
   def user_top_plays(party_user)
     if party_user.seed_artists.nil?
-      party_user.update!(seed_artists:
-      SpotifyService.new(party_user).top_plays)
+      party_user.update!(seed_artists: SpotifyService.new(party_user).top_plays)
     end
     party_user.seed_artists
   end

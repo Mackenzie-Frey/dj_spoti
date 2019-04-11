@@ -38,7 +38,6 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-
   gem 'action-cable-testing'
 end
 

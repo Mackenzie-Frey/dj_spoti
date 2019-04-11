@@ -12,8 +12,8 @@ feature 'as a visitor' do
       expect(page).to have_css('nav')
 
       within 'nav' do
-        expect(page).to have_link('Connect with Spotify')
-        expect(page).to have_link('About')
+        expect(page).to have_link('CONNECT WITH SPOTIFY')
+        expect(page).to have_button('ABOUT')
       end
     end
 
