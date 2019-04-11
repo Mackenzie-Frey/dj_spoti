@@ -1,38 +1,20 @@
 
 
 
-<section class="jumbotron text-center" id="about">
-        <div class="container">
-          <h1 class="jumbotron-heading">About</h1>
-          <p class="lead text-muted">
-
-            At parties, there is often one person who ends up being in charge of the music.
-            What if everyone’s preferences could be taken into consideration by simply inviting
-            one’s friends via a text message, from there, the music would then take care of itself.
-          </p>
-
-          <p class="lead text-muted">
-            DJ Spoti aggregates the favorite songs of all session party users and cultivates a
-            playlist with all user preferences in mind.
-          </p>
-        </div>
-</section>
-
-
 
 <% if !current_user %>
 <section id='login-register'>
-  <div class="card border-0" >
-    <h2 class="card-title text-center">Login</h2>
-
-
-  <div class="card-body text-center">
-    <p>To login, you first need to connect your Spotify account.
+  <div class="card border-0" style='background: black;border-radius: 0px;' >
+  <div class="card-body text-center" style="padding:0;margin-top:0">
     </p>
-
-    <%= button_to "Connect With Spotify", spotify_omniauth_path, method: :get, class: 'btn btn-primary text-uppercase'%>
-
+<div class ='test'>
+  <div class="container">
+  <img src="images/image.png" alt="Snow" >
+  <%= button_to "Connect With Spotify", spotify_omniauth_path, method: :get, class: 'btn btn-primary text-uppercase'%>
   </div>
+</div>
+
+  </div></img>
   </div>
 </section>
 <% end %>

@@ -1,5 +1,10 @@
 <%=form_for @party, :url =>'/party' do |f| %>
  <%= f.label :name %>
  <%= f.text_field :name %>
+ <h3> Enter Phone Number Below To Invite People</h3>
+  <div id="dynamicInput">
+     Phone Number<br><input type="text" name="ph_number">
+  </div>
+  <input type="button" value="+" onClick="addInput('dynamicInput');">
  <%= f.submit %>
- <% end %>
+<% end %>
