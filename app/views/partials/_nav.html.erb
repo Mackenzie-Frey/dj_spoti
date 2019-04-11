@@ -6,6 +6,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
+    <li class="nav-item active">
+      <button style="background: black" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        ABOUT
+      </button>
+    </li>
+
     <% unless current_user %>
     <ul class="navbar-nav">
       <li class="nav-item active" style='float:right;'>
@@ -21,11 +27,6 @@
       </li>
     </ul>
     <% end %>
-    <li class="nav-item active">
-      <button style="background: black" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        ABOUT
-      </button>
-    </li>
   </div>
 
 
