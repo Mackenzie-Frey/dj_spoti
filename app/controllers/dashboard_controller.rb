@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
     if current_party
       current_song = SongFacade.new(current_party.admin).current_song
       if current_song
-        TrackBroadcastJob.perform_later(current_song.serialize_data)
+        TrackBroadcastJob.perform_later(current_party.identifier, current_song.serialize_data)
       end
     end
 

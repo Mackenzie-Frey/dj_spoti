@@ -3,7 +3,7 @@ class Api::V1::PartyController < ApplicationController
     party = Party.find_by(identifier: params["identifier"])
     current_song = SongFacade.new(party.admin).current_song
     if current_song
-      TrackBroadcastJob.perform_later(SongFacade.new(party.admin).current_song.serialize_data)
+      TrackBroadcastJob.perform_later(party.identifier, SongFacade.new(party.admin).current_song.serialize_data)
     end
 
 

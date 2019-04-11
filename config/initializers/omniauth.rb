@@ -5,6 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     user-top-read
     user-read-private
     user-read-email
+    user-top-read
     user-read-birthdate
     user-read-playback-state
     streaming

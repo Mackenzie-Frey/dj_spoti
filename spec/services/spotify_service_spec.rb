@@ -69,6 +69,7 @@ describe 'SpotifyClient' do
 
       recommended_playlist = @service.recommended_playlist(id_collection)
 
+      # expect(recommended_playlist).to eq(["spotify:track:4IlBZXHTwY7DoxA4piiHtM", "spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z"])
       expect(recommended_playlist).to eq(["spotify:track:4IlBZXHTwY7DoxA4piiHtM", "spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z"])
     end
   end

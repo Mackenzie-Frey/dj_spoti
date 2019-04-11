@@ -4,6 +4,10 @@ describe 'user visiting dashboard_path' do
     create(:user, name: 'test')
     stub_spotify_top_plays
     stub_oauth_connection
+
+    stub_select_seeds
+    stub_recommended_playlist
+
     visit '/'
     click_on 'Connect With Spotify', match: :first
 
@@ -19,9 +23,8 @@ describe 'user visiting dashboard_path' do
 
     expect(Party.count).to eq(1)
     expect(Party.first.admin).to eq(User.last)
-    expect(Party.first.playlist_seeds).to be_a(String)
-    expect(Party.first.playlist_seeds.length).to be(114)
-    expect(Party.first.playlist_seeds.count(',')).to eq(4)
+    expect(Party.first.playlist_tracks).to be_a(String)
+    expect(Party.first.playlist_tracks).to eq("[\"spotify:track:4IlBZXHTwY7DoxA4piiHtM\", \"spotify:track:2LNdH3B2gCOw3Uh1jIXG3Z\"]")
   end
 
   describe 'unique identifier is created when creating' do
@@ -29,6 +32,9 @@ describe 'user visiting dashboard_path' do
       create(:user, name: 'test')
       stub_spotify_top_plays
       stub_oauth_connection
+      stub_select_seeds
+      stub_recommended_playlist
+      
       visit '/'
       click_on 'Connect With Spotify', match: :first
 

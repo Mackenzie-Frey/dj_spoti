@@ -39,11 +39,15 @@ function myFunction() {
 
 };
 
-function djSpoti(partyId, token, trackList) {
+const playlist = async (partyId) => {
+  const response = await fetch(`api/v1/parties/${partyId}/playlist`);
+  const data = await response.json();
+  return Promise.all(data);
+}
+
+function djSpoti(partyId, token) {
+  // let tracks = playlist(partyId);
   window.onSpotifyWebPlaybackSDKReady = () => {
-    // let token = '<%= current_user.access_token %>';
-    // const partyId = '<%= current_party.identifier %>';
-    // const device_id = '23af457167a615683a6ff6194ce955ccaf34622f'
     const player = new Spotify.Player({
       name: 'DJ Spoti',
       getOAuthToken: cb => { cb(token); }
@@ -63,16 +67,15 @@ function djSpoti(partyId, token, trackList) {
         $('#current-track-album').text(state.track_window.current_track.name);
         console.log(state);
         fetch(`api/v1/parties/${partyId}/player_state_changed`)
-
       .then(response => response.json())
       .then(data => console.log('made call'+ JSON.stringify(data)))
-
     });
 
      // Ready
     player.addListener('ready', data => {
       console.log('Ready with Device ID', data.device_id);
       play(data.device_id);
+      console.log('playing!')
     });
      // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
@@ -81,22 +84,16 @@ function djSpoti(partyId, token, trackList) {
      // Connect to the player!
     player.connect();
      // Play the song!
-     console.log("playing")
-    function play(device_id) {
+    async function play(device_id) {
       var url = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`
       var myHeaders = new Headers({});
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
-      // trackList = {
-      //   "uris": [
-      //   "spotify:track:46O6QtxuzX3iZn9hMXoeqo",
-      //   "spotify:track:3SZRNr41jBk5SPS2TCBMmL",
-      //   "spotify:track:2Y0iGXY6m6immVb2ktbseM"
-      //   ]};
+      var tracks = await playlist(partyId);
       var myInit = {
         method: 'PUT',
         headers: myHeaders,
-        body: JSON.parse(trackList)
+        body: JSON.stringify({ "uris": tracks })
       };
       fetch(url, myInit).then(function(response){
         if(response.ok) {
@@ -107,16 +104,3 @@ function djSpoti(partyId, token, trackList) {
     };
   };
 };
-
-// $(document).ready(function() {
-//   $('#endParty').click(function() {
-//     var myForm = $('#endParty');
-//     confirm("Are you sure you want to kick all party animals out of this party?");
-//     if (result) {
-//        myForm.submit();
-//     }else {
-//       event.preventDefault();
-//       window.location="/dashboard";
-//     }
-//   });
-// });
