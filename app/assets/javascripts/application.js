@@ -42,18 +42,18 @@ const playlist = async (partyId) => {
   const response = await fetch(`api/v1/parties/${partyId}/playlist`);
   const data = await response.json();
   return Promise.all(data);
-}
+
 
 $(document).ready(function() {
   $('.testclass').click(function(event) {
     event.preventDefault();
-
     var value = $('.phone_input').val()
     fetch(`/invite?ph_number=${value}`, {
       method: 'post',
       body: JSON.stringify({
         ph_number: '7206832645'
       })
+      $('.phone_input').val('')
     })
   });
 });
