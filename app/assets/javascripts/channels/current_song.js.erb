@@ -11,8 +11,9 @@ App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create(
   received: function(data) {
     console.log("Receiving function with " + data.song);
     console.log(data.party);
+    $('#currently-playing-song').html(data.song);
 
-    document.getElementById("currently-playing-song").innerHTML = data.song;
+    // document.getElementById("#currently-playing-song").innerHTML = data.song;
 
  },
 });
