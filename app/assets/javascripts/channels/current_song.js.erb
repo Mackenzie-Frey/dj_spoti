@@ -9,22 +9,11 @@ App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create(
   },
 
   received: function(data) {
-    console.log("Receiving with " + data.song);
+    console.log("Receiving function with " + data.song);
     console.log(data.party);
-    // song = $('#song-playing');
-    // song.html(data['song']);
-    $("[data-current-party='" + data.party + "']").removeClass('hidden');
-   return $("[data-current-party='" + data.party + "']").html(data.song);
+
+    document.getElementById("currently-playing-song").innerHTML = data.song;
+
  },
 });
 <% end %>
-
-
-    //
-    // var song = $('#song-playing');
-    // var partyId = data['party']
-    // var partyId = $("[data-current-party]").data().party_identifier
-    // console.log('received method here with their data:');
-    // console.log(data);
-    // song = $('#song-playing');
-    // song.html(data['song']);
