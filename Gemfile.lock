@@ -85,7 +85,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
-    connection_pool (2.2.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -174,8 +173,6 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.1)
     rack (2.0.7)
-    rack-protection (2.0.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -196,6 +193,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -266,11 +268,6 @@ GEM
       rubyzip (~> 1.2, >= 1.2.2)
     shoulda-matchers (4.0.1)
       activesupport (>= 4.2.0)
-    sidekiq (5.2.5)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -348,6 +345,7 @@ DEPENDENCIES
   pry
   puma (~> 3.11)
   rails (~> 5.2.3)
+  rails_12factor
   rb-readline
   redis (~> 4.0)
   rspec-rails
@@ -356,7 +354,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers
-  sidekiq
   simplecov
   skylight
   spring
