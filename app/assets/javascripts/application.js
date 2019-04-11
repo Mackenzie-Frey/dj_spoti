@@ -36,7 +36,6 @@ function myFunction() {
    }else {
      event.preventDefault();
    }
-
 };
 
 const playlist = async (partyId) => {
@@ -46,19 +45,19 @@ const playlist = async (partyId) => {
 }
 
 function djSpoti(partyId, token) {
-  // let tracks = playlist(partyId);
   window.onSpotifyWebPlaybackSDKReady = () => {
     const player = new Spotify.Player({
       name: 'DJ Spoti',
       getOAuthToken: cb => { cb(token); }
     });
+
      // Error handling
     player.addListener('initialization_error', ({ message }) => { console.error(message); });
     player.addListener('authentication_error', ({ message }) => { console.error(message); });
     player.addListener('account_error', ({ message }) => { console.error(message); });
     player.addListener('playback_error', ({ message }) => { console.error(message); });
-
      // Playback status updates
+
      player.addListener('player_state_changed', state => {
         // broadcast
         $('#current-track').attr('src', state.track_window.current_track.album.images[0].url);
@@ -77,13 +76,15 @@ function djSpoti(partyId, token) {
       play(data.device_id);
       console.log('playing!')
     });
+
      // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
       console.log('Device ID has gone offline', device_id);
     });
+
      // Connect to the player!
     player.connect();
-     // Play the song!
+
     async function play(device_id) {
       var url = `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`
       var myHeaders = new Headers({});
