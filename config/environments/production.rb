@@ -3,7 +3,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.web_socket_server_url = "wss://dj-spoti.herokuapp.com/cable"
+  config.action_cable.url = "wss://dj-spoti.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://dj-spoti.herokuapp.com', 'http://dj-spoti.herokuapp.com']
   # Code is not reloaded between requests.
   config.cache_classes = true
