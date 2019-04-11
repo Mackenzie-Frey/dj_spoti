@@ -1,21 +1,44 @@
-<% Party.all.each do |party| %>
-App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: `<%=party.identifier%>`}, {
+// MakePartyChannel = function(partyIdentifier) {
+  App.current_song = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: current_party_identifier}, {
 
-  connected: function() {
-    console.log('Got here. Connected');
-  },
+    connected: function() {
+      console.log('Got here. Connected');
+      console.log('Party identifier is ' + current_party_identifier);
+    },
 
-  disconnected: function() {
-    console.log('disconnected');
-  },
+    disconnected: function() {
+      console.log('disconnected');
+    },
 
-  received: function(data) {
-    console.log("Receiving function with " + data.song);
-    console.log(data.party);
-    $('#currently-playing-song').html(data.song);
+    received: function(data) {
+      // debugger;
+      console.log("Receiving function with " + data.song);
+      console.log(data.party);
+      $('#currently-playing-song').html(data.song);
 
-    // document.getElementById("currently-playing-song").innerHTML = data.song;
+      // document.getElementById("currently-playing-song").innerHTML = data.song;
 
- },
-});
-<% end %>
+   },
+  });
+// };
+
+//
+// App.current_song = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: `-BlRYbc9DuinLDTwJptJ6w`}, {
+//
+//   connected: function() {
+//     console.log('Got here. Connected');
+//   },
+//
+//   disconnected: function() {
+//     console.log('disconnected');
+//   },
+//
+//   received: function(data) {
+//     console.log("Receiving function with " + data.song);
+//     console.log(data.party);
+//     $('#currently-playing-song').html(data.song);
+//
+//     // document.getElementById("currently-playing-song").innerHTML = data.song;
+//
+//  },
+// });
