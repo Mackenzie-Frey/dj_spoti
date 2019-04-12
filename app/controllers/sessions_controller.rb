@@ -34,7 +34,6 @@ class SessionsController < ApplicationController
   def login_user(user)
     if user
       session[:user_id] = user.id
-      flash[:success] = 'You Have Successfully Connected With Spotify'
     else
       flash[:error] = user.errors.full_messages.to_sentence
     end

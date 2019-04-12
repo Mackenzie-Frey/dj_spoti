@@ -6,7 +6,7 @@ RSpec.feature 'A user registers an account through Spotify' do
     describe 'and I click on connect with spotify' do
       it 'should connect to spotify by going through oauth' do
         visit '/'
-        
+
         expect(page).to have_button('Connect With Spotify')
       end
 
@@ -28,15 +28,6 @@ RSpec.feature 'A user registers an account through Spotify' do
           it 'the navigation bar should now include Logout' do
             expect(page).to have_content('Logout')
             expect(page).to_not have_content('Connect With Spotify')
-          end
-
-          it 'I get a flash message that I successfully created an account' do
-            expect(page).to have_content('Logout')
-            expect(page).to_not have_content('Connect With Spotify')
-
-            message = 'You Have Successfully Connected With Spotify'
-
-            expect(page).to have_content(message)
           end
 
           it 'I should now have an account in the system' do
