@@ -1,6 +1,39 @@
 $spotifygreen: #1DB954;
 
+.navbar {
+  padding-top: 1.5rem !important;
+}
 
 #black-nav {
-    background-color: black !important;
+  background-color: black !important;
+}
+
+.logo {
+  width: 4%;
+  height: 4%;
+  margin-left: 2rem;
+}
+
+.navbar-brand {
+  margin-left: 1.4rem;
+  font-size: 1.8rem !important;
+}
+
+.conditional-right-nav {
+  margin-right: 2rem;
+}
+
+.navbar-collapse {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.about-btn {
+  margin-left: 40rem;
+  border-color: black !important;
+}
+
+.navbar-nav {
+  list-style-type: none;
 }
