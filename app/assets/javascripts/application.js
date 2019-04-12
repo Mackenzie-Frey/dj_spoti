@@ -58,25 +58,6 @@ $(document).ready(function() {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-//     var myForm = $('#endParty');
-//     confirm("Are you sure you want to kick all party animals out of this party?");
-//     if (result) {
-//        myForm.submit();
-//     }else {
-//       event.preventDefault();
-//       window.location="/dashboard";
-//     }
 function djSpoti(partyId, token) {
   window.onSpotifyWebPlaybackSDKReady = () => {
     const player = new Spotify.Player({

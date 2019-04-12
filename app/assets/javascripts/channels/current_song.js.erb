@@ -1,30 +1,44 @@
-<% Party.all.each do |party| %>
-App['current_song_' + `<%=party.identifier%>`] = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: `<%=party.identifier%>`}, {
+// MakePartyChannel = function(partyIdentifier) {
+  App.current_song = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: current_party_identifier}, {
 
-  connected: function() {
-    console.log('Got here. Connected');
-  },
-  disconnected: function() {
-    console.log('disconnected');
-  },
+    connected: function() {
+      console.log('Got here. Connected');
+      console.log('Party identifier is ' + current_party_identifier);
+    },
 
-  received: function(data) {
-    console.log("Receiving with " + data.song);
-    console.log(data.party);
-    // song = $('#song-playing');
-    // song.html(data['song']);
-    $("[data-current-party='" + data.party + "']").removeClass('hidden');
-   return $("[data-current-party='" + data.party + "']").html(data.song);
- },
-});
-<% end %>
+    disconnected: function() {
+      console.log('disconnected');
+    },
 
+    received: function(data) {
+      // debugger;
+      console.log("Receiving function with " + data.song);
+      console.log(data.party);
+      $('#currently-playing-song').html(data.song);
 
-    //
-    // var song = $('#song-playing');
-    // var partyId = data['party']
-    // var partyId = $("[data-current-party]").data().party_identifier
-    // console.log('received method here with their data:');
-    // console.log(data);
-    // song = $('#song-playing');
-    // song.html(data['song']);
+      // document.getElementById("currently-playing-song").innerHTML = data.song;
+
+   },
+  });
+// };
+
+//
+// App.current_song = App.cable.subscriptions.create({channel: 'CurrentSongChannel', party: `-BlRYbc9DuinLDTwJptJ6w`}, {
+//
+//   connected: function() {
+//     console.log('Got here. Connected');
+//   },
+//
+//   disconnected: function() {
+//     console.log('disconnected');
+//   },
+//
+//   received: function(data) {
+//     console.log("Receiving function with " + data.song);
+//     console.log(data.party);
+//     $('#currently-playing-song').html(data.song);
+//
+//     // document.getElementById("currently-playing-song").innerHTML = data.song;
+//
+//  },
+// });
