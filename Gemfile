@@ -12,7 +12,6 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'figaro'
 gem 'omniauth-spotify'
-gem 'sidekiq'
 gem 'jquery-rails'
 gem 'active_model_serializers'
 gem 'coffee-rails', '~> 4.2'
@@ -23,6 +22,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '~> 0.66.0', require: false
 gem 'twilio-ruby'
+gem 'rails_12factor'
 
 
 
