@@ -13,16 +13,17 @@
 
     <div class="card border-0" style='background: black;border-radius: 0px;' >
       <div class="card-body text-center" style="padding:0;margin-top:0">
-        <div class ='test'>
-          <div class="container">
+        <div class="container">
+          <% if !current_party %>
             <img src="images/image.png" alt="Logo" class='dj-spoti-image'>
-            <%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase color-black p-3' unless current_party %>
-          </div>
+          <% end %>
+          <%= button_to 'Start Party', new_party_path, method: :get, class: 'btn btn-primary text-uppercase color-black p-3' unless current_party %>
         </div>
       </div>
     </div>
 
     <%  if current_party && current_party.current_song  %>
+      <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>
       <div id="currently-playing-song" data-current-party=<%=current_party.identifier%>
         <%= render partial: 'partials/current_song', locals: {current_song: current_party.current_song}%>
       </div>

@@ -1,17 +1,21 @@
-<section class='currently-playing text-center' id='song-playing'>
-  <h3>Currently Playing</h3>
+<div class='currently-playing text-center' id='song-playing'>
+  <h4 class='currently-playing-title'>Currently Playing</h4>
 
   <img src= <%= current_song.image %> class="img-thumbnail">
-  <% if current_song.artists.count > 1 %>
-    <p>
-      <strong>Artists: </strong><%= current_song.artists.join(" & ")%>
-    </p>
-  <% else %>
-    <p>
-      <strong>Artist: </strong><%= current_song.artists.first %>
-    </p>
-    <p>
-      <strong>Title: </strong> <%= current_song.name %>
-    </p>
-  <% end %>
-</section>
+  <div class="song-text">
+    <p><%= current_song.name %></p>
+    <% if current_song.artists.count > 1 %>
+      <p>
+        <strong>Artists: </strong><%= current_song.artists.join(" & ")%>
+      </p>
+    <% else %>
+      <p>
+        <strong>Artist: </strong><%= current_song.artists.first %>
+      </p>
+    <% end %>
+  </div>
+      <div class='end-leave-container'>
+        <%= button_to 'End Party', party_path(current_party), method: :delete, class: 'btn btn-primary text-uppercase color-red p-3', onclick: "myFunction()", id: 'endParty' if current_party && current_party.admin == current_user %>
+        <%= button_to 'Leave Party', party_users_path, method: :delete, class: 'btn btn-primary text-uppercase color-black p-3' if current_party && current_party.admin != current_user %>
+      </div>
+</div>
