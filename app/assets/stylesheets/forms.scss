@@ -1,11 +1,28 @@
-.form-container {
-  padding-top: 13vh;
-}
+// Create Party
 
-.inner-form {
-  display: block;
-  padding: 2vh;
-}
+  .form-container {
+    padding-top: 13vh;
+  }
+
+  .create-party-invite {
+    font-weight: bold;
+    font-size: 4rem !important;
+    padding-bottom: 3rem;
+  }
+
+  .phone-form {
+    padding-top: 10vh;
+    padding-bottom: 15vh;
+  }
+
+  .phone-number {
+    font-size: 32px !important;
+  }
+
+  .inner-form {
+    display: block;
+    padding: 2vh;
+  }
 
 //  Invite Form
   #dynamicInput {
