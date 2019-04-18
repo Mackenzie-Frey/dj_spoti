@@ -5,11 +5,11 @@
   <div class="song-text">
     <p><%= current_song.name %></p>
     <% if current_song.artists.count > 1 %>
-      <p>
+      <p class='current-song-artists'>
         <strong>Artists: </strong><%= current_song.artists.join(" & ")%>
       </p>
     <% else %>
-      <p>
+      <p class='current-song-artists'>
         <strong>Artist: </strong><%= current_song.artists.first %>
       </p>
     <% end %>
