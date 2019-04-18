@@ -39,18 +39,12 @@
     <% if current_party && current_user == current_party.admin %>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!-- import spotify's web player sdk library & initialize web player -->
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
-
-    <!-- <script>
-      djSpoti('<%= current_party.identifier %>', '<%= current_user.access_token %>');
-    </script> -->
-
     <% end %>
-    <img id="current-track"/>
+    <!-- <img id="current-track"/>
     <h3 id="current-track-name"></h3>
     <h4 id="current-track-album"></h4>
-    <h5 id="current-track-artist"></h5>
+    <h5 id="current-track-artist"></h5> -->
   </section>
 </div>
