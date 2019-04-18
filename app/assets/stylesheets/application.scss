@@ -41,14 +41,33 @@
   // Invite Section
   .invite {
     background-color: #1DB954;
-    height: 100vh;
+    height: 61vh;
   }
 
   // Currently Playing Section
   .currently-playing {
     background-color: black;
     height: 100vh;
-    color: white
+    color: white;
+  }
+
+  .currently-playing-title {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  .img-thumbnail {
+    height: 61%;
+  }
+
+  .song-title {
+    padding-bottom: 1vh;
+  }
+
+  .end-leave-container {
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    background-color: black;
   }
 
 // '/party/new'
