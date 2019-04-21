@@ -11,8 +11,6 @@ DJ Spoti utilizes the languages of Ruby, HTML, CSS, the web framework of Rails, 
 
 #### [**_View DJ Spoti in Production_**](https://dj-spoti.herokuapp.com/)
 
-![Alt text](./public/videos/dj_spoti_functional_full.mov "DJ Spoti Video Demonstration")
-
 ## Getting Started
 
 To run DJ Spoti on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
