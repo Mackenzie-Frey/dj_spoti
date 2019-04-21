@@ -20,6 +20,8 @@ DJ Spoti utilizes the languages of Ruby, HTML, CSS, the web framework of Rails, 
 
 ![image](https://user-images.githubusercontent.com/42525195/56476192-75068180-6451-11e9-86d0-c418d75f76d0.png)
 
+## Schema
+![image](https://user-images.githubusercontent.com/42525195/56476372-d6c7eb00-6453-11e9-8a53-eedc34bafe28.png)
 
 ## Getting Started
 
