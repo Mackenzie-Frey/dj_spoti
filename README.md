@@ -3,7 +3,7 @@
 
 DJ Spoti is an 11-day, four-person project during Mod 3 of 4, for Turing School's Back-End Engineering Program.
 
-Our challenge was to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
+Our challenge was to create a web application from idea to inception. Project requirements included: authentication with a third-party service, consuming an API, and solving a real-world problem.
 
 Thus, DJ Spoti was born. DJ Spoti is a web application designed to solve the problem of one person being in charge of the music at a party and being unable to take into account all of the music preferences of their fellow party-goers. DJ Spoti enables users to create a collaborative music experience by logging into the app and inviting their friends via a text message. From there, DJ Spoti aggregates the favorite songs of all session party users and cultivates a playlist with all user preferences in mind.
 
