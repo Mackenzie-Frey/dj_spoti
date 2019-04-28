@@ -23,7 +23,7 @@ DJ Spoti utilizes the languages of Ruby, HTML, CSS, the web framework of Rails, 
 
 ## Getting Started
 
-To run DJ Spoti on your local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
+To run DJ Spoti on a local machine, navigate to the directory in which you would like the project to be located, then execute the following commands:
 
 ```
 $ git clone git@github.com:Mackenzie-Frey/dj_spoti.git
